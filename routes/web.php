@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InterfaceController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DetailController;
+use App\Http\Controllers\CardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,3 +17,6 @@ use App\Http\Controllers\InterfaceController;
 */
 
 Route::get('/', [InterfaceController::class, "index"])->name('interface.index');
+Route::get('/category', [CategoryController::class, "categoryIndex"])->name('category.index');
+Route::get('/detail', [DetailController::class, "detail"])->name('detail.index');
+Route::get('/card', [CardController::class, "cardAction"])->name('card.index');

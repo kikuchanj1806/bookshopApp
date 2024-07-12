@@ -34,38 +34,6 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="suggestion-related-posts">
-                                <div class="suggestion-related-posts-title">
-                                    <h3>bài viết liên quan</h3>
-                                    <a href="#">Xem thêm <i class="fa-regular fa-arrow-right"></i></a>
-                                </div>
-                                <ul class="suggestioin-related-posts-list">
-                                    <li class="srp-item">
-                                        <div class="srp-image">
-                                            <a href="#">
-                                                <img src="https://dummyimage.com/160x90/000/fff" alt="srp-img">
-                                            </a>
-                                        </div>
-                                        <a href="#" class="srp-title">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda, voluptas.</a>
-                                    </li>
-                                    <li class="srp-item">
-                                        <div class="srp-image">
-                                            <a href="#">
-                                                <img src="https://dummyimage.com/160x90/000/fff" alt="srp-img">
-                                            </a>
-                                        </div>
-                                        <a href="#" class="srp-title">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda, voluptas.</a>
-                                    </li>
-                                    <li class="srp-item">
-                                        <div class="srp-image">
-                                            <a href="#">
-                                                <img src="https://dummyimage.com/160x90/000/fff" alt="srp-img">
-                                            </a>
-                                        </div>
-                                        <a href="#" class="srp-title">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda, voluptas.</a>
-                                    </li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -77,17 +45,6 @@
                             </span>
                         </a>
                     </div>
-                    <div class="header-right-item account-item">
-                        <a href="#">
-                            <span class="hri-icon">
-                                <i class="fa-light fa-user"></i>
-                            </span>
-                            <div class="hri-content">
-                                <span>Tài khoản</span>
-                                <span class="label">Đăng nhập</span>
-                            </div>
-                        </a>
-                    </div>
                     <div class="header-right-item cart-item">
                         <a href="#">
                             <span class="hri-icon">
@@ -97,17 +54,6 @@
                             <div class="hri-content">
                                 <span>Giỏ hàng</span>
                                 <span class="label"><span class="cart-qty">1</span> sản phẩm</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="header-right-item checkOrder-item">
-                        <a href="#">
-                            <span class="hri-icon">
-                                <i class="fa-light fa-box"></i>
-                            </span>
-                            <div class="hri-content">
-                                <span>Theo dõi đơn hàng</span>
-                                <span class="label">Tra cứu đơn hàng</span>
                             </div>
                         </a>
                     </div>
@@ -167,9 +113,6 @@
                         </div>
                     </li>
                     <li class="promotion-menu"><i class="fa-sharp fa-solid fa-gift"></i><a href="#">Khuyễn mãi</a></li>
-                    <li><a href="#">Tin tức</a></li>
-                    <li><a href="#">Tuyển dụng</a></li>
-
                 </ul>
             </div>
         </div>

@@ -611,6 +611,7 @@
 
     .megamenu > li:hover > a::before {
         width: 100%;
+        background-color: #ff0;
     }
 
     .submenu {

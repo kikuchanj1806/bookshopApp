@@ -92,9 +92,4 @@
     </div>
 </footer>
 
-<div class="copyright">
-    <p>Copyright @2024 Công ty TNHH Toshiko Việt Nam - Giấy phép đăng ký kinh doanh số 0109158690 Cấp bởi: Sở Kế hoạch và Đầu tư Tp.Hà Nội</p>
-    <p>Địa chỉ ĐKKD: Số 104 đường Khuất Duy Tiến, Phường Nhân Chính, Quận Thanh Xuân, TP.Hà Nội</p>
-</div>
-
 <button class="back-to-top"><i class="fa-solid fa-arrow-up"></i></button>

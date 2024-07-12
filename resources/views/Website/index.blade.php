@@ -146,9 +146,6 @@
                                                     <span><span>4/5</span><i class="fa-solid fa-star"></i></span>
                                                     <span class="total-rate">(527)</span>
                                                 </div>
-                                                <div class="prd-compare">
-                                                    <a href="#"><i class="fa-regular fa-circle-plus"></i>So sánh</a>
-                                                </div>
                                             </a>
                                         </div>
                                     </div>
@@ -190,9 +187,6 @@
                                                 <div class="prd-rate">
                                                     <span><span>4/5</span><i class="fa-solid fa-star"></i></span>
                                                     <span class="total-rate">(527)</span>
-                                                </div>
-                                                <div class="prd-compare">
-                                                    <a href="#"><i class="fa-regular fa-circle-plus"></i>So sánh</a>
                                                 </div>
                                             </a>
                                         </div>
@@ -236,9 +230,6 @@
                                                     <span><span>4/5</span><i class="fa-solid fa-star"></i></span>
                                                     <span class="total-rate">(527)</span>
                                                 </div>
-                                                <div class="prd-compare">
-                                                    <a href="#"><i class="fa-regular fa-circle-plus"></i>So sánh</a>
-                                                </div>
                                             </a>
                                         </div>
                                     </div>
@@ -287,9 +278,6 @@
                                         <span><span>4/5</span><i class="fa-solid fa-star"></i></span>
                                         <span class="total-rate">(527)</span>
                                     </div>
-                                    <div class="prd-compare">
-                                        <a href="#"><i class="fa-regular fa-circle-plus"></i>So sánh</a>
-                                    </div>
                                 </a>
                             </div>
                         </div>
@@ -339,9 +327,6 @@
                                         <span><span>4/5</span><i class="fa-solid fa-star"></i></span>
                                         <span class="total-rate">(527)</span>
                                     </div>
-                                    <div class="prd-compare">
-                                        <a href="#"><i class="fa-regular fa-circle-plus"></i>So sánh</a>
-                                    </div>
                                 </a>
                             </div>
                         </div>
@@ -390,9 +375,6 @@
                                     <div class="prd-rate">
                                         <span><span>4/5</span><i class="fa-solid fa-star"></i></span>
                                         <span class="total-rate">(527)</span>
-                                    </div>
-                                    <div class="prd-compare">
-                                        <a href="#"><i class="fa-regular fa-circle-plus"></i>So sánh</a>
                                     </div>
                                 </a>
                             </div>

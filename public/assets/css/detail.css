@@ -44,20 +44,6 @@ body {
     top: 2px;
 }
 
-.heading-compare {
-    font-size: 13px;
-    color: #1873eb;
-    display: flex;
-    align-items: center;
-    gap: 3px;
-    position: relative;
-    top: 2px;
-}
-
-.heading-compare:hover {
-    color: #1873eb;
-}
-
 @media(max-width:576px) {
     .detail-heading-inner {
         justify-content: space-between;
