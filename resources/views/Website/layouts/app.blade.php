@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>@yield('title', 'Default Title')</title>
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=6, user-scalable=no">
     <!-- Bao gồm các tệp CSS -->
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
@@ -12,12 +11,12 @@
     <link href="{{ asset('assets/css/Awesome_Pro_6.0.0.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/slick/slick.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/slick/slick-theme.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/header.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/index.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/category.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/footer.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/detail.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/card.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/header.css">
 </head>
 <body>
 <header>
