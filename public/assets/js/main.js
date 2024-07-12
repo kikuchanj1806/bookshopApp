@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    console.log('qưeqweqwe')
     // Search
     $('#inputSearch').click(function () {
         $('.search-btn').addClass('active')

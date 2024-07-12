@@ -65,9 +65,9 @@ body {
     object-fit: cover;
 }
 
-.detail-img-item {
-    aspect-ratio: 3/2;
-}
+/*.detail-img-item {*/
+/*    aspect-ratio: 3/2;*/
+/*}*/
 
 .viewmore-gallery {
     text-align: center;
@@ -946,17 +946,18 @@ progress[value]::-webkit-progress-value {
 .close-detailModal {
     background-color: var(--secondary-red);
     color: var(--white);
-    height: 24px;
+    height: 18px;
     width: auto;
     display: flex;
-    position: fixed;
-    top: 30px;
-    right: 50px;
+    position: absolute;
+    top: 12px;
+    right: 12px;
     background-image: none;
     opacity: 1;
     align-items: center;
     gap: 5PX;
     padding: 10px;
+    z-index: 50;
     font-size: 14px;
 }
 
@@ -1005,9 +1006,9 @@ progress[value]::-webkit-progress-value {
     padding: 0 5px;
 }
 
-.detail-thumb-item {
-    aspect-ratio: 3/2;
-}
+/*.detail-thumb-item {*/
+/*    aspect-ratio: 3/2;*/
+/*}*/
 
 .detail-thumb-item img {
     height: 100%;

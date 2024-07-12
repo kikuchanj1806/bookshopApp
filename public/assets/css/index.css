@@ -229,9 +229,6 @@ textarea:focus {
 
 
 /* HOMEPAGE SLIDE */
-#hp-slide{
-    margin-top: 24px;
-}
 .slideItem{
     aspect-ratio: 12/5;
 }
@@ -524,22 +521,6 @@ textarea:focus {
 .product-item:hover .prd-name{
     color: var(--secondary-red);
 }
-.prd-attr{
-    display: flex;
-    margin-bottom: 5px;
-    gap: 5px;
-    flex-wrap: wrap;
-}
-.prd-attr li{
-    border: 1px solid var(--border-color);
-    border-radius: 2px;
-    color: var(--color-attr);
-    display: inline-block;
-    font-size: 12px;
-    line-height: 12px;
-    padding: 4px 5px;
-    white-space: nowrap;
-}
 .prd-price{
     display: flex;
     flex-wrap: wrap;
@@ -636,99 +617,6 @@ textarea:focus {
 }
 
 /* END PRODUCT LIST */
-
-
-/* ABOUTUS */
-
-#hp-aboutUs{
-    position: relative;
-    padding: 60px 0 80px;
-    background-repeat: no-repeat;
-    background-position: 100% 100%;
-    background-size: cover;
-    margin-top: 50px;
-}
-.hp-aboutus-head h1{
-    color: var(--white);
-    text-align: center;
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 50px;
-    margin-bottom: 8px;
-}
-
-.hp-aboutus-head p{
-    color: var(--white);
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-}
-.abu-item-img{
-    min-height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.abu-item-img img{
-    max-width: 50px;
-}
-.hp-aboutus-content{
-    margin-top: 50px;
-}
-.aboutus-item{
-    padding: 33px 0;
-    text-align: center;
-    border: 2px solid var(--white);
-    background: var(--white);
-    border-radius: 16px;
-}
-.abu-item-content{
-    margin-top: 28px;
-}
-.abu-item-content h4{
-    font-size: 20px;
-    line-height: 24px;
-    font-weight: 700;
-}
-.abu-item-content p{
-    margin-top: 8px;
-}
-@media(max-width: 1025px){
-    .hp-aboutus-head h1{
-        font-size: 34px;
-    }
-    .abu-item-content h4{
-        font-size: 18px;
-    }
-}
-@media(max-width: 769px){
-    #hp-aboutUs{
-        position: relative;
-        padding: 40px 0 25px;
-    }
-    .aboutus-item{
-        padding: 20px 10px;
-        margin-bottom: 15px;
-    }
-    .hp-aboutus-head h1{
-        font-size: 26px;
-        line-height: 30px;
-    }
-    .hp-aboutus-head p{
-        font-size: 14px;
-    }
-    .abu-item-content{
-        margin-top: 6px;
-    }
-    .abu-item-content h4{
-        font-size: 16px;
-    }
-    .abu-item-content p{
-        margin-top: 0;
-        font-size: 14px;
-    }
-}
-
 
 /* CUSTOMER,PARTNER,PAPPER */
 #hp-customer,

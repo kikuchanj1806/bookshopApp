@@ -9,20 +9,21 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link href="{{ asset('assets/css/Awesome_Pro_6.0.0.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/slick/slick.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/slick/slick-theme.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/header.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/index.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/category.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/footer.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/detail.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/slick/slick.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/slick/slick-theme.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/card.css') }}" rel="stylesheet">
 </head>
 <body>
 <header>
     @include('Website.partials.header')
 </header>
 
-<div class="container">
+<div class="content">
     @yield('content')
 </div>
 
@@ -31,9 +32,6 @@
 </footer>
 
 <!-- Bao gồm các tệp JS -->
-<script src="{{ asset('assets/js/category.js') }}"></script>
-<script src="{{ asset('assets/js/detail.js') }}"></script>
-<script src="{{ asset('assets/js/index.js') }}"></script>
 <script src="{{ asset('assets/js/main.js') }}"></script>
 </body>
 </html>

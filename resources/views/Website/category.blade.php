@@ -8,7 +8,7 @@
         <div class="container">
             <ul>
                 <li><a href="#"><i class="fa-solid fa-house"></i>Trang chủ</a></li>
-                <li><span>Ghế Massage</span></li>
+                <li><span>Sách toán</span></li>
             </ul>
         </div>
     </section>
@@ -16,7 +16,7 @@
     <section class="category-heading" style="background-image: url(./assets/images/cat-banner.jpg);">
         <div class="container">
             <div class="category-heading-inner">
-                <h1 class="category-title">Ghế Massage</h1>
+                <h1 class="category-title">Sách toán</h1>
                 <p class="category-des">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Iusto itaque veritatis voluptas minus, quam rem assumenda enim aliquid excepturi
                     laborum magni nam officiis fugit fuga totam commodi eius?</p>
@@ -31,27 +31,21 @@
                 <h2 class="filter-title">Chọn theo tiêu chí</h2>
                 <div id="filterModule">
                     <div class="filter-wrapper">
-                        <button class="filter-btn button__filter-parent"><i class="fa-solid fa-money-bill"></i><span class="fiter-name">Giá</span></button>
-                        <div class="list-filter-child">
-                            <div class="price-range-slider">
-                                <p class="range-value">
-                                    <input type="text" id="amount" readonly>
-                                </p>
-                                <div id="slider-range" class="range-bar"></div>
-                            </div>
-                            <div class="btn-filter-group">
-                                <button class="close-fitler">Đóng</button>
-                                <button class="save-fitler">Xem kết quả</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="filter-wrapper">
-                        <button class="filter-btn button__filter-parent"><span class="fiter-name">Màu sắc</span><i class="fa-regular fa-chevron-down"></i></button>
+                        <button class="filter-btn button__filter-parent"><span class="fiter-name">Lớp học</span><i class="fa-regular fa-chevron-down"></i></button>
                         <div class="list-filter-child">
                             <ul>
-                                <li><button class="filter-btn button__filter-child">Bạc</button></li>
-                                <li><button class="filter-btn button__filter-child">Đỏ</button></li>
-                                <li><button class="filter-btn button__filter-child">Đen</button></li>
+                                <li><button class="filter-btn button__filter-child">Lớp 1</button></li>
+                                <li><button class="filter-btn button__filter-child">Lớp 2</button></li>
+                                <li><button class="filter-btn button__filter-child">Lớp 3</button></li>
+                                <li><button class="filter-btn button__filter-child">Lớp 4</button></li>
+                                <li><button class="filter-btn button__filter-child">Lớp 5</button></li>
+                                <li><button class="filter-btn button__filter-child">Lớp 6</button></li>
+                                <li><button class="filter-btn button__filter-child">Lớp 7</button></li>
+                                <li><button class="filter-btn button__filter-child">Lớp 8</button></li>
+                                <li><button class="filter-btn button__filter-child">Lớp 9</button></li>
+                                <li><button class="filter-btn button__filter-child">Lớp 10</button></li>
+                                <li><button class="filter-btn button__filter-child">Lớp 11</button></li>
+                                <li><button class="filter-btn button__filter-child">Lớp 12</button></li>
                             </ul>
                             <div class="btn-filter-group">
                                 <button class="close-fitler">Đóng</button>
@@ -60,30 +54,13 @@
                         </div>
                     </div>
                     <div class="filter-wrapper">
-                        <button class="filter-btn button__filter-parent"><span class="fiter-name">brand</span><i class="fa-regular fa-chevron-down"></i></button>
+                        <button class="filter-btn button__filter-parent"><span class="fiter-name">Môn học</span><i class="fa-regular fa-chevron-down"></i></button>
                         <div class="list-filter-child">
                             <ul>
-                                <li><button class="filter-btn button__filter-child">brand 1</button></li>
-                                <li><button class="filter-btn button__filter-child">brand 2</button></li>
-                                <li><button class="filter-btn button__filter-child">brand 3</button></li>
-                                <li><button class="filter-btn button__filter-child">brand 4</button></li>
-                                <li><button class="filter-btn button__filter-child">brand 5</button></li>
-                            </ul>
-                            <div class="btn-filter-group">
-                                <button class="close-fitler">Đóng</button>
-                                <button class="save-fitler">Xem kết quả</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="filter-wrapper">
-                        <button class="filter-btn button__filter-parent"><span class="fiter-name">Bảo hành</span><i class="fa-regular fa-chevron-down"></i> </button>
-                        <div class="list-filter-child">
-                            <ul>
-                                <li><button class="filter-btn button__filter-child">1 năm</button></li>
-                                <li><button class="filter-btn button__filter-child">2 năm</button></li>
-                                <li><button class="filter-btn button__filter-child">3 năm</button></li>
-                                <li><button class="filter-btn button__filter-child">4 năm</button></li>
-                                <li><button class="filter-btn button__filter-child">5 năm</button></li>
+                                <li><button class="filter-btn button__filter-child">Môn văn</button></li>
+                                <li><button class="filter-btn button__filter-child">Môn toán</button></li>
+                                <li><button class="filter-btn button__filter-child">Môn địa lý</button></li>
+                                <li><button class="filter-btn button__filter-child">Môn lịch sử</button></li>
                             </ul>
                             <div class="btn-filter-group">
                                 <button class="close-fitler">Đóng</button>
@@ -93,13 +70,6 @@
                     </div>
                 </div>
                 <div id="filter-active"></div>
-                <h2 class="filter-title">Sắp xếp theo</h2>
-                <div class="filter-sort">
-                    <button class="filter-btn btn-sort"><i class="fa-solid fa-arrow-down-wide-short"></i><span>Giá Cao - Thấp</span></button>
-                    <button class="filter-btn btn-sort"><i class="fa-solid fa-arrow-up-wide-short"></i><span>Giá Thấp - Cao</span></button>
-                    <button class="filter-btn btn-sort"><i class="fa-solid fa-percent"></i><span>Khuyến mãi Hot</span></button>
-                    <button class="filter-btn btn-sort"><i class="fa-solid fa-eye"></i><span>Xem nhiều</span></button>
-                </div>
             </div>
             <div id="productList">
                 <div class="row row-cols-md-3 row-cols-xl-5 row-cols-lg-4">
@@ -113,16 +83,13 @@
                             </div>
                             <div class="product-item-image">
                                 <a href="./detail">
-                                    <img src="https://toshiko.vn/storage/files/xe-dap-tap-toshiko-x9.jpg" alt="product image">
+                                    <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240523_7fp9nubUKA.png" alt="product image">
                                 </a>
                             </div>
                             <div class="prd-item-content">
                                 <a href="./detail">
-                                    <h3 class="prd-name">Ghế massage Toshiko T70</h3>
-                                    <ul class="prd-attr">
-                                        <li>Công nghệ I-ON âm</li>
-                                        <li>massage 4D</li>
-                                    </ul>
+                                    <h3 class="prd-name">
+                                        Dầu và Máu - Mohammed Bin Salman Và Tham Vọng Tái Thiết Kinh Tế Ả-Rập</h3>
                                     <div class="prd-price">
                                         <span class="prd-pre-price">49.000.000đ</span>
                                         <del class="prd-old-price">79.200.00đ</del>
@@ -146,4 +113,6 @@
             </div>
         </div>
     </section>
+
+    <script src="{{ asset('assets/js/category.js') }}"></script>
 @endsection

@@ -82,10 +82,6 @@
                             <li><a href=""><img src="./assets/images/zalo-icon.png" alt="zalo icon"></a></li>
                         </ul>
                     </div>
-                    <div class="footer-certification">
-                        <a href="#"><img src="./assets/images/bct.png" alt="bct img"></a>
-                        <a href="#"><img src="./assets/images/dmca.png" alt="dmca img"></a>
-                    </div>
                 </div>
             </div>
         </div>

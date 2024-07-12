@@ -1,23 +1,20 @@
-
 @extends('Website.layouts.app')
 
 @section('title', 'Home Page')
 
 @section('content')
     <section id="hp-slide">
-        <div class="container">
-            <div class="hp-slide-inner">
-                <div id="mainSlide">
-                    <div class="slideItem">
-                        <a target="_blank" href="https://toshiko.vn/">
-                            <img src="./assets/images/sld1.jpg" alt="first slide image">
-                        </a>
-                    </div>
-                    <div class="slideItem">
-                        <a target="_blank" href="#">
-                            <img src="./assets/images/sld2.png" alt="second slide image">
-                        </a>
-                    </div>
+        <div class="hp-slide-inner">
+            <div id="mainSlide">
+                <div class="slideItem">
+                    <a target="_blank" href="https://toshiko.vn/">
+                        <img src="./assets/images/sld1.jpg" alt="first slide image">
+                    </a>
+                </div>
+                <div class="slideItem">
+                    <a target="_blank" href="#">
+                        <img src="./assets/images/sld2.png" alt="second slide image">
+                    </a>
                 </div>
             </div>
         </div>
@@ -102,42 +99,53 @@
                     <div class="hp-hotsale-title-right">
                         <ul class="nav nav-pills" id="pills-tab" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="hotsale-title-1" data-bs-toggle="pill" data-bs-target="#hotsale-tab-1" type="button" role="tab" aria-selected="true">Ghế massage</button>
+                                <button class="nav-link active" id="hotsale-title-1" data-bs-toggle="pill"
+                                        data-bs-target="#hotsale-tab-1" type="button" role="tab" aria-selected="true">
+                                    Ghế massage
+                                </button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="hotsale-title-2" data-bs-toggle="pill" data-bs-target="#hotsale-tab-2" type="button" role="tab" aria-selected="false">Xe đạp tập</button>
+                                <button class="nav-link" id="hotsale-title-2" data-bs-toggle="pill"
+                                        data-bs-target="#hotsale-tab-2" type="button" role="tab" aria-selected="false">
+                                    Xe đạp tập
+                                </button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="hotsale-title-3" data-bs-toggle="pill" data-bs-target="#hotsale-tab-3" type="button" role="tab" aria-selected="false">Máy chạy bộ</button>
+                                <button class="nav-link" id="hotsale-title-3" data-bs-toggle="pill"
+                                        data-bs-target="#hotsale-tab-3" type="button" role="tab" aria-selected="false">
+                                    Máy chạy bộ
+                                </button>
                             </li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="hp-hotsale-content tab-content" id="hp-hotsale-content">
-                    <div class="tab-pane fade show active" id="hotsale-tab-1" role="tabpanel" aria-labelledby="hotsale-tab-1">
+                    <div class="tab-pane fade show active" id="hotsale-tab-1" role="tabpanel"
+                         aria-labelledby="hotsale-tab-1">
                         <div class="hotsale-productList">
                             <div class="productList-slide">
                                 <?php
-                                for ($i = 0; $i < 10; $i++) {
+                                for ($i = 0;
+                                     $i < 10;
+                                     $i++) {
                                     ?>
                                 <div class="col prd-col">
                                     <div class="product-item">
-                                        <div class="sale-label" style="background-image: url(./assets/images/sale-label.svg);">
+                                        <div class="sale-label"
+                                             style="background-image: url(./assets/images/sale-label.svg);">
                                             <span class="sale-label-detail">Giảm 37%</span>
                                         </div>
                                         <div class="product-item-image">
                                             <a href="./detail.php">
-                                                <img src="./assets/images/prd.png" alt="product image">
+                                                <img
+                                                    src="https://pos.nvncdn.com/fd5775-40602/ps/20240318_hQYHr2fwxU.jpeg"
+                                                    alt="product image">
                                             </a>
                                         </div>
                                         <div class="prd-item-content">
                                             <a href="./detail.php">
-                                                <h3 class="prd-name">Ghế massage Toshiko T70</h3>
-                                                <ul class="prd-attr">
-                                                    <li>Công nghệ I-ON âm</li>
-                                                    <li>massage 4D</li>
-                                                </ul>
+                                                <h3 class="prd-name">Chính Sách Tiền Tệ Thế Kỷ 21 </h3>
                                                 <div class="prd-price">
                                                     <span class="prd-pre-price">49.000.000đ</span>
                                                     <del class="prd-old-price">79.200.00đ</del>
@@ -161,25 +169,26 @@
                         <div class="hotsale-productList">
                             <div class="productList-slide">
                                 <?php
-                                for ($i = 0; $i < 10; $i++) {
+                                for ($i = 0;
+                                     $i < 10;
+                                     $i++) {
                                     ?>
                                 <div class="col prd-col">
                                     <div class="product-item">
-                                        <div class="sale-label" style="background-image: url(./assets/images/sale-label.svg);">
+                                        <div class="sale-label"
+                                             style="background-image: url(./assets/images/sale-label.svg);">
                                             <span class="sale-label-detail">Giảm 37%</span>
                                         </div>
                                         <div class="product-item-image">
                                             <a href="./detail.php">
-                                                <img src="./assets/images/prd.png" alt="product image">
+                                                <img
+                                                    src="https://pos.nvncdn.com/fd5775-40602/ps/20240318_hQYHr2fwxU.jpeg"
+                                                    alt="product image">
                                             </a>
                                         </div>
                                         <div class="prd-item-content">
                                             <a href="#">
-                                                <h3 class="prd-name">Ghế massage Toshiko T70</h3>
-                                                <ul class="prd-attr">
-                                                    <li>Công nghệ I-ON âm</li>
-                                                    <li>massage 4D</li>
-                                                </ul>
+                                                <h3 class="prd-name">Chính Sách Tiền Tệ Thế Kỷ 21 </h3>
                                                 <div class="prd-price">
                                                     <span class="prd-pre-price">49.000.000đ</span>
                                                     <del class="prd-old-price">79.200.00đ</del>
@@ -203,25 +212,26 @@
                         <div class="hotsale-productList">
                             <div class="productList-slide">
                                 <?php
-                                for ($i = 0; $i < 10; $i++) {
+                                for ($i = 0;
+                                     $i < 10;
+                                     $i++) {
                                     ?>
                                 <div class="col prd-col">
                                     <div class="product-item">
-                                        <div class="sale-label" style="background-image: url(./assets/images/sale-label.svg);">
+                                        <div class="sale-label"
+                                             style="background-image: url(./assets/images/sale-label.svg);">
                                             <span class="sale-label-detail">Giảm 37%</span>
                                         </div>
                                         <div class="product-item-image">
                                             <a href="./detail.php">
-                                                <img src="./assets/images/prd.png" alt="product image">
+                                                <img
+                                                    src="https://pos.nvncdn.com/fd5775-40602/ps/20240318_hQYHr2fwxU.jpeg"
+                                                    alt="product image">
                                             </a>
                                         </div>
                                         <div class="prd-item-content">
                                             <a href="./detail.php">
-                                                <h3 class="prd-name">Ghế massage Toshiko T70</h3>
-                                                <ul class="prd-attr">
-                                                    <li>Công nghệ I-ON âm</li>
-                                                    <li>massage 4D</li>
-                                                </ul>
+                                                <h3 class="prd-name">Chính Sách Tiền Tệ Thế Kỷ 21 </h3>
                                                 <div class="prd-price">
                                                     <span class="prd-pre-price">49.000.000đ</span>
                                                     <del class="prd-old-price">79.200.00đ</del>
@@ -251,7 +261,9 @@
             <div class="hp-prdList-inner">
                 <div class="productList-slide">
                     <?php
-                    for ($i = 0; $i < 10; $i++) {
+                    for ($i = 0;
+                         $i < 10;
+                         $i++) {
                         ?>
                     <div class="col prd-col">
                         <div class="product-item">
@@ -260,16 +272,13 @@
                             </div>
                             <div class="product-item-image">
                                 <a href="#">
-                                    <img src="./assets/images/prd.png" alt="product image">
+                                    <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240318_hQYHr2fwxU.jpeg"
+                                         alt="product image">
                                 </a>
                             </div>
                             <div class="prd-item-content">
                                 <a href="#">
-                                    <h3 class="prd-name">Ghế massage Toshiko T70</h3>
-                                    <ul class="prd-attr">
-                                        <li>Công nghệ I-ON âm</li>
-                                        <li>massage 4D</li>
-                                    </ul>
+                                    <h3 class="prd-name">Chính Sách Tiền Tệ Thế Kỷ 21 </h3>
                                     <div class="prd-price">
                                         <span class="prd-pre-price">49.000.000đ</span>
                                         <del class="prd-old-price">79.200.00đ</del>
@@ -288,7 +297,7 @@
                     ?>
                 </div>
                 <div class="viewmore">
-                    <a href="#">Xem tất cả Máy Massage <i class="fa-light fa-arrow-right"></i></a>
+                    <a href="#">Xem tất cả <i class="fa-light fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -300,7 +309,9 @@
             <div class="hp-prdList-inner">
                 <div class="productList-slide">
                     <?php
-                    for ($i = 0; $i < 10; $i++) {
+                    for ($i = 0;
+                         $i < 10;
+                         $i++) {
                         ?>
                     <div class="col prd-col">
                         <div class="product-item">
@@ -309,16 +320,13 @@
                             </div>
                             <div class="product-item-image">
                                 <a href="#">
-                                    <img src="./assets/images/prd.png" alt="product image">
+                                    <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240318_hQYHr2fwxU.jpeg"
+                                         alt="product image">
                                 </a>
                             </div>
                             <div class="prd-item-content">
                                 <a href="#">
-                                    <h3 class="prd-name">Ghế massage Toshiko T70</h3>
-                                    <ul class="prd-attr">
-                                        <li>Công nghệ I-ON âm</li>
-                                        <li>massage 4D</li>
-                                    </ul>
+                                    <h3 class="prd-name">Chính Sách Tiền Tệ Thế Kỷ 21 </h3>
                                     <div class="prd-price">
                                         <span class="prd-pre-price">49.000.000đ</span>
                                         <del class="prd-old-price">79.200.00đ</del>
@@ -337,7 +345,7 @@
                     ?>
                 </div>
                 <div class="viewmore">
-                    <a href="#">Xem tất cả Máy Massage <i class="fa-light fa-arrow-right"></i></a>
+                    <a href="#">Xem tất cả <i class="fa-light fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -349,7 +357,9 @@
             <div class="hp-prdList-inner">
                 <div class="productList-slide">
                     <?php
-                    for ($i = 0; $i < 10; $i++) {
+                    for ($i = 0;
+                         $i < 10;
+                         $i++) {
                         ?>
                     <div class="col prd-col">
                         <div class="product-item">
@@ -358,16 +368,13 @@
                             </div>
                             <div class="product-item-image">
                                 <a href="#">
-                                    <img src="./assets/images/prd.png" alt="product image">
+                                    <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240318_hQYHr2fwxU.jpeg"
+                                         alt="product image">
                                 </a>
                             </div>
                             <div class="prd-item-content">
                                 <a href="#">
-                                    <h3 class="prd-name">Ghế massage Toshiko T70</h3>
-                                    <ul class="prd-attr">
-                                        <li>Công nghệ I-ON âm</li>
-                                        <li>massage 4D</li>
-                                    </ul>
+                                    <h3 class="prd-name">Chính Sách Tiền Tệ Thế Kỷ 21 </h3>
                                     <div class="prd-price">
                                         <span class="prd-pre-price">49.000.000đ</span>
                                         <del class="prd-old-price">79.200.00đ</del>
@@ -386,75 +393,7 @@
                     ?>
                 </div>
                 <div class="viewmore">
-                    <a href="#">Xem tất cả Máy Massage <i class="fa-light fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="hp-aboutUs" style="background-image: url('./assets/images/aboutUs-bg.webp')">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 col-md-10 col-12">
-                    <div class="hp-aboutus-head">
-                        <h1>Toshiko thương hiệu nổi tiếng Châu Á</h1>
-                        <p>
-                            Hiểu được tầm quan trọng của sức khỏe, Toshiko Việt Nam muốn cùng
-                            bạn tạo ra giá trị bền vững. Các sản phẩm của Toshiko đều tập trung
-                            vào chất lượng sản phẩm, lấy khách hàng là yếu tố cốt lõi để phát
-                            triển. Những chính sách hậu mãi cũng là điều Toshiko chú trọng để
-                            khách hàng luôn cảm thấy yên tâm, thoải mái.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="hp-aboutus-content">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 col-6">
-                        <div class="aboutus-item">
-                            <div class="abu-item-img">
-                                <img src="./assets/images/free-delivery.png.webp" alt="aboutUs image">
-                            </div>
-                            <div class="abu-item-content">
-                                <h4>Miễn phí vận chuyển</h4>
-                                <p>Freeship toàn quốc</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-6">
-                        <div class="aboutus-item">
-                            <div class="abu-item-img">
-                                <img src="./assets/images/icon-3.png.webp" alt="aboutUs image">
-                            </div>
-                            <div class="abu-item-content">
-                                <h4>Bảo hành tới 6 năm</h4>
-                                <p>Cam kết hàng chính hãng</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-6">
-                        <div class="aboutus-item">
-                            <div class="abu-item-img">
-                                <img src="./assets/images/icon-3.png.webp" alt="aboutUs image">
-                            </div>
-                            <div class="abu-item-content">
-                                <h4>Tư vấn tận tâm, chu đáo</h4>
-                                <p>Trực tuyến 24/7</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-6">
-                        <div class="aboutus-item">
-                            <div class="abu-item-img">
-                                <img src="./assets/images/icon-4.png.webp" alt="aboutUs image">
-                            </div>
-                            <div class="abu-item-content">
-                                <h4>Bảo hành nhanh chóng</h4>
-                                <p>Hỗ trợ kỹ thuật, xử lý tại nhà</p>
-                            </div>
-                        </div>
-                    </div>
+                    <a href="#">Xem tất cả <i class="fa-light fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -531,73 +470,5 @@
         </div>
     </section>
 
-    <section id="hp-newpapper">
-        <div class="container">
-            <h1 class="hp-heading">truyền thông nói về Toshiko</h1>
-            <div class="hp-newpapper-inner">
-                <div class="hp-newpapper-list">
-                    <div class="np-item">
-                        <a href="#">
-                            <img src="./assets/images/pp1.webp" alt="newpapper image">
-                        </a>
-                    </div>
-                    <div class="np-item">
-                        <a href="#">
-                            <img src="./assets/images/pp2.webp" alt="newpapper image">
-                        </a>
-                    </div>
-                    <div class="np-item">
-                        <a href="#">
-                            <img src="./assets/images/pp1.webp" alt="newpapper image">
-                        </a>
-                    </div>
-                    <div class="np-item">
-                        <a href="#">
-                            <img src="./assets/images/pp2.webp" alt="newpapper image">
-                        </a>
-                    </div>
-                    <div class="np-item">
-                        <a href="#">
-                            <img src="./assets/images/pp1.webp" alt="newpapper image">
-                        </a>
-                    </div>
-                    <div class="np-item">
-                        <a href="#">
-                            <img src="./assets/images/pp2.webp" alt="newpapper image">
-                        </a>
-                    </div>
-                    <div class="np-item">
-                        <a href="#">
-                            <img src="./assets/images/pp1.webp" alt="newpapper image">
-                        </a>
-                    </div>
-                    <div class="np-item">
-                        <a href="#">
-                            <img src="./assets/images/pp2.webp" alt="newpapper image">
-                        </a>
-                    </div>
-                    <div class="np-item">
-                        <a href="#">
-                            <img src="./assets/images/pp1.webp" alt="newpapper image">
-                        </a>
-                    </div>
-                    <div class="np-item">
-                        <a href="#">
-                            <img src="./assets/images/pp2.webp" alt="newpapper image">
-                        </a>
-                    </div>
-                    <div class="np-item">
-                        <a href="#">
-                            <img src="./assets/images/pp1.webp" alt="newpapper image">
-                        </a>
-                    </div>
-                    <div class="np-item">
-                        <a href="#">
-                            <img src="./assets/images/pp2.webp" alt="newpapper image">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <script src="{{ asset('assets/js/index.js') }}"></script>
 @endsection

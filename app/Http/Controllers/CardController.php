@@ -8,4 +8,9 @@ class CardController extends Controller
     {
         return view('Website.card');
     }
+
+    public function carddoneAction()
+    {
+        return view('Website.carddone');
+    }
 }

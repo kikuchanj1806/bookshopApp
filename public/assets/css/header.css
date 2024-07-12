@@ -609,6 +609,10 @@
         width: 0;
     }
 
+    .megamenu > li:hover > a > span, .megamenu > li:hover.promotion-menu > a, .megamenu > li:hover.has-dropdown > a {
+        color: #ff0;
+    }
+
     .megamenu > li:hover > a::before {
         width: 100%;
         background-color: #ff0;

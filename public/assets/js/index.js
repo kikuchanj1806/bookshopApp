@@ -3,6 +3,8 @@ $('#mainSlide').slick({
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
+    speed: 300,
+    autoplay: true,
     dots: true,
     arrows: true
 });
@@ -27,30 +29,30 @@ if (today > birthday) {
     birthday = dayMonth + nextYear;
 }
 
-// const countDown = new Date(birthday).getTime(),
-    // x = setInterval(function () {
-    //
-    //     const now = new Date().getTime(),
-    //         distance = countDown - now;
-    //
-    //     document.getElementById("days").innerText = Math.floor(distance / (day)),
-    //         document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
-    //         document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
-    //         document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
-    //
-    //
-    //     if (distance < 0) {
-    //         document.getElementById("headline").innerText = "It's my birthday!";
-    //         document.getElementById("countdown").style.display = "none";
-    //         document.getElementById("content").style.display = "block";
-    //         clearInterval(x);
-    //     }
-    // }, 0)
+const countDown = new Date(birthday).getTime(),
+    x = setInterval(function () {
+
+        const now = new Date().getTime(),
+            distance = countDown - now;
+
+        document.getElementById("days").innerText = Math.floor(distance / (day)),
+            document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+            document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+            document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+
+
+        if (distance < 0) {
+            document.getElementById("headline").innerText = "It's my birthday!";
+            document.getElementById("countdown").style.display = "none";
+            document.getElementById("content").style.display = "block";
+            clearInterval(x);
+        }
+    }, 0)
 
 
     // Product Sale List
-    // load_slideTab
-// ()
+    load_slideTab
+()
 
 $('.hp-hotsale-title-right .nav-link').on('shown.bs.tab', function () {
     $('.productList-slide').slick('destroy')

@@ -8,8 +8,8 @@
         <div class="container">
             <ul>
                 <li><a href="#"><i class="fa-solid fa-house"></i>Trang chủ</a></li>
-                <li><a href="#">Ghế Massage</a></li>
-                <li><span>Ghế massage Toshiko T70</span></li>
+                <li><a href="#">Sách toán</a></li>
+                <li><span>Chính Sách Tiền Tệ Thế Kỷ 21</span></li>
             </ul>
         </div>
     </section>
@@ -17,7 +17,7 @@
     <section class="detail-heading-wrap">
         <div class="container">
             <div class="detail-heading-inner">
-                <h1 class="prd-heading">Ghế massage Toshiko T70</h1>
+                <h1 class="prd-heading">Chính Sách Tiền Tệ Thế Kỷ 21                          </h1>
                 <div class="prd-heading-rate">
                     <div class="ratings">
                         <i class="fa fa-star rating-color"></i>
@@ -38,19 +38,19 @@
                 <div class="col-lg-7 col-md-10 col-12 detail-gallery-col">
                     <div class="detail-img-list">
                         <div class="detail-img-item">
-                            <img src="./assets/images/dt-prd-1.jpg" alt="image product">
+                            <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240518_mKFlYvWBmz.jpeg" alt="image product">
                         </div>
                         <div class="detail-img-item">
-                            <img src="./assets/images/dt-prd-2.png" alt="image product">
+                            <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240518_mKFlYvWBmz.jpeg" alt="image product">
                         </div>
                         <div class="detail-img-item">
-                            <img src="./assets/images/dt-prd-3.jpg" alt="image product">
+                            <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240518_mKFlYvWBmz.jpeg" alt="image product">
                         </div>
                         <div class="detail-img-item">
-                            <img src="./assets/images/dt-prd-4.png" alt="image product">
+                            <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240518_mKFlYvWBmz.jpeg" alt="image product">
                         </div>
                         <div class="detail-img-item">
-                            <img src="./assets/images/dt-prd-5.jpg" alt="image product">
+                            <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240518_mKFlYvWBmz.jpeg" alt="image product">
                         </div>
                     </div>
                     <div class="viewmore-gallery" data-bs-toggle="modal" data-bs-target="#detailModal"
@@ -218,7 +218,7 @@
                         </div>
                     </div>
                     <div class="detail-rating">
-                        <h2>Đánh giá & nhận xét Ghế massage Toshiko T70</h2>
+                        <h2>Đánh giá & nhận xét Chính Sách Tiền Tệ Thế Kỷ 21                          </h2>
                         <div class="boxReview-review">
                             <div class="boxReview-score">
                                 <p class="title">4.5/5</p>
@@ -390,55 +390,31 @@
                 </div>
                 <div class="col-lg-5 col-md-10 col-12">
                     <div class="detail-specifications">
-                        <h2>Thông số kỹ thuật Ghế massage Toshiko T70</h2>
+                        <h2>Thông số Chính Sách Tiền Tệ Thế Kỷ 21</h2>
                         <ul>
                             <li>
                                 <p class="left">Loại máy:</p>
-                                <p class="right">Lorem, ipsum.</p>
+                                <p class="right">Lê Bích</p>
                             </li>
                             <li>
-                                <p class="left">Khối lượng:</p>
-                                <p class="right">Lorem, ipsum.</p>
+                                <p class="left">NXB:</p>
+                                <p class="right">Hà Nội</p>
                             </li>
                             <li>
-                                <p class="left">Công nghệ:</p>
-                                <p class="right">Lorem ipsum dolor sit amet.</p>
+                                <p class="left">Trọng lượng (gr):</p>
+                                <p class="right">284</p>
                             </li>
                             <li>
-                                <p class="left">Tiện ích:</p>
-                                <p class="right">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                <p class="left">Kích Thước:</p>
+                                <p class="right">15 x 14 x 1.8 cm</p>
                             </li>
                             <li>
-                                <p class="left">Chất liệu:</p>
-                                <p class="right">Lorem, ipsum.</p>
+                                <p class="left">Số trang:</p>
+                                <p class="right">372</p>
                             </li>
                             <li>
-                                <p class="left">Hãng:</p>
-                                <p class="right">Lorem, ipsum.</p>
-                            </li>
-                            <li>
-                                <p class="left">Loại máy:</p>
-                                <p class="right">Lorem, ipsum.</p>
-                            </li>
-                            <li>
-                                <p class="left">Khối lượng:</p>
-                                <p class="right">Lorem, ipsum.</p>
-                            </li>
-                            <li>
-                                <p class="left">Công nghệ:</p>
-                                <p class="right">Lorem ipsum dolor sit amet.</p>
-                            </li>
-                            <li>
-                                <p class="left">Tiện ích:</p>
-                                <p class="right">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            </li>
-                            <li>
-                                <p class="left">Chất liệu:</p>
-                                <p class="right">Lorem, ipsum.</p>
-                            </li>
-                            <li>
-                                <p class="left">Hãng:</p>
-                                <p class="right">Lorem, ipsum.</p>
+                                <p class="left">Hình thức:</p>
+                                <p class="right">Bìa Mềm</p>
                             </li>
                         </ul>
                         <button class="viewmore-specifications" data-bs-toggle="modal" data-bs-target="#detailModal"
@@ -493,16 +469,12 @@
                                     </div>
                                     <div class="product-item-image">
                                         <a href="#">
-                                            <img src="./assets/images/prd.png" alt="product image">
+                                            <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240703_fGwaff0ehc.webp" alt="product image">
                                         </a>
                                     </div>
                                     <div class="prd-item-content">
                                         <a href="#">
-                                            <h3 class="prd-name">Ghế massage Toshiko T70</h3>
-                                            <ul class="prd-attr">
-                                                <li>Công nghệ I-ON âm</li>
-                                                <li>massage 4D</li>
-                                            </ul>
+                                            <h3 class="prd-name">Chính Sách Tiền Tệ Thế Kỷ 21                          </h3>
                                             <div class="prd-price">
                                                 <span class="prd-pre-price">49.000.000đ</span>
                                                 <del class="prd-old-price">79.200.00đ</del>
@@ -560,36 +532,36 @@
                                     <div class="col-lg-8 col-md-10 col-12">
                                         <div class="detailModal-img-list">
                                             <div class="detail-img-item">
-                                                <img src="./assets/images/dt-prd-1.jpg" alt="image product">
+                                                <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240518_mKFlYvWBmz.jpeg" alt="image product">
                                             </div>
                                             <div class="detail-img-item">
-                                                <img src="./assets/images/dt-prd-2.png" alt="image product">
+                                                <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240518_mKFlYvWBmz.jpeg" alt="image product">
                                             </div>
                                             <div class="detail-img-item">
-                                                <img src="./assets/images/dt-prd-3.jpg" alt="image product">
+                                                <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240518_mKFlYvWBmz.jpeg" alt="image product">
                                             </div>
                                             <div class="detail-img-item">
-                                                <img src="./assets/images/dt-prd-4.png" alt="image product">
+                                                <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240518_mKFlYvWBmz.jpeg" alt="image product">
                                             </div>
                                             <div class="detail-img-item">
-                                                <img src="./assets/images/dt-prd-5.jpg" alt="image product">
+                                                <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240518_mKFlYvWBmz.jpeg" alt="image product">
                                             </div>
                                         </div>
                                         <div class="detailModal-thumb-list">
                                             <div class="detail-thumb-item">
-                                                <img src="./assets/images/dt-prd-1.jpg" alt="image product">
+                                                <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240518_mKFlYvWBmz.jpeg" alt="image product">
                                             </div>
                                             <div class="detail-thumb-item">
-                                                <img src="./assets/images/dt-prd-2.png" alt="image product">
+                                                <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240518_mKFlYvWBmz.jpeg" alt="image product">
                                             </div>
                                             <div class="detail-thumb-item">
-                                                <img src="./assets/images/dt-prd-3.jpg" alt="image product">
+                                                <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240518_mKFlYvWBmz.jpeg" alt="image product">
                                             </div>
                                             <div class="detail-thumb-item">
-                                                <img src="./assets/images/dt-prd-4.png" alt="image product">
+                                                <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240518_mKFlYvWBmz.jpeg" alt="image product">
                                             </div>
                                             <div class="detail-thumb-item">
-                                                <img src="./assets/images/dt-prd-5.jpg" alt="image product">
+                                                <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240518_mKFlYvWBmz.jpeg" alt="image product">
                                             </div>
                                         </div>
                                     </div>
@@ -605,53 +577,27 @@
                                             <ul>
                                                 <li>
                                                     <p class="left">Loại máy:</p>
-                                                    <p class="right">Lorem, ipsum.</p>
+                                                    <p class="right">Lê Bích</p>
                                                 </li>
                                                 <li>
-                                                    <p class="left">Khối lượng:</p>
-                                                    <p class="right">Lorem, ipsum.</p>
+                                                    <p class="left">NXB:</p>
+                                                    <p class="right">Hà Nội</p>
                                                 </li>
                                                 <li>
-                                                    <p class="left">Công nghệ:</p>
-                                                    <p class="right">Lorem ipsum dolor sit amet.</p>
+                                                    <p class="left">Trọng lượng (gr):</p>
+                                                    <p class="right">284</p>
                                                 </li>
                                                 <li>
-                                                    <p class="left">Tiện ích:</p>
-                                                    <p class="right">Lorem ipsum dolor sit amet consectetur adipisicing
-                                                        elit.</p>
+                                                    <p class="left">Kích Thước:</p>
+                                                    <p class="right">15 x 14 x 1.8 cm</p>
                                                 </li>
                                                 <li>
-                                                    <p class="left">Chất liệu:</p>
-                                                    <p class="right">Lorem, ipsum.</p>
+                                                    <p class="left">Số trang:</p>
+                                                    <p class="right">372</p>
                                                 </li>
                                                 <li>
-                                                    <p class="left">Hãng:</p>
-                                                    <p class="right">Lorem, ipsum.</p>
-                                                </li>
-                                                <li>
-                                                    <p class="left">Loại máy:</p>
-                                                    <p class="right">Lorem, ipsum.</p>
-                                                </li>
-                                                <li>
-                                                    <p class="left">Khối lượng:</p>
-                                                    <p class="right">Lorem, ipsum.</p>
-                                                </li>
-                                                <li>
-                                                    <p class="left">Công nghệ:</p>
-                                                    <p class="right">Lorem ipsum dolor sit amet.</p>
-                                                </li>
-                                                <li>
-                                                    <p class="left">Tiện ích:</p>
-                                                    <p class="right">Lorem ipsum dolor sit amet consectetur adipisicing
-                                                        elit.</p>
-                                                </li>
-                                                <li>
-                                                    <p class="left">Chất liệu:</p>
-                                                    <p class="right">Lorem, ipsum.</p>
-                                                </li>
-                                                <li>
-                                                    <p class="left">Hãng:</p>
-                                                    <p class="right">Lorem, ipsum.</p>
+                                                    <p class="left">Hình thức:</p>
+                                                    <p class="right">Bìa Mềm</p>
                                                 </li>
                                             </ul>
                                         </div>
@@ -759,7 +705,7 @@
                             class="fa-regular fa-xmark"></i></button>
                 </div>
                 <div class="modal-body">
-                    <h2 class="rateProduct">Ghế massage Toshiko T70</h2>
+                    <h2 class="rateProduct">Chính Sách Tiền Tệ Thế Kỷ 21                          </h2>
                     <form action="" class="modal-rate-content">
                         <p>Đánh giá chung</p>
                         <div class="modal-rate-star">
@@ -784,5 +730,5 @@
             </div>
         </div>
     </div>
-
+    <script src="{{ asset('assets/js/detail.js') }}"></script>
 @endsection

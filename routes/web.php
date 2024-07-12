@@ -20,3 +20,4 @@ Route::get('/', [InterfaceController::class, "index"])->name('interface.index');
 Route::get('/category', [CategoryController::class, "categoryIndex"])->name('category.index');
 Route::get('/detail', [DetailController::class, "detail"])->name('detail.index');
 Route::get('/card', [CardController::class, "cardAction"])->name('card.index');
+Route::get('/carddone', [CardController::class, "carddoneAction"])->name('carddone.index');

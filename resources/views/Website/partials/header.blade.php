@@ -27,9 +27,9 @@
                                 </div>
                                 <div class="suggestion-options">
                                     <ul>
-                                        <li><a href="#">máy chạy bộ</a></li>
-                                        <li><a href="#">ghế massage</a></li>
-                                        <li><a href="#">xe đạp tập</a></li>
+                                        <li><a href="#">Sách địa lý</a></li>
+                                        <li><a href="#">Sách toán</a></li>
+                                        <li><a href="#">Sách văn</a></li>
                                         <li><a href="#">toshiko</a></li>
                                     </ul>
                                 </div>
@@ -77,21 +77,21 @@
                 <ul class="megamenu">
                     <li>
                         <a href="./category.php">
-                            <img src="./assets/images/maychaybo.png" alt="">
-                            <span>Ghế massage</span>
+                            <i class="fa-light fa-book"></i>
+                            <span>Sách toán</span>
                         </a>
                     </li>
                     <li>
                         <a href="./category.php">
-                            <img src="./assets/images/maychaybo.png" alt="">
-                            <span>Xe đạp tập</span>
+                            <i class="fa-light fa-book"></i>
+                            <span>Sách văn</span>
 
                         </a>
                     </li>
                     <li>
                         <a href="./category.php">
-                            <img src="./assets/images/maychaybo.png" alt="">
-                            <span>Máy chạy bộ</span>
+                            <i class="fa-light fa-book"></i>
+                            <span>Sách địa lý</span>
 
                         </a>
                     </li>
