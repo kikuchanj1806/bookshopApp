@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\User;
+use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +15,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call([
+            RolePermissionSeeder::class,
+        ]);
+
+        // Gán role admin cho user
+        $admin = User::find(1); // ID của user admin
+        $admin->assignRole('admin');
+
+        // Gán role cộng tác viên cho user
+        $congtacvien = User::find(2); // ID của user cộng tác viên
+        $congtacvien->assignRole('ctv');
     }
 }

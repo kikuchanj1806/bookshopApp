@@ -50,7 +50,7 @@ const countDown = new Date(birthday).getTime(),
     }, 0)
 
 
-    // Product Sale List
+    // ProductModel Sale List
     load_slideTab
 ()
 
@@ -117,10 +117,7 @@ $('.hp-customer-list').slick({
         }
     ]
 });
-
-
 //   Partner
-
 $('.hp-partner-list').slick({
     dots: false,
     infinite: true,
@@ -145,7 +142,6 @@ $('.hp-partner-list').slick({
         }
     ]
 });
-
 // NewPapper
 $('.hp-newpapper-list').slick({
     dots: false,
