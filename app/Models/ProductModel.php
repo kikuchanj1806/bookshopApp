@@ -11,7 +11,6 @@ class ProductModel extends Model
     protected $table = 'products';
     protected $fillable = [
         'name',
-        'typeId',
         'code',
         'price',
         'oldPrice',
@@ -23,7 +22,7 @@ class ProductModel extends Model
         'width',
         'length',
         'height',
-        'thumbnail',
+        'thumbnails',
         'image',
         'unit',
         'description',

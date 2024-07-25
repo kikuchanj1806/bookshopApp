@@ -9,13 +9,15 @@
             <i class="fa-light fa-angle-right"></i>
         </li>
         <li class="nav-item">
-            <a href="{{ $route1 ?? '' }}">{{ $level1 ?? ''}}</a>
+            <a href="{{ $route1 ?? '' }}">{{ $level1 ?? '' }}</a>
         </li>
-        <li class="separator">
-            <i class="fa-light fa-angle-right"></i>
-        </li>
-        <li class="nav-item">
-            <a href="{{ $route2 ?? '' }}">{{ $level2 ?? ''}}</a>
-        </li>
+        @if(isset($level2) && $level2)
+            <li class="separator">
+                <i class="fa-light fa-angle-right"></i>
+            </li>
+            <li class="nav-item">
+                <a href="{{ $route2 ?? '#' }}">{{ $level2 ?? '' }}</a>
+            </li>
+        @endif
     </ul>
 </div>

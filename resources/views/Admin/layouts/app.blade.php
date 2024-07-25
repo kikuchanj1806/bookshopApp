@@ -5,22 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=6, user-scalable=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Bao gồm các tệp CSS -->
-    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/js/ckeditor/ckeditor.js') }}"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
+
+    <link href="{{ asset('assets/css/bootstrap/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/Awesome_Pro_6.0.0.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/styleAdmin/theme/theme.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/styleAdmin/theme/plugins.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/styleAdmin/fancybox/fancybox.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/styleAdmin/toast/toastr.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/styleAdmin/style.css') }}" rel="stylesheet">
+
+    <script src="{{ asset('assets/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('assets/js/toast/toastr.min.js') }}"></script>
+
 </head>
 <body>
 <div class="wrapper">
     @include('Admin.partials.sidebar')
+
     <div class="main-panel">
         <div class="main-header">
             <div class="main-header-logo">
@@ -66,17 +69,14 @@
                     </nav>
 
                     <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
-                        <li
-                            class="nav-item topbar-icon dropdown hidden-caret d-flex d-lg-none"
-                        >
+                        <li class="nav-item topbar-icon dropdown hidden-caret d-flex d-lg-none">
                             <a
                                 class="nav-link dropdown-toggle"
                                 data-bs-toggle="dropdown"
                                 href="#"
                                 role="button"
                                 aria-expanded="false"
-                                aria-haspopup="true"
-                            >
+                                aria-haspopup="true">
                                 <i class="fa fa-search"></i>
                             </a>
                             <ul class="dropdown-menu dropdown-search animated fadeIn">
@@ -99,18 +99,15 @@
                                 role="button"
                                 data-bs-toggle="dropdown"
                                 aria-haspopup="true"
-                                aria-expanded="false"
-                            >
+                                aria-expanded="false">
                                 <i class="fa fa-envelope"></i>
                             </a>
                             <ul
                                 class="dropdown-menu messages-notif-box animated fadeIn"
-                                aria-labelledby="messageDropdown"
-                            >
+                                aria-labelledby="messageDropdown">
                                 <li>
                                     <div
-                                        class="dropdown-title d-flex justify-content-between align-items-center"
-                                    >
+                                        class="dropdown-title d-flex justify-content-between align-items-center">
                                         Messages
                                         <a href="#" class="small">Mark all as read</a>
                                     </div>

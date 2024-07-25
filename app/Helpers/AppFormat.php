@@ -80,4 +80,15 @@ class AppFormat
     {
         return round($number, $precision);
     }
+
+    // Hàm format trạng thái
+    public static function getStatus($status) {
+        $statusText = [
+            1 => 'Mới',
+            2 => 'Đang bán',
+            3 => 'Ngừng bán',
+            4 => 'Hết hàng'
+        ];
+        return $statusText[$status] ?? 'Không xác định';
+    }
 }

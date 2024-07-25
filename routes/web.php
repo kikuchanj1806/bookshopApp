@@ -62,10 +62,10 @@ Route::middleware(['auth'])->group(function () {
             // Products
             Route::prefix('product')->group(function () {
                 Route::get('/add', [ProductController::class, 'create'])->name('admin.product.add');
-//                Route::get('/edit/{category}', [ProductController::class, 'show'])->name('admin.product.edit');
-//                Route::post('/edit/{category}', [ProductController::class, 'update'])->name('admin.category.update');
-//                Route::delete('/destroy', [ProductController::class, 'destroy']);
-                Route::get('/index', [ProductController::class, 'index'])->name('admin.category.index');
+                Route::get('/edit/{product}', [ProductController::class, 'edit'])->name('admin.product.edit');
+                Route::post('/edit/{product}', [ProductController::class, 'update'])->name('admin.product.update');
+                Route::delete('/destroy', [ProductController::class, 'destroy']);
+                Route::get('/index', [ProductController::class, 'index'])->name('admin.product.index');
                 Route::post('/store', [ProductController::class, 'store'])->name('product.store');
             });
         });
