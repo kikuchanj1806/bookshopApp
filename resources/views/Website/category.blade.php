@@ -13,7 +13,7 @@
         </div>
     </section>
 
-    <section class="category-heading" style="background-image: url(./assets/images/cat-banner.jpg);">
+    <section class="category-heading" style=" background-image: url(./assets/images/cat-banner.jpg);">
         <div class="container">
             <div class="category-heading-inner">
                 <h1 class="category-title">Sách toán</h1>
@@ -73,9 +73,7 @@
             </div>
             <div id="productList">
                 <div class="row row-cols-md-3 row-cols-xl-5 row-cols-lg-4">
-                    <?php
-                    for ($i = 0; $i < 90; $i++) {
-                        ?>
+                    @foreach($products as $p)
                     <div class="col prd-col">
                         <div class="product-item">
                             <div class="sale-label" style="background-image: url(./assets/images/sale-label.svg);">
@@ -83,16 +81,17 @@
                             </div>
                             <div class="product-item-image">
                                 <a href="./detail">
-                                    <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240523_7fp9nubUKA.png" alt="product image">
+                                    <img src="{{ asset($p->image) }}" alt="product image">
                                 </a>
                             </div>
                             <div class="prd-item-content">
                                 <a href="./detail">
                                     <h3 class="prd-name">
-                                        Dầu và Máu - Mohammed Bin Salman Và Tham Vọng Tái Thiết Kinh Tế Ả-Rập</h3>
+                                        {{ $p->name }}
+                                    </h3>
                                     <div class="prd-price">
-                                        <span class="prd-pre-price">49.000.000đ</span>
-                                        <del class="prd-old-price">79.200.00đ</del>
+                                        <span class="prd-pre-price">{{ $p->price }}</span>
+                                        <del class="prd-old-price">{{ $p->oldPrice }}</del>
                                     </div>
                                     <div class="prd-rate">
                                         <span><span>4/5</span><i class="fa-solid fa-star"></i></span>
@@ -103,10 +102,10 @@
                         </div>
                     </div>
 
-                        <?php
-                    }
-                    ?>
+                    @endforeach
                 </div>
+                {{ $products->links() }}
+
                 <div class="loadMore-box">
                     <button href="#" id="loadMore">Xem thêm</button>
                 </div>

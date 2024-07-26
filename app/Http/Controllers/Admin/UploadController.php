@@ -26,11 +26,12 @@ class UploadController extends Controller
                     // Tìm sản phẩm và cập nhật thông tin ảnh vào cột thumbnails
                     $productId = $request->input('product_id');
                     $product = ProductModel::find($productId);
+                    $data = $arrThumb->original['thumbnails'];
                     if ($product) {
-                        $product->thumbnails = json_encode($arrThumb);
+                        $product->thumbnails = json_encode($data);
                         $product->save();
                     }
-                    $url = $arrThumb;
+                    $url = $data;
                 }
                 break;
             default:

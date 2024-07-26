@@ -93,8 +93,39 @@ $(document).ready(function () {
 
 
 $(document).ready(function () {
-    var imgArray = [];
+    let imgArray = [];
+    var productId;
 
+    // Hiển thị ảnh đã lưu sẵn khi mở modal
+    $('#uploadModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Nút đã kích hoạt modal
+        productId = button.data('id'); // Lấy ID sản phẩm từ thuộc tính data-id
+
+        $('#previewContainer').empty(); // Xóa các ảnh trước đó
+        imgArray = []; // Xóa mảng ảnh trước đó
+
+        $.ajax({
+            url: '/admin/product/' + productId + '/thumbnails',
+            method: 'GET',
+            success: function (response) {
+                if (response.error === false) {
+                    var thumbnails = response.data.thumbnails;
+                    if(thumbnails) {
+                        thumbnails.forEach(function (thumb) {
+                            imgArray.push({name: thumb.name, url: thumb.url});
+                            var html = `
+              <div class='col-md-3 col-sm-6 mb-3'>
+                <div class='img-bg' style='background-image: url(${thumb.url})' data-file='${thumb.name}'>
+                  <div class='upload__img-close'></div>
+                </div>
+              </div>`;
+                            $('#previewContainer').append(html);
+                        });
+                    }
+                }
+            }
+        });
+    });
     $('#file').on('change', function (e) {
         var imgWrap = $('#previewContainer');
         var maxLength = $(this).attr('data-max_length');
@@ -139,15 +170,21 @@ $(document).ready(function () {
         $(this).parent().parent().remove();
     });
 
-    $('#saveChanges').on('click', function () {
-        var formData = new FormData();
-        var id = $('#uploadThumbProduct').data('id');
-        imgArray.forEach(function (file) {
-            formData.append('product_id', id);
-            formData.append('files[]', file);
-            formData.append('type', 2);
-        });
 
+    $('#saveChanges').on('click', async function () {
+        var formData = new FormData();
+        var id = productId;
+
+        for (const img of imgArray) {
+            if (img instanceof File) {
+                formData.append('files[]', img);
+            } else {
+                const file = await urlToFile(img.url, img.name, 'image/jpeg');
+                formData.append('files[]', file);
+            }
+        }
+        formData.append('product_id', id);
+        formData.append('type', 2);
         $.ajax({
             url: '/admin/upload/services',
             type: 'POST',
@@ -168,4 +205,10 @@ $(document).ready(function () {
             }
         });
     });
+
+    async function urlToFile(url, filename, mimeType) {
+        const response = await fetch(url);
+        const buffer = await response.arrayBuffer();
+        return new File([buffer], filename, { type: mimeType });
+    }
 });

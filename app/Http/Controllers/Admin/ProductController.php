@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\FormFilter\Product\ProductRequestFilter;
 use App\Http\Services\CategoryService;
 use App\Http\Services\ProductService;
+use App\Models\ProductModel;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -84,5 +85,20 @@ class ProductController extends Controller
         return response()->json([
             'error' => true
         ]);
+    }
+
+    public function getProductThumbnails($productId)
+    {
+        $product = ProductModel::find($productId);
+        if ($product) {
+            return response()->json([
+                'error' => false,
+                'data' => [
+                    'thumbnails' => json_decode($product->thumbnails)
+                ]
+            ]);
+        }
+
+        return response()->json(['error' => true]);
     }
 }

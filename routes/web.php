@@ -67,6 +67,8 @@ Route::middleware(['auth'])->group(function () {
                 Route::delete('/destroy', [ProductController::class, 'destroy']);
                 Route::get('/index', [ProductController::class, 'index'])->name('admin.product.index');
                 Route::post('/store', [ProductController::class, 'store'])->name('product.store');
+
+                Route::get('/{product}/thumbnails', [ProductController::class, 'getProductThumbnails'])->name('admin.product.thumb');
             });
         });
     });
