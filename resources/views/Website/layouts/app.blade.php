@@ -16,6 +16,7 @@
     <link href="{{ asset('assets/css/footer.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/detail.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/card.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/styleAdmin/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="/public/assets/css/header.css">
 </head>
 <body>

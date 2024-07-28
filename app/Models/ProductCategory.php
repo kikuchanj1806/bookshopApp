@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Helpers\AppFormat;
 
 class ProductCategory extends Model
 {
@@ -17,21 +18,25 @@ class ProductCategory extends Model
         'image',
         'icon',
         'order',
-        'description'
+        'description',
+        'slug'
     ];
-
-//    public function product()
-//    {
-//        return $this->hasMany(ProductCategory::class);
-//    }
-//
-//    public function parent()
-//    {
-//        return $this->belongsTo(ProductCategory::class, 'parent_id');
-//    }
 
     public function children()
     {
         return $this->hasMany(ProductCategory::class, 'parent_id');
     }
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($category) {
+            $category->slug = AppFormat::slugify($category);
+        });
+
+        static::updating(function ($category) {
+            $category->slug = AppFormat::slugify($category);
+        });
+    }
+
 }

@@ -256,3 +256,23 @@
 }
 /*end style custom*/
 
+/*customer style product*/
+.product-item-image {
+    position: relative;
+    width: 100%;
+    padding-bottom: 150%; /* Adjust this to maintain aspect ratio */
+    overflow: hidden;
+}
+
+.product-item-image picture,
+.product-item-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This makes the image cover the container's area */
+    display: block;
+}
+/*end customer style product*/
+

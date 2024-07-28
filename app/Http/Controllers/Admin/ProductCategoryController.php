@@ -38,7 +38,7 @@ class ProductCategoryController extends Controller
     {
         return view('admin.category.categoryindex', [
             'title' => 'Danh sách danh mục',
-            'categories' => $this->categoryService->getAll()
+            'categoriesList' => $this->categoryService->getAll()
         ]);
     }
 

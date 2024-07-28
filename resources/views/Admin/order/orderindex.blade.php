@@ -1,7 +1,20 @@
+@php
+    use App\Helpers\AppFormat;
+@endphp
+
 @extends('Admin.layouts.app')
 
-@section('title', 'Dashboard Page')
+@section('title', 'Order List Page')
 
 @section('content')
-    <h1>order</h1>
+    @include('Admin.partials.header', [
+        'level1' => 'Danh sách đơn hàng',
+        'route1' => '/admin/order/index',
+        ])
+
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">{{ $title }}</div>
+        </div>
+    </div>
 @endsection

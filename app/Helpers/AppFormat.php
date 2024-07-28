@@ -2,6 +2,9 @@
 
 namespace App\Helpers;
 
+use App\Models\ProductCategory;
+use App\Models\ProductModel;
+
 class AppFormat
 {
     // Format số với dấu thập phân và dấu phân cách hàng nghìn
@@ -90,5 +93,73 @@ class AppFormat
             4 => 'Hết hàng'
         ];
         return $statusText[$status] ?? 'Không xác định';
+    }
+
+    public static function removeSigns($text)
+    {
+        $vnSigns = array(
+            'à','á','ạ','ả','ã','â','ầ','ấ','ậ','ẩ','ẫ','ă','ằ','ắ','ặ','ẳ','ẵ',
+            'đ',
+            'è','é','ẹ','ẻ','ẽ','ê','ề','ế','ệ','ể','ễ',
+            'ì','í','ị','ỉ','ĩ',
+            'ò','ó','ọ','ỏ','õ','ô','ồ','ố','ộ','ổ','ỗ','ơ','ờ','ớ','ợ','ở','ỡ',
+            'ù','ú','ụ','ủ','ũ','ư','ừ','ứ','ự','ử','ữ',
+            'ỳ','ý','ỵ','ỷ','ỹ',
+            'À','Á','Ạ','Ả','Ã','Â','Ầ','Ấ','Ậ','Ẩ','Ẫ','Ă','Ằ','Ắ','Ặ','Ẳ','Ẵ',
+            'Đ',
+            'È','É','Ẹ','Ẻ','Ẽ','Ê','Ề','Ế','Ệ','Ể','Ễ',
+            'Ì','Í','Ị','Ỉ','Ĩ',
+            'Ò','Ó','Ọ','Ỏ','Õ','Ô','Ồ','Ố','Ộ','Ổ','Ỗ','Ơ','Ờ','Ớ','Ợ','Ở','Ỡ',
+            'Ù','Ú','Ụ','Ủ','Ũ','Ư','Ừ','Ứ','Ự','Ử','Ữ',
+            'Ỳ','Ý','Ỵ','Ỷ','Ỹ'
+        );
+        $vnUnsigns = array(
+            'a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a',
+            'd',
+            'e','e','e','e','e','e','e','e','e','e','e',
+            'i','i','i','i','i',
+            'o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o',
+            'u','u','u','u','u','u','u','u','u','u','u',
+            'y','y','y','y','y',
+            'A','A','A','A','A','A','A','A','A','A','A','A','A','A','A','A','A',
+            'D',
+            'E','E','E','E','E','E','E','E','E','E','E',
+            'I','I','I','I','I',
+            'O','O','O','O','O','O','O','O','O','O','O','O','O','O','O','O','O',
+            'U','U','U','U','U','U','U','U','U','U','U',
+            'Y','Y','Y','Y','Y'
+        );
+        return str_replace($vnSigns, $vnUnsigns, $text);
+    }
+
+    static public function slugifyText($text)
+    {
+        // convert to lowercase
+        $text = strtolower($text);
+        // remove Vietnamese signs
+        $text = self::removeSigns($text);
+        // replace non letter or digits by -
+        $text = preg_replace('~[^\\pL\d]+~u', '-', $text);
+        // trim
+        $text = trim($text, '-');
+        // remove unwanted characters
+        $text = preg_replace('~[^-\w]+~', '', $text);
+        if (empty($text)) {
+            return 'n-a';
+        }
+        return $text;
+    }
+
+    static public function slugify($obj)
+    {
+        switch ($obj)
+        {
+            case $obj instanceof ProductCategory:
+            case $obj instanceof ProductModel:
+                $name = self::slugifyText($obj->name);
+                return $name;
+            // Add cases for other models if needed
+        }
+        return '';
     }
 }

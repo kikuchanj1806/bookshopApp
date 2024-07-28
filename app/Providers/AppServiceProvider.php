@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Helpers\ProductCategoryHelper;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +25,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        View::composer('*', function ($view) {
+            $categories = ProductCategoryHelper::getProductCategories();
+            $view->with('categories', $categories);
+        });
     }
 }

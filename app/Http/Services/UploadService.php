@@ -45,7 +45,7 @@ class UploadService extends AppService
                 $thumbnails = [];
                 foreach ($request->file('files') as $file) {
                     $name = $file->getClientOriginalName();
-                    $pathFull = 'uploads/' . date("Y_m_d");
+                    $pathFull = 'uploads/product/thumbnails';
 
                     $file->storeAs(
                         'public/' . $pathFull, $name

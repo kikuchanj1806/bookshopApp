@@ -2,6 +2,7 @@
 
 namespace App\Http\Services;
 
+use App\Helpers\AppFormat;
 use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -25,7 +26,7 @@ class CategoryService extends AppService
     {
         $categories = ProductCategory::all();
         $nestedCategories = $this->buildTree($categories);
-        return $this->paginate($nestedCategories, 5);
+        return $this->paginate($nestedCategories, 10);
     }
 
     public function create(Request $request)
@@ -47,6 +48,7 @@ class CategoryService extends AppService
             if ($request->input('icon')) {
                 $data['icon'] = $request->input('icon');
             }
+            $data['slug'] = AppFormat::slugifyText($data['name']);
 
             ProductCategory::create($data);
 
@@ -78,6 +80,8 @@ class CategoryService extends AppService
             if ($request->input('icon')) {
                 $data['icon'] = $request->input('icon');
             }
+            $data['slug'] = AppFormat::slugifyText($data['name']);
+
             $category->update($data);
 
             Session::flash('success', 'Cập nhật thành công Danh mục');

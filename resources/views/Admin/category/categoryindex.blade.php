@@ -21,9 +21,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($categories as $index => $category)
+                @foreach($categoriesList as $index => $category)
                     <tr>
-                        <td class="text-center">{{ $loop->iteration + ($categories->currentPage() - 1) * $categories->perPage() }}</td>
+                            <td class="text-center">{{ $loop->iteration + ($categoriesList->currentPage() - 1) * $categoriesList->perPage() }}</td>
                         <td class="text-center">{{ $category->id }}</td>
                         <td>{{ str_repeat('--', $category->level) . ' ' . $category->name }}</td>
                         <td>{{ $category->code }}</td>
@@ -67,7 +67,7 @@
             </table>
             <!-- Hiển thị phân trang -->
             <div class="d-flex justify-content-end">
-                {{ $categories->links('pagination::bootstrap-4') }}
+                {{ $categoriesList->links('pagination::bootstrap-4') }}
             </div>
         </div>
     </div>

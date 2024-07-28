@@ -1,0 +1,52 @@
+<?php
+
+namespace App\Helpers;
+
+use App\Models\ProductCategory;
+use App\Models\ProductModel; // Thay đổi tên mô hình nếu cần
+
+class ProductCategoryHelper
+{
+    /**
+     * Lấy danh sách sản phẩm với phân trang.
+     *
+     * @param int $page
+     * @param int $perPage
+     * @return \Illuminate\Pagination\LengthAwarePaginator
+     */
+    public static function getPaginatedProducts($page = 1, $perPage = 20)
+    {
+        // Xác định số trang hiện tại
+        $currentPage = $page;
+
+        // Lấy danh sách sản phẩm từ cơ sở dữ liệu với phân trang
+        $products = ProductModel::paginate($perPage, ['*'], 'page', $currentPage);
+
+        return $products;
+    }
+
+    /**
+     * Lấy danh sách sản phẩm theo slug danh mục với phân trang.
+     *
+     * @param string $slug
+     * @param int $page
+     * @param int $perPage
+     * @return \Illuminate\Pagination\LengthAwarePaginator
+     */
+    public static function getProductsByCategorySlug($slug, $page = 1, $perPage = 20)
+    {
+        // Tìm danh mục theo slug
+        $category = ProductCategory::where('slug', $slug)->firstOrFail();
+
+        // Lấy danh sách sản phẩm theo danh mục với phân trang
+        $products = ProductModel::where('categoryId', $category->id)
+            ->paginate($perPage, ['*'], 'page', $page);
+
+        return $products;
+    }
+
+    public static function getProductCategories()
+    {
+        return ProductCategory::all();
+    }
+}

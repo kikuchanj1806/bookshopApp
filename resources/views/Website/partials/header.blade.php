@@ -1,7 +1,8 @@
 <header id="header">
     <div class="header-top">
         <div class="header-top-inner">
-            <img src="https://hoang-phuc.com/media/wysiwyg/240319_Voucher-Extra_Homepage_Top-Banner_Desktop.gif" alt="headerTop image">
+            <img src="https://hoang-phuc.com/media/wysiwyg/240319_Voucher-Extra_Homepage_Top-Banner_Desktop.gif"
+                 alt="headerTop image">
         </div>
     </div>
     <div class="header-main">
@@ -13,7 +14,8 @@
                 <div class="header-search-desktop">
                     <div class="form-search-control">
                         <form class="form-search">
-                            <span class="header-search-back d-lg-none d-xl-none"><i class="fa-regular fa-angle-left"></i></span>
+                            <span class="header-search-back d-lg-none d-xl-none"><i
+                                    class="fa-regular fa-angle-left"></i></span>
                             <span class="header-search-icon"><i class="fa-light fa-magnifying-glass"></i></span>
                             <input type="text" class="form-control" id="inputSearch">
                             <button class="search-btn" type="submit">tìm kiếm</button>
@@ -75,44 +77,26 @@
         <div class="container">
             <div class="header-nav">
                 <ul class="megamenu">
-                    <li>
-                        <a href="./category.php">
-                            <i class="fa-light fa-book"></i>
-                            <span>Sách toán</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./category.php">
-                            <i class="fa-light fa-book"></i>
-                            <span>Sách văn</span>
-
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./category.php">
-                            <i class="fa-light fa-book"></i>
-                            <span>Sách địa lý</span>
-
-                        </a>
-                    </li>
-                    <li class="has-dropdown">
-                        <a href="./category.php">Lorem, ipsum.</a>
-                        <span class="d-lg-none"><i class="fa-solid fa-chevron-right"></i></span>
-                        <div class="submenu">
-                            <ul>
-                                <li class="d-lg-none submenu-title">
-                                    <span class="back-submenu"><i class="fa-solid fa-chevron-left"></i></span>
-                                    <span>Lorem, ipsum.</span>
-                                </li>
-                                <li><a href="./category.php">Lorem ipsum dolor sit.</a></li>
-                                <li><a href="./category.php">Lorem ipsum dolor sit.</a></li>
-                                <li><a href="./category.php">Lorem ipsum dolor sit.</a></li>
-                                <li><a href="./category.php">Lorem ipsum dolor sit.</a></li>
-                                <li><a href="./category.php">Lorem ipsum dolor sit.</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="promotion-menu"><i class="fa-sharp fa-solid fa-gift"></i><a href="#">Khuyễn mãi</a></li>
+                    @foreach ($menuCategories as $category)
+                        <li class="has-dropdown">
+                            <a href="{{ route('category.products', $category->slug) }}">
+                                @if($category->icon)
+                                    <img src="{{ asset($category->icon) }}" alt="{{ $category->name }}"
+                                         style="width: 20px"/>
+                                @endif
+                                <span>{{ $category->name }}</span>
+                            </a>
+                            @if ($category->children->isNotEmpty())
+                                <ul class="submenu">
+                                    @foreach ($category->children as $child)
+                                        <li>
+                                            <a href="{{ route('category.products', $child->slug) }}">{{ $child->name }}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </div>

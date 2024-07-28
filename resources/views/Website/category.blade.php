@@ -13,7 +13,7 @@
         </div>
     </section>
 
-    <section class="category-heading" style=" background-image: url(./assets/images/cat-banner.jpg);">
+    <section class="category-heading" style="background-image: url(./assets/images/cat-banner.jpg);">
         <div class="container">
             <div class="category-heading-inner">
                 <h1 class="category-title">Sách toán</h1>

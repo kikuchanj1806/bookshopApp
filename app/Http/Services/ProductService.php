@@ -2,11 +2,11 @@
 
 namespace App\Http\Services;
 
+use App\Helpers\AppFormat;
 use App\Models\ProductModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Http\FormFilter\Product\ProductRequestFilter;
-use Faker\Factory as Faker;
 
 
 class ProductService extends AppService
@@ -27,6 +27,7 @@ class ProductService extends AppService
         $data['showHome'] = $request->has('showHome');
         $data['showNew'] = $request->has('showNew');
         $data['showHot'] = $request->has('showHot');
+        $data['slug'] = AppFormat::slugifyText($data['name']);
 
         try {
             ProductModel::create($data);
@@ -54,6 +55,7 @@ class ProductService extends AppService
         $data['showHome'] = $request->boolean('showHome');
         $data['showNew'] = $request->boolean('showNew');
         $data['showHot'] = $request->boolean('showHot');
+        $data['slug'] = AppFormat::slugifyText($data['name']);
 
         try {
             $product = ProductModel::findOrFail($id);

@@ -25,24 +25,16 @@ use App\Http\Controllers\Admin\ProductController;
 |
 */
 
-Route::get('/', [InterfaceController::class, "index"])->name('interface.index');
-Route::get('/category', [CategoryController::class, "categoryIndex"])->name('category.index');
-Route::get('/detail', [DetailController::class, "detail"])->name('detail.index');
-Route::get('/card', [CardController::class, "cardAction"])->name('card.index');
-Route::get('/carddone', [CardController::class, "carddoneAction"])->name('carddone.index');
-
 
 // Admin
-Route::get('/admin/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/admin/login', [LoginController::class, 'login'])->name('admin.login.post');
-Route::post('/admin/logout', [LoginController::class, 'logout'])->name('admin.logout');
+Route::prefix('admin')->group(function () {
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [LoginController::class, 'login'])->name('admin.login.post');
+    Route::post('/logout', [LoginController::class, 'logout'])->name('admin.logout');
 
-Route::middleware(['auth'])->group(function () {
-    // Routes chỉ dành cho admin
-    Route::middleware(['role:admin'])->group(function () {
-
-
-        Route::prefix('admin')->group(function () {
+    Route::middleware(['auth'])->group(function () {
+        // Routes chỉ dành cho admin
+        Route::middleware(['role:admin'])->group(function () {
             Route::get('/', [DashboardController::class, 'index'])->name('admin');
             Route::post('/upload/services', [UploadController::class, 'store'])->name('admin.upload.services');
 
@@ -70,12 +62,27 @@ Route::middleware(['auth'])->group(function () {
 
                 Route::get('/{product}/thumbnails', [ProductController::class, 'getProductThumbnails'])->name('admin.product.thumb');
             });
+
+            // Orders
+            Route::prefix('order')->group(function () {
+                Route::get('/index', [OrderController::class, 'index'])->name('admin.order.index');
+                Route::get('/add', [ProductController::class, 'create'])->name('admin.order.add');
+            });
+        });
+
+        // Routes dành cho cả admin và cộng tác viên
+        Route::middleware(['role:admin,ctv'])->group(function () {
+            Route::get('/admin', [DashboardController::class, 'index'])->name('admin');
+            Route::get('/admin/order/index', [OrderController::class, 'orderindex'])->name('admin.order');
         });
     });
-
-    // Routes dành cho cả admin và cộng tác viên
-    Route::middleware(['role:admin,ctv'])->group(function () {
-        Route::get('/admin', [DashboardController::class, 'index'])->name('admin');
-        Route::get('/admin/order/index', [OrderController::class, 'orderindex'])->name('admin.order');
-    });
 });
+
+// Website
+Route::get('/', [InterfaceController::class, "index"])->name('interface.index');
+Route::get('/category', [CategoryController::class, "categoryIndex"])->name('category.index');
+Route::get('/detail', [DetailController::class, "detail"])->name('detail.index');
+Route::get('/card', [CardController::class, "cardAction"])->name('card.index');
+Route::get('/carddone', [CardController::class, "carddoneAction"])->name('carddone.index');
+
+Route::get('/{slug}', [CategoryController::class, 'showByCategory'])->name('category.products');
