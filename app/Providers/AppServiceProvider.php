@@ -26,8 +26,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('*', function ($view) {
-            $categories = ProductCategoryHelper::getProductCategories();
-            $view->with('categories', $categories);
+            $menuCategories = ProductCategoryHelper::getProductCategories();
+            $view->with('menuCategories', $menuCategories);
         });
     }
 }

@@ -24,7 +24,7 @@
                                     <label class="fw-bold" for="name">Tên sản phẩm <span
                                             class="text-danger">*</span></label>
                                     <input type="text" class="form-control" name="name" placeholder="Tên sản phẩm">
-                                    @error('promotionContent')
+                                    @error('name')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>

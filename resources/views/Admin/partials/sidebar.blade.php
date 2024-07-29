@@ -119,7 +119,7 @@
                     <div class="ms-4 collapse" id="website">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="/admin/product/index">
+                                <a href="/admin/website/banners/index">
                                     <span>Banner</span>
                                 </a>
                             </li>

@@ -19,12 +19,18 @@ class ProductCategory extends Model
         'icon',
         'order',
         'description',
-        'slug'
+        'slug',
+        'status_display_index'
     ];
 
     public function children()
     {
         return $this->hasMany(ProductCategory::class, 'parent_id');
+    }
+
+    public function products()
+    {
+        return $this->hasMany(ProductModel::class, 'categoryId');
     }
     protected static function boot()
     {

@@ -34,6 +34,7 @@ class CategoryService extends AppService
         try {
             $data = $request->only(['name', 'code', 'status', 'order', 'description']);
             $data['status'] = (int)$request->input('status'); // Chuyển đổi sang số nguyên
+            $data['status_display_index'] = (int)$request->input('status_display_index');
             // Kiểm tra và gán giá trị cho parent_id
             if ($request->has('parent_id') && !$request->input('parent_id') == null) {
                 $data['parent_id'] = $request->input('parent_id');
@@ -66,6 +67,7 @@ class CategoryService extends AppService
         try {
             $data = $request->only(['name', 'code', 'status', 'order', 'description']);
             $data['status'] = (int)$request->input('status'); // Chuyển đổi sang số nguyên
+            $data['status_display_index'] = (int)$request->input('status_display_index');
             // Kiểm tra và gán giá trị cho parent_id
             if ($request->has('parent_id') && !$request->input('parent_id') == null) {
                 $data['parent_id'] = $request->input('parent_id');
@@ -81,7 +83,6 @@ class CategoryService extends AppService
                 $data['icon'] = $request->input('icon');
             }
             $data['slug'] = AppFormat::slugifyText($data['name']);
-
             $category->update($data);
 
             Session::flash('success', 'Cập nhật thành công Danh mục');

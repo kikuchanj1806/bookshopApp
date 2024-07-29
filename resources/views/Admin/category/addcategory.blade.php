@@ -108,6 +108,17 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="form-group">
+                                    <label class="fw-bold" for="exampleFormControlSelect1">Hiển thị trang chủ</label>
+                                    <select class="form-select" name="status_display_index" id="exampleFormControlSelect2">
+                                        <option value="0">Ẩn</option>
+                                        <option value="1">Hiển thị</option>
+                                    </select>
+                                    @error('status_display_index')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
                         <div class="col-12">

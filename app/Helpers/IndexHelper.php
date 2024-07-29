@@ -3,6 +3,8 @@
 namespace App\Helpers;
 
 
+use App\Models\BannerModel;
+use App\Models\ProductCategory;
 use App\Models\ProductModel;
 
 class IndexHelper
@@ -47,5 +49,31 @@ class IndexHelper
             ->orderBy('created_at', 'desc')
             ->limit($limit)
             ->get();
+    }
+
+    /**
+     * Lấy danh sách danh mục kèm sản phẩm.
+     *
+     * @param int $limit Số lượng sản phẩm mỗi danh mục
+     * @return \Illuminate\Support\Collection
+     */
+    public static function getCategoriesWithProducts($limit = 10)
+    {
+        $categories = ProductCategory::with(['products' => function ($query) use ($limit) {
+            $query->limit($limit);
+        }])->where('status_display_index', true)->get();
+
+        return $categories;
+    }
+
+    /**
+     * Lấy danh sách banner theo vị trí
+     *
+     * @param int $position
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public static function getBannersByPosition($position)
+    {
+        return BannerModel::where('position', $position)->get();
     }
 }

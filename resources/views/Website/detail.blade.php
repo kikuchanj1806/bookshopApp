@@ -9,7 +9,7 @@
             <ul>
                 <li><a href="#"><i class="fa-solid fa-house"></i>Trang chủ</a></li>
                 <li><a href="#">Sách toán</a></li>
-                <li><span>Chính Sách Tiền Tệ Thế Kỷ 21</span></li>
+                <li><span>{{ $product->name }}</span></li>
             </ul>
         </div>
     </section>
@@ -17,7 +17,7 @@
     <section class="detail-heading-wrap">
         <div class="container">
             <div class="detail-heading-inner">
-                <h1 class="prd-heading">Chính Sách Tiền Tệ Thế Kỷ 21                          </h1>
+                <h1 class="prd-heading">{{ $product->name }}</h1>
                 <div class="prd-heading-rate">
                     <div class="ratings">
                         <i class="fa fa-star rating-color"></i>
@@ -37,24 +37,16 @@
             <div class="row justify-content-center">
                 <div class="col-lg-7 col-md-10 col-12 detail-gallery-col">
                     <div class="detail-img-list">
-                        <div class="detail-img-item">
-                            <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240518_mKFlYvWBmz.jpeg" alt="image product">
-                        </div>
-                        <div class="detail-img-item">
-                            <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240518_mKFlYvWBmz.jpeg" alt="image product">
-                        </div>
-                        <div class="detail-img-item">
-                            <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240518_mKFlYvWBmz.jpeg" alt="image product">
-                        </div>
-                        <div class="detail-img-item">
-                            <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240518_mKFlYvWBmz.jpeg" alt="image product">
-                        </div>
-                        <div class="detail-img-item">
-                            <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240518_mKFlYvWBmz.jpeg" alt="image product">
-                        </div>
+                        @if($product->thumbnails)
+                            @foreach($product->thumbnails as $p)
+                                <div class="detail-img-item">
+                                    <img src="{{ asset($p['url']) }}" alt="{{ $p['name'] }}">
+                                </div>
+                            @endforeach
+                        @endif
                     </div>
                     <div class="viewmore-gallery" data-bs-toggle="modal" data-bs-target="#detailModal"
-                         data-tab="nav-image-tab">Xem tất cả hình ảnh (<span class="curent-img"></span>/<span
+                         data-tab="nav-image-tab">Xem tất cả hình ảnh (<span class="curent-img"></span>{{ count($product->thumbnails) }}<span
                             class="total-img"></span>)
                     </div>
                     <div class="gallery-actions">
@@ -84,23 +76,13 @@
                 <div class="col-lg-5 col-md-10 col-12 detail-action-col">
                     <div class="detail-info-inner">
                         <div class="detail-price">
-                            <h2 class="detail-price-present">49.000.000đ</h2>
-                            <del class="detail-old-price">72.000.000đ</del>
+                            <h2 class="detail-price-present">{{ \App\Helpers\AppFormat::toNumber($product->price) }}đ</h2>
+                            @if($product->oldPrice)
+                                <del class="detail-old-price">{{ \App\Helpers\AppFormat::toNumber($product->oldPrice) }}đ</del>
+                            @endif
                             <p class="detail-sale-percent">(-37%)</p>
                         </div>
                         <div class="detail-box">
-                            <div class="detail-attr">
-                                <div class="detail-attr-list">
-                                    <a class="attr-item" href="#">A</a>
-                                    <a class="attr-item" href="#">B</a>
-                                    <a class="attr-item" href="#">C</a>
-                                </div>
-                                <div class="detail-attr-list">
-                                    <a class="attr-item" href="#">Titan Đỏ</a>
-                                    <a class="attr-item" href="#">Titan Đen</a>
-                                    <a class="attr-item" href="#">Titan Bạc</a>
-                                </div>
-                            </div>
                             <div class="detail-sale">
                                 <p class="sale-title">Khuyến mãi</p>
                                 <p class="sale-des">Giá và khuyến mãi có thể kết thúc sớm hơn dự kiến</p>
@@ -456,43 +438,36 @@
                     <h2>Sản phẩm tương tự</h2>
                     <div class="product-suggest-list">
                         <div class="productList-slide">
-                            <?php
-                            for ($i = 0;
-                                 $i < 10;
-                                 $i++) {
-                                ?>
-                            <div class="col prd-col">
-                                <div class="product-item">
-                                    <div class="sale-label"
-                                         style="background-image: url(./assets/images/sale-label.svg);">
-                                        <span class="sale-label-detail">Giảm 37%</span>
-                                    </div>
-                                    <div class="product-item-image">
-                                        <a href="#">
-                                            <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240703_fGwaff0ehc.webp" alt="product image">
-                                        </a>
-                                    </div>
-                                    <div class="prd-item-content">
-                                        <a href="#">
-                                            <h3 class="prd-name">Chính Sách Tiền Tệ Thế Kỷ 21                          </h3>
-                                            <div class="prd-price">
-                                                <span class="prd-pre-price">49.000.000đ</span>
-                                                <del class="prd-old-price">79.200.00đ</del>
-                                            </div>
-                                            <div class="prd-rate">
-                                                <span><span>4/5</span><i class="fa-solid fa-star"></i></span>
-                                                <span class="total-rate">(527)</span>
-                                            </div>
-                                            <div class="prd-compare">
-                                                <a href="#"><i class="fa-regular fa-circle-plus"></i>So sánh</a>
-                                            </div>
-                                        </a>
+                            @foreach($relatedProducts as $p)
+                                <div class="col prd-col">
+                                    <div class="product-item">
+                                        <div class="sale-label" style="background-image: url(./assets/images/sale-label.svg);">
+                                            <span class="sale-label-detail">Giảm 37%</span>
+                                        </div>
+                                        <div class="product-item-image">
+                                            <a href="./detail">
+                                                <img src="{{ asset($p->image) }}" alt="product image">
+                                            </a>
+                                        </div>
+                                        <div class="prd-item-content">
+                                            <a href="{{ asset('prd/' . $p->slug) }}">
+                                                <h3 class="prd-name">
+                                                    {{ $p->name }}
+                                                </h3>
+                                                <div class="prd-price">
+                                                    <span class="prd-pre-price">{{ $p->price }}</span>
+                                                    <del class="prd-old-price">{{ $p->oldPrice }}</del>
+                                                </div>
+                                                <div class="prd-rate">
+                                                    <span><span>4/5</span><i class="fa-solid fa-star"></i></span>
+                                                    <span class="total-rate">(527)</span>
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                                <?php
-                            }
-                            ?>
+
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -528,38 +503,22 @@
                                 <div class="row justify-content-center">
                                     <div class="col-lg-8 col-md-10 col-12">
                                         <div class="detailModal-img-list">
-                                            <div class="detail-img-item">
-                                                <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240518_mKFlYvWBmz.jpeg" alt="image product">
-                                            </div>
-                                            <div class="detail-img-item">
-                                                <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240518_mKFlYvWBmz.jpeg" alt="image product">
-                                            </div>
-                                            <div class="detail-img-item">
-                                                <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240518_mKFlYvWBmz.jpeg" alt="image product">
-                                            </div>
-                                            <div class="detail-img-item">
-                                                <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240518_mKFlYvWBmz.jpeg" alt="image product">
-                                            </div>
-                                            <div class="detail-img-item">
-                                                <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240518_mKFlYvWBmz.jpeg" alt="image product">
-                                            </div>
+                                            @if($product->thumbnails)
+                                                @foreach($product->thumbnails as $p)
+                                                    <div class="detail-img-item">
+                                                        <img src="{{ asset($p['url']) }}" alt="{{ $p['name'] }}">
+                                                    </div>
+                                                @endforeach
+                                            @endif
                                         </div>
                                         <div class="detailModal-thumb-list">
-                                            <div class="detail-thumb-item">
-                                                <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240518_mKFlYvWBmz.jpeg" alt="image product">
-                                            </div>
-                                            <div class="detail-thumb-item">
-                                                <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240518_mKFlYvWBmz.jpeg" alt="image product">
-                                            </div>
-                                            <div class="detail-thumb-item">
-                                                <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240518_mKFlYvWBmz.jpeg" alt="image product">
-                                            </div>
-                                            <div class="detail-thumb-item">
-                                                <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240518_mKFlYvWBmz.jpeg" alt="image product">
-                                            </div>
-                                            <div class="detail-thumb-item">
-                                                <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240518_mKFlYvWBmz.jpeg" alt="image product">
-                                            </div>
+                                            @if($product->thumbnails)
+                                                @foreach($product->thumbnails as $p)
+                                                    <div class="detail-img-item">
+                                                        <img src="{{ asset($p['url']) }}" alt="{{ $p['name'] }}">
+                                                    </div>
+                                                @endforeach
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

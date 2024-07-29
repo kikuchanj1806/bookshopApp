@@ -6,16 +6,13 @@
     <section id="hp-slide">
         <div class="hp-slide-inner">
             <div id="mainSlide">
-                <div class="slideItem">
-                    <a target="_blank" href="https://toshiko.vn/">
-                        <img src="./assets/images/sld1.jpg" alt="first slide image">
-                    </a>
-                </div>
-                <div class="slideItem">
-                    <a target="_blank" href="#">
-                        <img src="./assets/images/sld2.png" alt="second slide image">
-                    </a>
-                </div>
+                @foreach($bannerHomePage as $b)
+                    <div class="slideItem">
+                        <a target="_blank" href="{{ asset($b->image) }}">
+                            <img src="{{ asset($b->image) }}" alt="{{ $b->title }}">
+                        </a>
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -255,157 +252,181 @@
         </div>
     </section>
 
-    <section class="hp-prdList">
-        <div class="container">
-            <h2 class="hp-heading">Sản phẩm mới</h2>
-            <div class="hp-prdList-inner">
-                <div class="productList-slide">
-                    @foreach($newProducts as $product)
-                        <div class="col prd-col">
-                            <div class="product-item">
-                                <div class="sale-label" style="background-image: url(./assets/images/sale-label.svg);">
-                                    <span class="sale-label-detail">Giảm 37%</span>
-                                </div>
-                                <div class="product-item-image">
-                                    <a href="#">
-                                        <picture>
-                                            <source class="imglarge"
-                                                    data-srcset="{{ asset($product->image) }}"
-                                                    srcset="{{ asset($product->image) }}">
-                                            <source class="imgsmall"
-                                                    data-srcset="{{ asset($product->image) }}"
-                                                    srcset="{{ asset($product->image) }}">
-                                            <img alt="{{ $product->name }}"
-                                                 class="img_thumb_product lazyloaded"
-                                                 width="268"
-                                                 height="380"
-                                                 src="{{ $product->image ? asset($product->image) : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC' }}">
-                                        </picture>
-                                    </a>
-                                </div>
-                                <div class="prd-item-content">
-                                    <a href="#">
-                                        <h3 class="prd-name">{{ $product->name }}</h3>
-                                        <div class="prd-price">
-                                            <span class="prd-pre-price">{{ $product->price }}</span>
-                                            <del class="prd-old-price">{{ $product->oldPrice }}</del>
-                                        </div>
-                                        <div class="prd-rate">
-                                            <span><span>4/5</span><i class="fa-solid fa-star"></i></span>
-                                            <span class="total-rate">(527)</span>
-                                        </div>
-                                    </a>
+    @if($newProducts)
+        <section class="hp-prdList">
+            <div class="container">
+                <h2 class="hp-heading">Sản phẩm mới</h2>
+                <div class="hp-prdList-inner">
+                    <div class="productList-slide">
+                        @foreach($newProducts as $product)
+                            <div class="col prd-col">
+                                <div class="product-item">
+                                    <div class="sale-label"
+                                         style="background-image: url(./assets/images/sale-label.svg);">
+                                        <span class="sale-label-detail">Giảm 37%</span>
+                                    </div>
+                                    <div class="product-item-image">
+                                        <a href="#">
+                                            <picture>
+                                                <source class="imglarge"
+                                                        data-srcset="{{ asset($product->image) }}"
+                                                        srcset="{{ asset($product->image) }}">
+                                                <source class="imgsmall"
+                                                        data-srcset="{{ asset($product->image) }}"
+                                                        srcset="{{ asset($product->image) }}">
+                                                <img alt="{{ $product->name }}"
+                                                     class="img_thumb_product lazyloaded"
+                                                     width="268"
+                                                     height="380"
+                                                     src="{{ $product->image ? asset($product->image) : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC' }}">
+                                            </picture>
+                                        </a>
+                                    </div>
+                                    <div class="prd-item-content">
+                                        <a href="{{ asset('prd/' . $product->slug) }}">
+                                            <h3 class="prd-name">{{ $product->name }}</h3>
+                                            <div class="prd-price">
+                                                <span class="prd-pre-price">{{ \App\Helpers\AppFormat::toNumber($product->price) }}đ</span>
+                                                <del
+                                                    class="prd-old-price">{{ \App\Helpers\AppFormat::toNumber($product->oldPrice)}}
+                                                    đ
+                                                </del>
+                                            </div>
+                                            <div class="prd-rate">
+                                                <span><span>4/5</span><i class="fa-solid fa-star"></i></span>
+                                                <span class="total-rate">(527)</span>
+                                            </div>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
-                </div>
-                <div class="viewmore">
-                    <a href="#">Xem tất cả <i class="fa-light fa-arrow-right"></i></a>
+                        @endforeach
+                    </div>
+                    <div class="viewmore">
+                        <a href="#">Xem tất cả <i class="fa-light fa-arrow-right"></i></a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section class="hp-prdList">
-        <div class="container">
-            <h2 class="hp-heading">Sản phẩm hot</h2>
-            <div class="hp-prdList-inner">
-                <div class="productList-slide">
-                    @foreach($hotProducts as $product)
-                        <div class="col prd-col">
-                            <div class="product-item">
-                                <div class="sale-label" style="background-image: url(./assets/images/sale-label.svg);">
-                                    <span class="sale-label-detail">Giảm 37%</span>
-                                </div>
-                                <div class="product-item-image">
-                                    <a href="#">
-                                        <picture>
-                                            <source class="imglarge"
-                                                    data-srcset="{{ asset($product->image) }}"
-                                                    srcset="{{ asset($product->image) }}">
-                                            <source class="imgsmall"
-                                                    data-srcset="{{ asset($product->image) }}"
-                                                    srcset="{{ asset($product->image) }}">
-                                            <img alt="{{ $product->name }}"
-                                                 class="img_thumb_product lazyloaded"
-                                                 width="268"
-                                                 height="401"
-                                                 src="{{ $product->image ? asset($product->image) : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC' }}">
-                                        </picture>
-                                    </a>
-                                </div>
-                                <div class="prd-item-content">
-                                    <a href="#">
-                                        <h3 class="prd-name">{{ $product->name }}</h3>
-                                        <div class="prd-price">
-                                            <span class="prd-pre-price">{{ $product->price }}</span>
-                                            <del class="prd-old-price">{{ $product->oldPrice }}</del>
-                                        </div>
-                                        <div class="prd-rate">
-                                            <span><span>4/5</span><i class="fa-solid fa-star"></i></span>
-                                            <span class="total-rate">(527)</span>
-                                        </div>
-                                    </a>
+        </section>
+    @endif
+    @if($hotProducts)
+        <section class="hp-prdList">
+            <div class="container">
+                <h2 class="hp-heading">Sản phẩm hot</h2>
+                <div class="hp-prdList-inner">
+                    <div class="productList-slide">
+                        @foreach($hotProducts as $product)
+                            <div class="col prd-col">
+                                <div class="product-item">
+                                    <div class="sale-label"
+                                         style="background-image: url(./assets/images/sale-label.svg);">
+                                        <span class="sale-label-detail">Giảm 37%</span>
+                                    </div>
+                                    <div class="product-item-image">
+                                        <a href="#">
+                                            <picture>
+                                                <source class="imglarge"
+                                                        data-srcset="{{ asset($product->image) }}"
+                                                        srcset="{{ asset($product->image) }}">
+                                                <source class="imgsmall"
+                                                        data-srcset="{{ asset($product->image) }}"
+                                                        srcset="{{ asset($product->image) }}">
+                                                <img alt="{{ $product->name }}"
+                                                     class="img_thumb_product lazyloaded"
+                                                     width="268"
+                                                     height="401"
+                                                     src="{{ $product->image ? asset($product->image) : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC' }}">
+                                            </picture>
+                                        </a>
+                                    </div>
+                                    <div class="prd-item-content">
+                                        <a href="{{ asset('prd/' . $product->slug) }}">
+                                            <h3 class="prd-name">{{ $product->name }}</h3>
+                                            <div class="prd-price">
+                                                <span class="prd-pre-price">{{ \App\Helpers\AppFormat::toNumber($product->price) }}đ</span>
+                                                <del
+                                                    class="prd-old-price">{{ \App\Helpers\AppFormat::toNumber($product->oldPrice)}}
+                                                    đ
+                                                </del>
+                                            </div>
+                                            <div class="prd-rate">
+                                                <span><span>4/5</span><i class="fa-solid fa-star"></i></span>
+                                                <span class="total-rate">(527)</span>
+                                            </div>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
-                </div>
-                <div class="viewmore">
-                    <a href="#">Xem tất cả <i class="fa-light fa-arrow-right"></i></a>
+                        @endforeach
+                    </div>
+                    <div class="viewmore">
+                        <a href="#">Xem tất cả <i class="fa-light fa-arrow-right"></i></a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section class="hp-prdList">
-        <div class="container">
-            <h2 class="hp-heading">Ghế massage</h2>
-            <div class="hp-prdList-inner">
-                <div class="productList-slide">
-                    <?php
-                    for ($i = 0;
-                         $i < 10;
-                         $i++) {
-                        ?>
-                    <div class="col prd-col">
-                        <div class="product-item">
-                            <div class="sale-label" style="background-image: url(./assets/images/sale-label.svg);">
-                                <span class="sale-label-detail">Giảm 37%</span>
-                            </div>
-                            <div class="product-item-image">
-                                <a href="#">
-                                    <img src="https://pos.nvncdn.com/fd5775-40602/ps/20240318_hQYHr2fwxU.jpeg"
-                                         alt="product image">
-                                </a>
-                            </div>
-                            <div class="prd-item-content">
-                                <a href="#">
-                                    <h3 class="prd-name">Chính Sách Tiền Tệ Thế Kỷ 21 </h3>
-                                    <div class="prd-price">
-                                        <span class="prd-pre-price">49.000.000đ</span>
-                                        <del class="prd-old-price">79.200.00đ</del>
+        </section>
+    @endif
+    @if($categoriesWithProducts)
+        @foreach ($categoriesWithProducts as $category)
+            <section class="hp-prdList">
+                <div class="container">
+                    <h2 class="hp-heading">{{ $category->name }}</h2>
+                    <div class="hp-prdList-inner">
+                        <div class="productList-slide">
+                            @foreach ($category->products as $product)
+                                <div class="col prd-col">
+                                    <div class="product-item">
+                                        <div class="sale-label"
+                                             style="background-image: url(./assets/images/sale-label.svg);">
+                                            <span class="sale-label-detail">Giảm 37%</span>
+                                        </div>
+                                        <div class="product-item-image">
+                                            <a href="#">
+                                                <picture>
+                                                    <source class="imglarge"
+                                                            data-srcset="{{ asset($product->image) }}"
+                                                            srcset="{{ asset($product->image) }}">
+                                                    <source class="imgsmall"
+                                                            data-srcset="{{ asset($product->image) }}"
+                                                            srcset="{{ asset($product->image) }}">
+                                                    <img alt="{{ $product->name }}"
+                                                         class="img_thumb_product lazyloaded"
+                                                         width="268"
+                                                         height="401"
+                                                         src="{{ $product->image ? asset($product->image) : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC' }}">
+                                                </picture>
+                                            </a>
+                                        </div>
+                                        <div class="prd-item-content">
+                                            <a href="{{ asset('prd/' . $product->slug) }}">
+                                                <h3 class="prd-name">{{ $product->name }}</h3>
+                                                <div class="prd-price">
+                                                    <span class="prd-pre-price">{{ \App\Helpers\AppFormat::toNumber($product->price) }}đ</span>
+                                                    <del
+                                                        class="prd-old-price">{{ \App\Helpers\AppFormat::toNumber($product->oldPrice) }}
+                                                        đ
+                                                    </del>
+                                                </div>
+                                                <div class="prd-rate">
+                                                    <span><span>4/5</span><i class="fa-solid fa-star"></i></span>
+                                                    <span class="total-rate">(527)</span>
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
-                                    <div class="prd-rate">
-                                        <span><span>4/5</span><i class="fa-solid fa-star"></i></span>
-                                        <span class="total-rate">(527)</span>
-                                    </div>
-                                </a>
-                            </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="viewmore">
+                            <a href="{{ asset($category->slug) }}">Xem tất cả <i
+                                    class="fa-light fa-arrow-right"></i></a>
                         </div>
                     </div>
-
-                        <?php
-                    }
-                    ?>
                 </div>
-                <div class="viewmore">
-                    <a href="#">Xem tất cả <i class="fa-light fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
+            </
+        @endforeach
+    @endif
 
     <section id='hp-customer'>
         <div class="container">

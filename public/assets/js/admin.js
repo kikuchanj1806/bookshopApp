@@ -78,6 +78,9 @@ $(document).ready(function () {
     // Gọi hàm chung cho icon
     handleFileUpload('#imageUpload', '#icon_show', '#icon_thumb', '.imageArea2', 1);
 
+    // Hàm sử dụng cho upload ảnh banner
+    handleFileUpload('#uploadBanner', '#image_show', '#thumbBanner', '.imageArea3', 1);
+
     // Gọi hàm xóa danh mục sản phẩm
     $('.removeCate').on('click', function () {
         var id = $(this).data('id');
@@ -88,6 +91,11 @@ $(document).ready(function () {
     $('.removeProduct').on('click', function () {
         var id = $(this).data('id');
         deleteItem('/admin/product/destroy', id, 'Xóa sản phẩm thành công', 'Xóa sản phẩm lỗi, vui lòng thử lại');
+    });
+
+    $('.removeBanner').on('click', function () {
+        var id = $(this).data('id');
+        deleteItem('/admin/website/banners/destroy', id, 'Xóa sản banner thành công', 'Xóa banner lỗi, vui lòng thử lại');
     });
 });
 

@@ -13,7 +13,7 @@ class CreateBannerModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('banners', function (Blueprint $table) {
+        Schema::create('banner_models', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->string('image');
@@ -26,6 +26,6 @@ class CreateBannerModelsTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('banners');
+        Schema::dropIfExists('banner_models');
     }
 }

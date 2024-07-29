@@ -3,7 +3,9 @@
 namespace App\Helpers;
 
 use App\Models\ProductCategory;
-use App\Models\ProductModel; // Thay đổi tên mô hình nếu cần
+use App\Models\ProductModel;
+
+// Thay đổi tên mô hình nếu cần
 
 class ProductCategoryHelper
 {
@@ -47,6 +49,9 @@ class ProductCategoryHelper
 
     public static function getProductCategories()
     {
-        return ProductCategory::all();
+        return ProductCategory::with('children')
+            ->where('parent_id', 0)
+            ->where('status', 1)
+            ->get();
     }
 }

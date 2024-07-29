@@ -71,7 +71,8 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <button id="uploadThumbProduct" type="button" class="btn" data-id="{{ $p->id }}" data-bs-toggle="modal"
+                                        <button id="uploadThumbProduct" type="button" class="btn" data-id="{{ $p->id }}"
+                                                data-bs-toggle="modal"
                                                 data-bs-target="#uploadModal">
                                             <i class="fal fa-upload mr-1"></i> Upload ảnh
                                         </button>
@@ -91,7 +92,8 @@
     </div>
 
     <!-- Modal remove -->
-    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog"
+         aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -120,7 +122,8 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="file" class="form-label">Chọn ảnh</label>
-                        <input type="file" id="file" name="files[]" class="form-control" multiple data-max_length="20" accept="image/*">
+                        <input type="file" id="file" name="files[]" class="form-control" multiple data-max_length="20"
+                               accept="image/*">
                     </div>
                     <div id="previewContainer" class="row"></div>
                 </div>

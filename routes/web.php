@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductCategoryController;
+use App\Http\Controllers\Admin\WebsiteController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InterfaceController;
@@ -68,6 +69,19 @@ Route::prefix('admin')->group(function () {
                 Route::get('/index', [OrderController::class, 'index'])->name('admin.order.index');
                 Route::get('/add', [ProductController::class, 'create'])->name('admin.order.add');
             });
+
+            // Website
+
+            Route::prefix('website')->group(function () {
+                Route::prefix('banners')->group(function () {
+                    Route::get('/index', [WebsiteController::class, 'bannerIndex'])->name('admin.banners.index');
+                    Route::get('/add', [WebsiteController::class, 'createBanner'])->name('admin.banners.add');
+                    Route::post('/store', [WebsiteController::class, 'storeBanner'])->name('admin.banners.store');
+                    Route::get('/edit/{banner}', [WebsiteController::class, 'editBanner'])->name('admin.banners.edit');
+                    Route::post('/update/{banner}', [WebsiteController::class, 'updateBanner'])->name('admin.banners.update');
+                    Route::delete('/destroy', [WebsiteController::class, 'destroyBanner'])->name('admin.banners.destroy');
+                });
+            });
         });
 
         // Routes dành cho cả admin và cộng tác viên
@@ -81,7 +95,7 @@ Route::prefix('admin')->group(function () {
 // Website
 Route::get('/', [InterfaceController::class, "index"])->name('interface.index');
 Route::get('/category', [CategoryController::class, "categoryIndex"])->name('category.index');
-Route::get('/detail', [DetailController::class, "detail"])->name('detail.index');
+Route::get('/prd/{slug}', [DetailController::class, "show"])->name('detail.index');
 Route::get('/card', [CardController::class, "cardAction"])->name('card.index');
 Route::get('/carddone', [CardController::class, "carddoneAction"])->name('carddone.index');
 

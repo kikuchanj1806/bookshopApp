@@ -32,7 +32,8 @@
         "files": [
             "app/Helpers/helpers.php",
             "app/Helpers/ProductCategoryHelper.php",
-            "app/Helpers/IndexHelper.php"
+            "app/Helpers/IndexHelper.php",
+            "app/Helpers/DetailHelper.php"
         ]
     },
     "autoload-dev": {

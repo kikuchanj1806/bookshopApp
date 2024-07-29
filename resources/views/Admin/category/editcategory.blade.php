@@ -58,9 +58,9 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="fw-bold" for="exampleFormControlSelect1">Trạng thái</label>
-                                    <select class="form-select" name="status" id="exampleFormControlSelect2">
-                                        <option value="1">Hiển thị</option>
-                                        <option value="0">Ẩn</option>
+                                    <select class="form-select" name="status" id="exampleFormControlSelect1">
+                                        <option value="1" {{ $cate->status == 1 ? 'selected' : '' }}>Hiển thị</option>
+                                        <option value="0" {{ $cate->status == 0 ? 'selected' : '' }}>Ẩn</option>
                                     </select>
                                     @error('status')
                                     <div class="text-danger">{{ $message }}</div>
@@ -122,6 +122,17 @@
                                             <span class="form-text text-muted">File: gif, png, jpg, bmp (Tối đa 4MB)</span>
                                         </div>
                                     </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="fw-bold" for="exampleFormControlSelect2">Hiển thị trang chủ</label>
+                                    <select class="form-select" name="status_display_index" id="exampleFormControlSelect2">
+                                        <option value="0" {{ $cate->status_display_index == 0 ? 'selected' : '' }}>Ẩn</option>
+                                        <option value="1" {{ $cate->status_display_index == 1 ? 'selected' : '' }}>Hiển thị</option>
+                                    </select>
+                                    @error('status_display_index')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>

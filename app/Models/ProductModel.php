@@ -42,6 +42,11 @@ class ProductModel extends Model
         return $this->belongsTo(ProductCategory::class, 'categoryId');
     }
 
+    public function relatedProducts()
+    {
+        return $this->hasMany(self::class, 'categoryId', 'categoryId')->where('id', '!=', $this->id);
+    }
+
     protected static function boot()
     {
         parent::boot();

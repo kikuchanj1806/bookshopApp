@@ -8,18 +8,16 @@
         <div class="container">
             <ul>
                 <li><a href="#"><i class="fa-solid fa-house"></i>Trang chủ</a></li>
-                <li><span>Sách toán</span></li>
+                <li><span>{{ $category->name }}</span></li>
             </ul>
         </div>
     </section>
 
-    <section class="category-heading" style="background-image: url(./assets/images/cat-banner.jpg);">
+    <section class="category-heading" style="background-image: url({{ asset($category->image) }});">
         <div class="container">
             <div class="category-heading-inner">
-                <h1 class="category-title">Sách toán</h1>
-                <p class="category-des">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Iusto itaque veritatis voluptas minus, quam rem assumenda enim aliquid excepturi
-                    laborum magni nam officiis fugit fuga totam commodi eius?</p>
+                <h1 class="category-title">{{ $category->name }}</h1>
+                <p class="category-des">{{ $category->description }}</p>
             </div>
 
         </div>
@@ -85,7 +83,7 @@
                                 </a>
                             </div>
                             <div class="prd-item-content">
-                                <a href="./detail">
+                                <a href="{{ asset('prd/' . $p->slug) }}">
                                     <h3 class="prd-name">
                                         {{ $p->name }}
                                     </h3>

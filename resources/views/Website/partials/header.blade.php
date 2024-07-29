@@ -87,13 +87,15 @@
                                 <span>{{ $category->name }}</span>
                             </a>
                             @if ($category->children->isNotEmpty())
-                                <ul class="submenu">
-                                    @foreach ($category->children as $child)
-                                        <li>
-                                            <a href="{{ route('category.products', $child->slug) }}">{{ $child->name }}</a>
-                                        </li>
-                                    @endforeach
-                                </ul>
+                                <div class="submenu">
+                                    <ul>
+                                        @foreach ($category->children as $child)
+                                            <li>
+                                                <a href="{{ route('category.products', $child->slug) }}">{{ $child->name }}</a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
                             @endif
                         </li>
                     @endforeach

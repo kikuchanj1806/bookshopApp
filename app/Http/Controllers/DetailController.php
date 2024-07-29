@@ -2,10 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\DetailHelper;
+
 class DetailController extends Controller
 {
-    public function detail()
+    /**
+     * Hiển thị chi tiết sản phẩm.
+     *
+     * @param string $slug
+     */
+    public function show($slug)
     {
-        return view('Website.detail');
+        try {
+            $product = DetailHelper::getProductDetail($slug, 'slug');
+            if (is_string($product->thumbnails)) {
+                $product->thumbnails = json_decode($product->thumbnails, true);
+            }
+
+            $relatedProducts = DetailHelper::getRelatedProducts($product);
+            return view('Website.detail', compact('product', 'relatedProducts'));
+        } catch (\Exception $e) {
+            return redirect()->route('products.index')->with('error', $e->getMessage());
+        }
     }
 }
