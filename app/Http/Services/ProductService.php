@@ -4,6 +4,7 @@ namespace App\Http\Services;
 
 use App\Helpers\AppFormat;
 use App\Models\ProductModel;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Http\FormFilter\Product\ProductRequestFilter;
@@ -79,5 +80,15 @@ class ProductService extends AppService
         }
 
         return true;
+    }
+
+    /**
+     * Lấy danh sách tất cả các tags.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getAllTags()
+    {
+        return Tag::all();
     }
 }

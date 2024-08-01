@@ -42,14 +42,14 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="fw-bold" for="price">Giá bán</label>
-                                            <input type="text" class="form-control" name="price" value="{{ AppFormat::toNumberFormat($product->price) }}" placeholder="Giá bán">
+                                            <input type="text" class="form-control" name="price" value="{{ $product->price }}" placeholder="Giá bán">
                                             @error('price')
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
                                         <div class="form-group">
                                             <label class="fw-bold" for="oldPrice">Giá cũ</label>
-                                            <input type="text" class="form-control" name="oldPrice" value="{{ AppFormat::toNumberFormat($product->oldprice) }}"
+                                            <input type="text" class="form-control" name="oldPrice" value="{{ $product->oldPrice }}"
                                                    placeholder="Giá cũ">
                                             @error('oldPrice')
                                             <div class="text-danger">{{ $message }}</div>
@@ -107,7 +107,7 @@
                                 <div class="form-group">
                                     <label class="fw-bold" for="weight">Khối lượng</label>
                                     <div class="input-group mb-3">
-                                        <input type="text" class="form-control" name="weight" value="{{ AppFormat::toNumberFormat($product->weight) }}">
+                                        <input type="text" class="form-control" name="weight" value="{{ $product->weight }}">
                                         <span class="input-group-text" id="basic-addon2">Gr</span>
                                     </div>
                                 </div>
@@ -116,16 +116,16 @@
                                     <div class="input-group">
                                         <input type="text" name="length" maxlength="255" placeholder="Dài"
                                                class="text-right form-control" inputmode="decimal" id="length"
-                                               autocomplete="off" value="{{ AppFormat::toNumberFormat($product->length) }}">
+                                               autocomplete="off" value="{{ $product->length }}">
                                         <input type="text" name="width"
                                                maxlength="255" placeholder="Rộng"
                                                class="text-right form-control"
                                                inputmode="decimal" id="width"
-                                               autocomplete="off" value="{{ AppFormat::toNumberFormat($product->width) }}">
+                                               autocomplete="off" value="{{ $product->width }}">
                                         <input
                                             type="text" name="height" maxlength="255" placeholder="Cao"
                                             class="text-right form-control" inputmode="decimal" id="height"
-                                            autocomplete="off" value="{{ AppFormat::toNumberFormat($product->height) }}">
+                                            autocomplete="off" value="{{ $product->height }}">
                                     </div>
                                 </div>
                                 <div class="form-group">

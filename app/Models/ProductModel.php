@@ -11,30 +11,10 @@ class ProductModel extends Model
     use HasFactory;
     protected $table = 'products';
     protected $fillable = [
-        'name',
-        'code',
-        'price',
-        'oldPrice',
-        'quantity',
-        'status',
-        'categoryId',
-        'brand',
-        'weight',
-        'width',
-        'length',
-        'height',
-        'thumbnails',
-        'image',
-        'unit',
-        'description',
-        'content',
-        'video',
-        'showNew',
-        'showHot',
-        'showHome',
-        'promotionContent',
-        'promotionValue',
-        'slug'
+        'name', 'code', 'price', 'oldPrice', 'quantity', 'status', 'categoryId', 'brand',
+        'weight', 'width', 'length', 'height', 'thumbnails', 'image', 'unit', 'description',
+        'content', 'video', 'showNew', 'showHot', 'showHome', 'promotionContent',
+        'promotionValue', 'slug'
     ];
 
     public function category()
@@ -45,6 +25,11 @@ class ProductModel extends Model
     public function relatedProducts()
     {
         return $this->hasMany(self::class, 'categoryId', 'categoryId')->where('id', '!=', $this->id);
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'product_tag', 'product_id', 'tag_id');
     }
 
     protected static function boot()

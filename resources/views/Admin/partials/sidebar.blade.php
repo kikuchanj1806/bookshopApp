@@ -151,7 +151,7 @@
                     <div class="ms-4 collapse" id="setting">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="/admin/product/index">
+                                <a href="/admin/user/index">
                                     <span>Quản lý người dùng</span>
                                 </a>
                             </li>

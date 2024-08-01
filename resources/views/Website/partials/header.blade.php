@@ -13,27 +13,25 @@
                 </div>
                 <div class="header-search-desktop">
                     <div class="form-search-control">
-                        <form class="form-search">
-                            <span class="header-search-back d-lg-none d-xl-none"><i
-                                    class="fa-regular fa-angle-left"></i></span>
-                            <span class="header-search-icon"><i class="fa-light fa-magnifying-glass"></i></span>
-                            <input type="text" class="form-control" id="inputSearch">
-                            <button class="search-btn" type="submit">tìm kiếm</button>
+                        <form class="form-search" action="/search" method="GET">
+            <span class="header-search-back d-lg-none d-xl-none">
+                <i class="fa-regular fa-angle-left"></i>
+            </span>
+                            <span class="header-search-icon">
+                <i class="fa-light fa-magnifying-glass"></i>
+            </span>
+                            <input type="text" class="form-control" id="inputSearch" name="query" placeholder="Tìm kiếm sản phẩm...">
+                            <button class="search-btn" type="submit">Tìm kiếm</button>
                         </form>
                     </div>
                     <div class="search-autocomplete">
                         <div class="suggestion-container">
                             <div class="suggestion-content">
                                 <div class="suggestion-title">
-                                    <h3>Gợi ý tìm kiếm</h3>
+                                    <h3 id="suggestion-title">Gợi ý tìm kiếm</h3>
                                 </div>
                                 <div class="suggestion-options">
-                                    <ul>
-                                        <li><a href="#">Sách địa lý</a></li>
-                                        <li><a href="#">Sách toán</a></li>
-                                        <li><a href="#">Sách văn</a></li>
-                                        <li><a href="#">toshiko</a></li>
-                                    </ul>
+                                    <ul></ul>
                                 </div>
                             </div>
                         </div>
@@ -49,13 +47,13 @@
                     </div>
                     <div class="header-right-item cart-item">
                         <a href="#">
-                            <span class="hri-icon">
-                                <i class="fa-light fa-cart-shopping"></i>
-                                <span class="cart-qty">1</span>
-                            </span>
+        <span class="hri-icon">
+            <i class="fa-light fa-cart-shopping"></i>
+            <span class="cart-qty">0</span>
+        </span>
                             <div class="hri-content">
                                 <span>Giỏ hàng</span>
-                                <span class="label"><span class="cart-qty">1</span> sản phẩm</span>
+                                <span class="label"><span class="cart-qty">0</span> sản phẩm</span>
                             </div>
                         </a>
                     </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\ProductCategoryHelper;
 use App\Models\ProductCategory;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -26,12 +27,18 @@ class CategoryController extends Controller
     public function showByCategory($slug, Request $request)
     {
         $page = $request->input('page', 1);
-        // Lấy danh mục theo slug
+        $tagIds = $request->input('tag', []);
         $category = ProductCategory::where('slug', $slug)->firstOrFail();
 
-        $products = ProductCategoryHelper::getProductsByCategorySlug($slug, $page);
+        if ($tagIds) {
+            $products = ProductCategoryHelper::getProductsByCategoryAndTags($slug, $tagIds, $page);
+        } else {
+            $products = ProductCategoryHelper::getProductsByCategorySlug($slug, $page);
+        }
 
-        return view('Website.category', compact('products', 'category'));
+        $tags = Tag::all();
+
+        return view('Website.category', compact('products', 'category', 'tags', 'tagIds'));
     }
 
 }

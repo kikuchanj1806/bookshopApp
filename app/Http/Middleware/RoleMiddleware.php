@@ -22,6 +22,6 @@ class RoleMiddleware
             }
         }
 
-        abort(403, 'Unauthorized');
+        return redirect()->route('unauthorized');
     }
 }

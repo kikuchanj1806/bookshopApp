@@ -28,6 +28,10 @@ class AppServiceProvider extends ServiceProvider
         View::composer('*', function ($view) {
             $menuCategories = ProductCategoryHelper::getProductCategories();
             $view->with('menuCategories', $menuCategories);
+
+            if (session()->has('unauthorized')) {
+                $view->with('unauthorized', session('unauthorized'));
+            }
         });
     }
 }

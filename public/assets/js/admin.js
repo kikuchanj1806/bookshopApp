@@ -97,6 +97,11 @@ $(document).ready(function () {
         var id = $(this).data('id');
         deleteItem('/admin/website/banners/destroy', id, 'Xóa sản banner thành công', 'Xóa banner lỗi, vui lòng thử lại');
     });
+
+    $('.removeUser').on('click', function () {
+        var id = $(this).data('id');
+        deleteItem('/admin/user/destroy', id, 'Xóa sản người dùng thành công', 'Xóa người dùng lỗi, vui lòng thử lại');
+    });
 });
 
 

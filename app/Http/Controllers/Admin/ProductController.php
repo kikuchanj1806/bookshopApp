@@ -33,7 +33,8 @@ class ProductController extends Controller
     {
         return view('admin.product.addproduct', [
             'title' => 'Thêm sản phẩm mới',
-            'categories' => $this->categoryService->getParent()
+            'categories' => $this->categoryService->getParent(),
+            'tags' => $this->productService->getAllTags()
         ]);
     }
 

@@ -93,144 +93,52 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="hp-hotsale-title-right">
-                        <ul class="nav nav-pills" id="pills-tab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="hotsale-title-1" data-bs-toggle="pill"
-                                        data-bs-target="#hotsale-tab-1" type="button" role="tab" aria-selected="true">
-                                    Ghế massage
-                                </button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="hotsale-title-2" data-bs-toggle="pill"
-                                        data-bs-target="#hotsale-tab-2" type="button" role="tab" aria-selected="false">
-                                    Xe đạp tập
-                                </button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="hotsale-title-3" data-bs-toggle="pill"
-                                        data-bs-target="#hotsale-tab-3" type="button" role="tab" aria-selected="false">
-                                    Máy chạy bộ
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
 
                 <div class="hp-hotsale-content tab-content" id="hp-hotsale-content">
-                    <div class="tab-pane fade show active" id="hotsale-tab-1" role="tabpanel"
-                         aria-labelledby="hotsale-tab-1">
-                        <div class="hotsale-productList">
-                            <div class="productList-slide">
-                                <?php
-                                for ($i = 0;
-                                     $i < 10;
-                                     $i++) {
-                                    ?>
+                    <div class="hotsale-productList">
+                        <div class="productList-slide">
+                            @foreach($homeProducts as $p)
                                 <div class="col prd-col">
                                     <div class="product-item">
-                                        <div class="sale-label"
-                                             style="background-image: url(./assets/images/sale-label.svg);">
-                                            <span class="sale-label-detail">Giảm 37%</span>
-                                        </div>
+                                        @if($p->oldPrice && $p->price && ($p->price < $p->oldPrice))
+                                            @php
+                                                $discountPercent = round((($p->oldPrice - $p->price) / $p->oldPrice) * 100, 2);
+                                            @endphp
+                                            <div class="sale-label"
+                                                 style="background-image: url(./assets/images/sale-label.svg);">
+                                                <span class="sale-label-detail">Giảm {{ $discountPercent }}%</span>
+                                            </div>
+                                        @endif
+
                                         <div class="product-item-image">
-                                            <a href="./detail.php">
-                                                <img
-                                                    src="https://pos.nvncdn.com/fd5775-40602/ps/20240318_hQYHr2fwxU.jpeg"
-                                                    alt="product image">
-                                            </a>
-                                        </div>
-                                        <div class="prd-item-content">
-                                            <a href="./detail.php">
-                                                <h3 class="prd-name">Chính Sách Tiền Tệ Thế Kỷ 21 </h3>
-                                                <div class="prd-price">
-                                                    <span class="prd-pre-price">49.000.000đ</span>
-                                                    <del class="prd-old-price">79.200.00đ</del>
-                                                </div>
-                                                <div class="prd-rate">
-                                                    <span><span>4/5</span><i class="fa-solid fa-star"></i></span>
-                                                    <span class="total-rate">(527)</span>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                    <?php
-                                }
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="hotsale-tab-2" role="tabpanel" aria-labelledby="hotsale-tab-2">
-                        <div class="hotsale-productList">
-                            <div class="productList-slide">
-                                <?php
-                                for ($i = 0;
-                                     $i < 10;
-                                     $i++) {
-                                    ?>
-                                <div class="col prd-col">
-                                    <div class="product-item">
-                                        <div class="sale-label"
-                                             style="background-image: url(./assets/images/sale-label.svg);">
-                                            <span class="sale-label-detail">Giảm 37%</span>
-                                        </div>
-                                        <div class="product-item-image">
-                                            <a href="./detail.php">
-                                                <img
-                                                    src="https://pos.nvncdn.com/fd5775-40602/ps/20240318_hQYHr2fwxU.jpeg"
-                                                    alt="product image">
-                                            </a>
-                                        </div>
-                                        <div class="prd-item-content">
                                             <a href="#">
-                                                <h3 class="prd-name">Chính Sách Tiền Tệ Thế Kỷ 21 </h3>
-                                                <div class="prd-price">
-                                                    <span class="prd-pre-price">49.000.000đ</span>
-                                                    <del class="prd-old-price">79.200.00đ</del>
-                                                </div>
-                                                <div class="prd-rate">
-                                                    <span><span>4/5</span><i class="fa-solid fa-star"></i></span>
-                                                    <span class="total-rate">(527)</span>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                    <?php
-                                }
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="hotsale-tab-3" role="tabpanel" aria-labelledby="hotsale-tab-3">
-                        <div class="hotsale-productList">
-                            <div class="productList-slide">
-                                <?php
-                                for ($i = 0;
-                                     $i < 10;
-                                     $i++) {
-                                    ?>
-                                <div class="col prd-col">
-                                    <div class="product-item">
-                                        <div class="sale-label"
-                                             style="background-image: url(./assets/images/sale-label.svg);">
-                                            <span class="sale-label-detail">Giảm 37%</span>
-                                        </div>
-                                        <div class="product-item-image">
-                                            <a href="./detail.php">
-                                                <img
-                                                    src="https://pos.nvncdn.com/fd5775-40602/ps/20240318_hQYHr2fwxU.jpeg"
-                                                    alt="product image">
+                                                <picture>
+                                                    <source class="imglarge"
+                                                            data-srcset="{{ asset($p->image) }}"
+                                                            srcset="{{ asset($p->image) }}">
+                                                    <source class="imgsmall"
+                                                            data-srcset="{{ asset($p->image) }}"
+                                                            srcset="{{ asset($p->image) }}">
+                                                    <img alt="{{ $p->name }}"
+                                                         class="img_thumb_product lazyloaded"
+                                                         width="268"
+                                                         height="401"
+                                                         src="{{ $p->image ? asset($p->image) : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC' }}">
+                                                </picture>
                                             </a>
                                         </div>
                                         <div class="prd-item-content">
-                                            <a href="./detail.php">
-                                                <h3 class="prd-name">Chính Sách Tiền Tệ Thế Kỷ 21 </h3>
+                                            <a href="{{ asset('prd/' . $p->slug) }}">
+                                                <h3 class="prd-name">{{ $p->name }}</h3>
                                                 <div class="prd-price">
-                                                    <span class="prd-pre-price">49.000.000đ</span>
-                                                    <del class="prd-old-price">79.200.00đ</del>
+                                                    <span class="prd-pre-price">{{ \App\Helpers\AppFormat::toNumber($p->price) }}đ</span>
+                                                    @if($p->oldPrice)
+                                                        <del
+                                                            class="prd-old-price">{{ \App\Helpers\AppFormat::toNumber($p->oldPrice)}}
+                                                            đ
+                                                        </del>
+                                                    @endif
                                                 </div>
                                                 <div class="prd-rate">
                                                     <span><span>4/5</span><i class="fa-solid fa-star"></i></span>
@@ -240,11 +148,7 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                    <?php
-                                }
-                                ?>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -258,39 +162,47 @@
                 <h2 class="hp-heading">Sản phẩm mới</h2>
                 <div class="hp-prdList-inner">
                     <div class="productList-slide">
-                        @foreach($newProducts as $product)
+                        @foreach($newProducts as $p)
                             <div class="col prd-col">
                                 <div class="product-item">
-                                    <div class="sale-label"
-                                         style="background-image: url(./assets/images/sale-label.svg);">
-                                        <span class="sale-label-detail">Giảm 37%</span>
-                                    </div>
+                                    @if($p->oldPrice && $p->price && ($p->price < $p->oldPrice))
+                                        @php
+                                            $discountPercent = round((($p->oldPrice - $p->price) / $p->oldPrice) * 100, 2);
+                                        @endphp
+                                        <div class="sale-label"
+                                             style="background-image: url(./assets/images/sale-label.svg);">
+                                            <span class="sale-label-detail">Giảm {{ $discountPercent }}%</span>
+                                        </div>
+                                    @endif
+
                                     <div class="product-item-image">
                                         <a href="#">
                                             <picture>
                                                 <source class="imglarge"
-                                                        data-srcset="{{ asset($product->image) }}"
-                                                        srcset="{{ asset($product->image) }}">
+                                                        data-srcset="{{ asset($p->image) }}"
+                                                        srcset="{{ asset($p->image) }}">
                                                 <source class="imgsmall"
-                                                        data-srcset="{{ asset($product->image) }}"
-                                                        srcset="{{ asset($product->image) }}">
-                                                <img alt="{{ $product->name }}"
+                                                        data-srcset="{{ asset($p->image) }}"
+                                                        srcset="{{ asset($p->image) }}">
+                                                <img alt="{{ $p->name }}"
                                                      class="img_thumb_product lazyloaded"
                                                      width="268"
-                                                     height="380"
-                                                     src="{{ $product->image ? asset($product->image) : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC' }}">
+                                                     height="401"
+                                                     src="{{ $p->image ? asset($p->image) : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC' }}">
                                             </picture>
                                         </a>
                                     </div>
                                     <div class="prd-item-content">
-                                        <a href="{{ asset('prd/' . $product->slug) }}">
-                                            <h3 class="prd-name">{{ $product->name }}</h3>
+                                        <a href="{{ asset('prd/' . $p->slug) }}">
+                                            <h3 class="prd-name">{{ $p->name }}</h3>
                                             <div class="prd-price">
-                                                <span class="prd-pre-price">{{ \App\Helpers\AppFormat::toNumber($product->price) }}đ</span>
-                                                <del
-                                                    class="prd-old-price">{{ \App\Helpers\AppFormat::toNumber($product->oldPrice)}}
-                                                    đ
-                                                </del>
+                                                <span class="prd-pre-price">{{ \App\Helpers\AppFormat::toNumber($p->price) }}đ</span>
+                                                @if($p->oldPrice)
+                                                    <del
+                                                        class="prd-old-price">{{ \App\Helpers\AppFormat::toNumber($p->oldPrice)}}
+                                                        đ
+                                                    </del>
+                                                @endif
                                             </div>
                                             <div class="prd-rate">
                                                 <span><span>4/5</span><i class="fa-solid fa-star"></i></span>
@@ -315,39 +227,47 @@
                 <h2 class="hp-heading">Sản phẩm hot</h2>
                 <div class="hp-prdList-inner">
                     <div class="productList-slide">
-                        @foreach($hotProducts as $product)
+                        @foreach($hotProducts as $p)
                             <div class="col prd-col">
                                 <div class="product-item">
-                                    <div class="sale-label"
-                                         style="background-image: url(./assets/images/sale-label.svg);">
-                                        <span class="sale-label-detail">Giảm 37%</span>
-                                    </div>
+                                    @if($p->oldPrice && $p->price && ($p->price < $p->oldPrice))
+                                        @php
+                                            $discountPercent = round((($p->oldPrice - $p->price) / $p->oldPrice) * 100, 2);
+                                        @endphp
+                                        <div class="sale-label"
+                                             style="background-image: url(./assets/images/sale-label.svg);">
+                                            <span class="sale-label-detail">Giảm {{ $discountPercent }}%</span>
+                                        </div>
+                                    @endif
+
                                     <div class="product-item-image">
                                         <a href="#">
                                             <picture>
                                                 <source class="imglarge"
-                                                        data-srcset="{{ asset($product->image) }}"
-                                                        srcset="{{ asset($product->image) }}">
+                                                        data-srcset="{{ asset($p->image) }}"
+                                                        srcset="{{ asset($p->image) }}">
                                                 <source class="imgsmall"
-                                                        data-srcset="{{ asset($product->image) }}"
-                                                        srcset="{{ asset($product->image) }}">
-                                                <img alt="{{ $product->name }}"
+                                                        data-srcset="{{ asset($p->image) }}"
+                                                        srcset="{{ asset($p->image) }}">
+                                                <img alt="{{ $p->name }}"
                                                      class="img_thumb_product lazyloaded"
                                                      width="268"
                                                      height="401"
-                                                     src="{{ $product->image ? asset($product->image) : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC' }}">
+                                                     src="{{ $p->image ? asset($p->image) : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC' }}">
                                             </picture>
                                         </a>
                                     </div>
                                     <div class="prd-item-content">
-                                        <a href="{{ asset('prd/' . $product->slug) }}">
-                                            <h3 class="prd-name">{{ $product->name }}</h3>
+                                        <a href="{{ asset('prd/' . $p->slug) }}">
+                                            <h3 class="prd-name">{{ $p->name }}</h3>
                                             <div class="prd-price">
-                                                <span class="prd-pre-price">{{ \App\Helpers\AppFormat::toNumber($product->price) }}đ</span>
-                                                <del
-                                                    class="prd-old-price">{{ \App\Helpers\AppFormat::toNumber($product->oldPrice)}}
-                                                    đ
-                                                </del>
+                                                <span class="prd-pre-price">{{ \App\Helpers\AppFormat::toNumber($p->price) }}đ</span>
+                                                @if($p->oldPrice)
+                                                    <del
+                                                        class="prd-old-price">{{ \App\Helpers\AppFormat::toNumber($p->oldPrice)}}
+                                                        đ
+                                                    </del>
+                                                @endif
                                             </div>
                                             <div class="prd-rate">
                                                 <span><span>4/5</span><i class="fa-solid fa-star"></i></span>
@@ -373,39 +293,47 @@
                     <h2 class="hp-heading">{{ $category->name }}</h2>
                     <div class="hp-prdList-inner">
                         <div class="productList-slide">
-                            @foreach ($category->products as $product)
+                            @foreach ($category->products as $p)
                                 <div class="col prd-col">
                                     <div class="product-item">
-                                        <div class="sale-label"
-                                             style="background-image: url(./assets/images/sale-label.svg);">
-                                            <span class="sale-label-detail">Giảm 37%</span>
-                                        </div>
+                                        @if($p->oldPrice && $p->price && ($p->price < $p->oldPrice))
+                                            @php
+                                                $discountPercent = round((($p->oldPrice - $p->price) / $p->oldPrice) * 100, 2);
+                                            @endphp
+                                            <div class="sale-label"
+                                                 style="background-image: url(./assets/images/sale-label.svg);">
+                                                <span class="sale-label-detail">Giảm {{ $discountPercent }}%</span>
+                                            </div>
+                                        @endif
+
                                         <div class="product-item-image">
                                             <a href="#">
                                                 <picture>
                                                     <source class="imglarge"
-                                                            data-srcset="{{ asset($product->image) }}"
-                                                            srcset="{{ asset($product->image) }}">
+                                                            data-srcset="{{ asset($p->image) }}"
+                                                            srcset="{{ asset($p->image) }}">
                                                     <source class="imgsmall"
-                                                            data-srcset="{{ asset($product->image) }}"
-                                                            srcset="{{ asset($product->image) }}">
-                                                    <img alt="{{ $product->name }}"
+                                                            data-srcset="{{ asset($p->image) }}"
+                                                            srcset="{{ asset($p->image) }}">
+                                                    <img alt="{{ $p->name }}"
                                                          class="img_thumb_product lazyloaded"
                                                          width="268"
                                                          height="401"
-                                                         src="{{ $product->image ? asset($product->image) : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC' }}">
+                                                         src="{{ $p->image ? asset($p->image) : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC' }}">
                                                 </picture>
                                             </a>
                                         </div>
                                         <div class="prd-item-content">
-                                            <a href="{{ asset('prd/' . $product->slug) }}">
-                                                <h3 class="prd-name">{{ $product->name }}</h3>
+                                            <a href="{{ asset('prd/' . $p->slug) }}">
+                                                <h3 class="prd-name">{{ $p->name }}</h3>
                                                 <div class="prd-price">
-                                                    <span class="prd-pre-price">{{ \App\Helpers\AppFormat::toNumber($product->price) }}đ</span>
-                                                    <del
-                                                        class="prd-old-price">{{ \App\Helpers\AppFormat::toNumber($product->oldPrice) }}
-                                                        đ
-                                                    </del>
+                                                    <span class="prd-pre-price">{{ \App\Helpers\AppFormat::toNumber($p->price) }}đ</span>
+                                                    @if($p->oldPrice)
+                                                        <del
+                                                            class="prd-old-price">{{ \App\Helpers\AppFormat::toNumber($p->oldPrice)}}
+                                                            đ
+                                                        </del>
+                                                    @endif
                                                 </div>
                                                 <div class="prd-rate">
                                                     <span><span>4/5</span><i class="fa-solid fa-star"></i></span>

@@ -86,6 +86,15 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="tags">Tags</label>
+                                    <select name="tags[]" id="tags" class="form-select form-control-lg">
+                                        @foreach($tags as $tag)
+                                            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">

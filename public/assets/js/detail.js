@@ -94,8 +94,4 @@ $('#detailModal ').on('shown.bs.modal', function (e) {
     });
 })
 
-$('.attr-item').click(function(){
-    $(this).parent().find('.attr-item').removeClass('active')
-    $(this).addClass('active')
-})
 

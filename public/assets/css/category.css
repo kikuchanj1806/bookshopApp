@@ -1,3 +1,27 @@
+/*custom filter*/
+.filter-wrapper .list-filter-child {
+    display: none;
+}
+
+.filter-wrapper .list-filter-child.active {
+    display: block;
+}
+
+#filter-active .active-filter {
+    display: inline-block;
+    background-color: #f0f0f0;
+    margin-right: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+#filter-active .button-close:hover {
+    cursor: pointer;
+    color: red;
+}
+
+/*end custom filter*/
+
 /* HEADING */
 
 .category-heading{
@@ -100,14 +124,14 @@ p.category-des{
     flex-wrap: wrap;
     gap: 10px;
     row-gap: 10px;
-    
+
 }
 .filter-sort::-webkit-scrollbar{
     height: 3px;
 }
 @media(max-width:769px){
     #filterModule,
-    .filter-sort {  
+    .filter-sort {
         flex-wrap: nowrap;
         overflow-x: auto;
     }
@@ -193,7 +217,7 @@ p.category-des{
 
 .btn-filter-group {
     margin-top: 10px;
-    display: none;
+    /*display: none;*/
     gap: 10px;
 }
 

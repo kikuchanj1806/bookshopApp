@@ -120,7 +120,7 @@ body {
 
 /* DETAIL INFO */
 .detail-info-inner {
-    background-color: var(--secondary-red);
+    background-color: var(--primary-red);
     border-radius: 10px;
     padding: 5px;
     margin-bottom: 20px;

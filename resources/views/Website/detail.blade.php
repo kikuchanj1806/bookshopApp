@@ -7,8 +7,8 @@
     <section id="breadcrum">
         <div class="container">
             <ul>
-                <li><a href="#"><i class="fa-solid fa-house"></i>Trang chủ</a></li>
-                <li><a href="#">Sách toán</a></li>
+                <li><a href="/"><i class="fa-solid fa-house"></i>Trang chủ</a></li>
+                <li><a href="{{ asset($category->slug) }}">{{$category->name}}</a></li>
                 <li><span>{{ $product->name }}</span></li>
             </ul>
         </div>
@@ -46,28 +46,29 @@
                         @endif
                     </div>
                     <div class="viewmore-gallery" data-bs-toggle="modal" data-bs-target="#detailModal"
-                         data-tab="nav-image-tab">Xem tất cả hình ảnh (<span class="curent-img"></span>{{ count($product->thumbnails) }}<span
+                         data-tab="nav-image-tab">Xem tất cả hình ảnh (<span
+                            class="curent-img"></span>{{ count($product->thumbnails ?? []) }}<span
                             class="total-img"></span>)
                     </div>
                     <div class="gallery-actions">
                         <div class="item-action" data-bs-toggle="modal" data-bs-target="#detailModal"
                              data-tab="nav-image-tab">
                             <div class="item-action-img">
-                                <img src="./assets/images/prd.png" alt="image action">
+                                <img src="{{ asset($product->image) }}" alt="image action">
                             </div>
                             <span>Ảnh sản phẩm</span>
                         </div>
                         <div class="item-action" data-bs-toggle="modal" data-bs-target="#detailModal"
                              data-tab="nav-specifications-tab">
                             <div class="item-action-img">
-                                <img src="./assets/images/inspection.png" alt="">
+                                <img src="{{ asset('assets/images/inspection.png') }}" alt="">
                             </div>
                             <span>Thông số kỹ thuật</span>
                         </div>
                         <div class="item-action" data-bs-toggle="modal" data-bs-target="#detailModal"
                              data-tab="nav-info-tab">
                             <div class="item-action-img">
-                                <img src="./assets/images/search.png" alt="">
+                                <img src="{{ asset('assets/images/search.png') }}" alt="">
                             </div>
                             <span>Thông tin sản phẩm</span>
                         </div>
@@ -76,30 +77,31 @@
                 <div class="col-lg-5 col-md-10 col-12 detail-action-col">
                     <div class="detail-info-inner">
                         <div class="detail-price">
-                            <h2 class="detail-price-present">{{ \App\Helpers\AppFormat::toNumber($product->price) }}đ</h2>
+                            <h2 class="detail-price-present">{{ \App\Helpers\AppFormat::toNumber($product->price) }}
+                                đ</h2>
                             @if($product->oldPrice)
-                                <del class="detail-old-price">{{ \App\Helpers\AppFormat::toNumber($product->oldPrice) }}đ</del>
+                                <del class="detail-old-price">{{ \App\Helpers\AppFormat::toNumber($product->oldPrice) }}
+                                    đ
+                                </del>
                             @endif
-                            <p class="detail-sale-percent">(-37%)</p>
+                            @if($product->oldPrice && $product->price && ($product->price < $product->oldPrice))
+                                @php
+                                    $discountPercent = round((($product->oldPrice - $product->price) / $product->oldPrice) * 100, 2);
+                                @endphp
+                                <p class="detail-sale-percent">(-{{ $discountPercent }}%)</p>
+                            @endif
                         </div>
-                        <div class="detail-box">
-                            <div class="detail-sale">
-                                <p class="sale-title">Khuyến mãi</p>
-                                <p class="sale-des">Giá và khuyến mãi có thể kết thúc sớm hơn dự kiến</p>
-                                <ul>
-                                    <li><span>1</span>Lorem, ipsum dolor sit amet consectetur adipisicing,ipsum dolor
-                                        sit amet consectetur adipisicing.
-                                    </li>
-                                    <li><span>2</span>Lorem, ipsum dolor sit amet consectetur.</li>
-                                </ul>
+                        <div class="detail-box" data-product-id="{{ $product->id }}" data-product-name="{{ $product->name }}" data-product-price="{{ $product->price }}">
+                            <div class="detail-sale mb-2">
+                                {!! $product->description !!}
                             </div>
-                            <div class="detail-promotion">
-                                <ul>
-                                    <li>Lorem, ipsum dolor sit amet consectetur adipisicing.</li>
-                                    <li>Lorem, ipsum dolor sit amet consectetur adipisicing.</li>
-                                    <li>Lorem, ipsum dolor sit amet consectetur adipisicing.</li>
-                                </ul>
-                            </div>
+                            {{--                            <div class="detail-promotion">--}}
+                            {{--                                <ul>--}}
+                            {{--                                    <li>Lorem, ipsum dolor sit amet consectetur adipisicing.</li>--}}
+                            {{--                                    <li>Lorem, ipsum dolor sit amet consectetur adipisicing.</li>--}}
+                            {{--                                    <li>Lorem, ipsum dolor sit amet consectetur adipisicing.</li>--}}
+                            {{--                                </ul>--}}
+                            {{--                            </div>--}}
                             <div class="detail-action">
                                 <button class="buynow">Mua ngay</button>
                                 <button class="addtocart">Thêm giỏ hàng</button>
@@ -117,90 +119,18 @@
                         <h2>Thông tin sản phẩm</h2>
                         <div class="detail-info-inner">
                             <div class="detail-info-content">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Rerum doloribus in necessitatibus, sequi error quod! Ea porro
-                                    magnam atque minima at explicabo sapiente sequi deserunt
-                                    accusantium error illum excepturi dolorum beatae perferendis
-                                    dignissimos, facilis ab architecto odit animi quia harum soluta
-                                    necessitatibus. Dolorem nostrum aliquam alias vel assumenda
-                                    delectus libero.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Porro facere sint ratione quod unde! Neque dolor ab eius
-                                    excepturi eum nobis vitae facilis laboriosam expedita natus
-                                    vero, reiciendis totam qui distinctio corrupti dolore ea
-                                    laudantium quo inventore ratione iste odio. Nisi blanditiis,
-                                    harum non laudantium necessitatibus exercitationem, itaque
-                                    aperiam, expedita aliquam mollitia architecto? Mollitia
-                                    error ab facilis totam aut quas, non sit, hic laborum
-                                    tempore deserunt sunt fugit doloribus consequuntur quos
-                                    autem sint accusantium optio nulla repellat dolorum enim.
-                                    Harum quasi cumque, debitis amet earum eum nulla ut beatae
-                                    et atque, doloribus esse nesciunt explicabo qui molestiae.
-                                    Natus, illo temporibus.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Rerum doloribus in necessitatibus, sequi error quod! Ea porro
-                                    magnam atque minima at explicabo sapiente sequi deserunt
-                                    accusantium error illum excepturi dolorum beatae perferendis
-                                    dignissimos, facilis ab architecto odit animi quia harum soluta
-                                    necessitatibus. Dolorem nostrum aliquam alias vel assumenda
-                                    delectus libero.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Porro facere sint ratione quod unde! Neque dolor ab eius
-                                    excepturi eum nobis vitae facilis laboriosam expedita natus
-                                    vero, reiciendis totam qui distinctio corrupti dolore ea
-                                    laudantium quo inventore ratione iste odio. Nisi blanditiis,
-                                    harum non laudantium necessitatibus exercitationem, itaque
-                                    aperiam, expedita aliquam mollitia architecto? Mollitia
-                                    error ab facilis totam aut quas, non sit, hic laborum
-                                    tempore deserunt sunt fugit doloribus consequuntur quos
-                                    autem sint accusantium optio nulla repellat dolorum enim.
-                                    Harum quasi cumque, debitis amet earum eum nulla ut beatae
-                                    et atque, doloribus esse nesciunt explicabo qui molestiae.
-                                    Natus, illo temporibus.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Rerum doloribus in necessitatibus, sequi error quod! Ea porro
-                                    magnam atque minima at explicabo sapiente sequi deserunt
-                                    accusantium error illum excepturi dolorum beatae perferendis
-                                    dignissimos, facilis ab architecto odit animi quia harum soluta
-                                    necessitatibus. Dolorem nostrum aliquam alias vel assumenda
-                                    delectus libero.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Porro facere sint ratione quod unde! Neque dolor ab eius
-                                    excepturi eum nobis vitae facilis laboriosam expedita natus
-                                    vero, reiciendis totam qui distinctio corrupti dolore ea
-                                    laudantium quo inventore ratione iste odio. Nisi blanditiis,
-                                    harum non laudantium necessitatibus exercitationem, itaque
-                                    aperiam, expedita aliquam mollitia architecto? Mollitia
-                                    error ab facilis totam aut quas, non sit, hic laborum
-                                    tempore deserunt sunt fugit doloribus consequuntur quos
-                                    autem sint accusantium optio nulla repellat dolorum enim.
-                                    Harum quasi cumque, debitis amet earum eum nulla ut beatae
-                                    et atque, doloribus esse nesciunt explicabo qui molestiae.
-                                    Natus, illo temporibus.
-                                </p>
+                                {!! $product->content !!}
                             </div>
                             <div class="seemore-box">
-                                <button class="seemore seemore-info">
-                                    <span class="open">Xem thêm</span>
-                                    <span class="close">Thu gọn</span>
-                                    <i class="fa-regular fa-chevron-down"></i>
-                                </button>
+                                <div class="seemore seemore-info item-action" data-bs-toggle="modal"
+                                     data-bs-target="#detailModal" data-tab="nav-info-tab">
+                                    <span>Xem thêm</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="detail-rating">
-                        <h2>Đánh giá & nhận xét Chính Sách Tiền Tệ Thế Kỷ 21                          </h2>
+                        <h2>Đánh giá & nhận xét Chính Sách Tiền Tệ Thế Kỷ 21 </h2>
                         <div class="boxReview-review">
                             <div class="boxReview-score">
                                 <p class="title">4.5/5</p>
@@ -430,50 +360,52 @@
             </div>
         </div>
     </section>
-
-    <section class="product-suggest-wrap">
-        <div class="container">
-            <div class="row">
-                <div class="product-suggest-inner">
-                    <h2>Sản phẩm tương tự</h2>
-                    <div class="product-suggest-list">
-                        <div class="productList-slide">
-                            @foreach($relatedProducts as $p)
-                                <div class="col prd-col">
-                                    <div class="product-item">
-                                        <div class="sale-label" style="background-image: url(./assets/images/sale-label.svg);">
-                                            <span class="sale-label-detail">Giảm 37%</span>
-                                        </div>
-                                        <div class="product-item-image">
-                                            <a href="./detail">
-                                                <img src="{{ asset($p->image) }}" alt="product image">
-                                            </a>
-                                        </div>
-                                        <div class="prd-item-content">
-                                            <a href="{{ asset('prd/' . $p->slug) }}">
-                                                <h3 class="prd-name">
-                                                    {{ $p->name }}
-                                                </h3>
-                                                <div class="prd-price">
-                                                    <span class="prd-pre-price">{{ $p->price }}</span>
-                                                    <del class="prd-old-price">{{ $p->oldPrice }}</del>
-                                                </div>
-                                                <div class="prd-rate">
-                                                    <span><span>4/5</span><i class="fa-solid fa-star"></i></span>
-                                                    <span class="total-rate">(527)</span>
-                                                </div>
-                                            </a>
+    @if(count($relatedProducts) > 0)
+        <section class="product-suggest-wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="product-suggest-inner">
+                        <h2>Sản phẩm tương tự</h2>
+                        <div class="product-suggest-list">
+                            <div class="productList-slide">
+                                @foreach($relatedProducts as $p)
+                                    <div class="col prd-col">
+                                        <div class="product-item">
+                                            <div class="sale-label"
+                                                 style="background-image: url(./assets/images/sale-label.svg);">
+                                                <span class="sale-label-detail">Giảm 37%</span>
+                                            </div>
+                                            <div class="product-item-image">
+                                                <a href="./detail">
+                                                    <img src="{{ asset($p->image) }}" alt="product image">
+                                                </a>
+                                            </div>
+                                            <div class="prd-item-content">
+                                                <a href="{{ asset('prd/' . $p->slug) }}">
+                                                    <h3 class="prd-name">
+                                                        {{ $p->name }}
+                                                    </h3>
+                                                    <div class="prd-price">
+                                                        <span class="prd-pre-price">{{ $p->price }}</span>
+                                                        <del class="prd-old-price">{{ $p->oldPrice }}</del>
+                                                    </div>
+                                                    <div class="prd-rate">
+                                                        <span><span>4/5</span><i class="fa-solid fa-star"></i></span>
+                                                        <span class="total-rate">(527)</span>
+                                                    </div>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                            @endforeach
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
     <!-- detailModal -->
     <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
@@ -566,78 +498,7 @@
                                 <div class="row justify-content-center">
                                     <div class="col-lg-8 col-md-10 col-12">
                                         <div class="detailModalInfo">
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                Rerum doloribus in necessitatibus, sequi error quod! Ea porro
-                                                magnam atque minima at explicabo sapiente sequi deserunt
-                                                accusantium error illum excepturi dolorum beatae perferendis
-                                                dignissimos, facilis ab architecto odit animi quia harum soluta
-                                                necessitatibus. Dolorem nostrum aliquam alias vel assumenda
-                                                delectus libero.
-                                            </p>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                Porro facere sint ratione quod unde! Neque dolor ab eius
-                                                excepturi eum nobis vitae facilis laboriosam expedita natus
-                                                vero, reiciendis totam qui distinctio corrupti dolore ea
-                                                laudantium quo inventore ratione iste odio. Nisi blanditiis,
-                                                harum non laudantium necessitatibus exercitationem, itaque
-                                                aperiam, expedita aliquam mollitia architecto? Mollitia
-                                                error ab facilis totam aut quas, non sit, hic laborum
-                                                tempore deserunt sunt fugit doloribus consequuntur quos
-                                                autem sint accusantium optio nulla repellat dolorum enim.
-                                                Harum quasi cumque, debitis amet earum eum nulla ut beatae
-                                                et atque, doloribus esse nesciunt explicabo qui molestiae.
-                                                Natus, illo temporibus.
-                                            </p>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                Rerum doloribus in necessitatibus, sequi error quod! Ea porro
-                                                magnam atque minima at explicabo sapiente sequi deserunt
-                                                accusantium error illum excepturi dolorum beatae perferendis
-                                                dignissimos, facilis ab architecto odit animi quia harum soluta
-                                                necessitatibus. Dolorem nostrum aliquam alias vel assumenda
-                                                delectus libero.
-                                            </p>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                Porro facere sint ratione quod unde! Neque dolor ab eius
-                                                excepturi eum nobis vitae facilis laboriosam expedita natus
-                                                vero, reiciendis totam qui distinctio corrupti dolore ea
-                                                laudantium quo inventore ratione iste odio. Nisi blanditiis,
-                                                harum non laudantium necessitatibus exercitationem, itaque
-                                                aperiam, expedita aliquam mollitia architecto? Mollitia
-                                                error ab facilis totam aut quas, non sit, hic laborum
-                                                tempore deserunt sunt fugit doloribus consequuntur quos
-                                                autem sint accusantium optio nulla repellat dolorum enim.
-                                                Harum quasi cumque, debitis amet earum eum nulla ut beatae
-                                                et atque, doloribus esse nesciunt explicabo qui molestiae.
-                                                Natus, illo temporibus.
-                                            </p>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                Rerum doloribus in necessitatibus, sequi error quod! Ea porro
-                                                magnam atque minima at explicabo sapiente sequi deserunt
-                                                accusantium error illum excepturi dolorum beatae perferendis
-                                                dignissimos, facilis ab architecto odit animi quia harum soluta
-                                                necessitatibus. Dolorem nostrum aliquam alias vel assumenda
-                                                delectus libero.
-                                            </p>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                Porro facere sint ratione quod unde! Neque dolor ab eius
-                                                excepturi eum nobis vitae facilis laboriosam expedita natus
-                                                vero, reiciendis totam qui distinctio corrupti dolore ea
-                                                laudantium quo inventore ratione iste odio. Nisi blanditiis,
-                                                harum non laudantium necessitatibus exercitationem, itaque
-                                                aperiam, expedita aliquam mollitia architecto? Mollitia
-                                                error ab facilis totam aut quas, non sit, hic laborum
-                                                tempore deserunt sunt fugit doloribus consequuntur quos
-                                                autem sint accusantium optio nulla repellat dolorum enim.
-                                                Harum quasi cumque, debitis amet earum eum nulla ut beatae
-                                                et atque, doloribus esse nesciunt explicabo qui molestiae.
-                                                Natus, illo temporibus.
-                                            </p>
+                                            {!! $product->content !!}
                                         </div>
                                     </div>
                                 </div>
@@ -658,7 +519,7 @@
                             class="fa-regular fa-xmark"></i></button>
                 </div>
                 <div class="modal-body">
-                    <h2 class="rateProduct">Chính Sách Tiền Tệ Thế Kỷ 21                          </h2>
+                    <h2 class="rateProduct">Chính Sách Tiền Tệ Thế Kỷ 21 </h2>
                     <form action="" class="modal-rate-content">
                         <p>Đánh giá chung</p>
                         <div class="modal-rate-star">

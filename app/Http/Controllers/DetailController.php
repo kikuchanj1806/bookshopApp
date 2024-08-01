@@ -18,11 +18,12 @@ class DetailController extends Controller
             if (is_string($product->thumbnails)) {
                 $product->thumbnails = json_decode($product->thumbnails, true);
             }
-
             $relatedProducts = DetailHelper::getRelatedProducts($product);
-            return view('Website.detail', compact('product', 'relatedProducts'));
+
+            $category = $product->category;
+            return view('Website.detail', compact('product', 'relatedProducts', 'category'));
         } catch (\Exception $e) {
-            return redirect()->route('products.index')->with('error', $e->getMessage());
+            return redirect()->route('Website.index')->with('error', $e->getMessage());
         }
     }
 }
