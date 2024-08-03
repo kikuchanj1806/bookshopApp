@@ -123,7 +123,7 @@ $(document).ready(function () {
             success: function (response) {
                 if (response.error === false) {
                     var thumbnails = response.data.thumbnails;
-                    if(thumbnails) {
+                    if (thumbnails) {
                         thumbnails.forEach(function (thumb) {
                             imgArray.push({name: thumb.name, url: thumb.url});
                             var html = `
@@ -222,6 +222,158 @@ $(document).ready(function () {
     async function urlToFile(url, filename, mimeType) {
         const response = await fetch(url);
         const buffer = await response.arrayBuffer();
-        return new File([buffer], filename, { type: mimeType });
+        return new File([buffer], filename, {type: mimeType});
     }
+});
+
+
+$(document).ready(function () {
+    $('#city').change(function () {
+        var cityId = $(this).val();
+        if (cityId) {
+            $.ajax({
+                url: '/districts/' + cityId,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    $('#district').empty().prop('disabled', false);
+                    $('#district').append('<option value="">Chọn quận/huyện</option>');
+                    $.each(data, function (key, value) {
+                        $('#district').append('<option value="' + value.id + '">' + value.name + '</option>');
+                    });
+                }
+            });
+        } else {
+            $('#district').empty().prop('disabled', true);
+            $('#ward').empty().prop('disabled', true);
+        }
+    });
+
+    $('#district').change(function () {
+        var districtId = $(this).val();
+        console.log('districtId', districtId)
+        if (districtId) {
+            $.ajax({
+                url: '/wards/' + districtId,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    $('#ward').empty().prop('disabled', false);
+                    $('#ward').append('<option value="">Chọn xã/phường</option>');
+                    $.each(data, function (key, value) {
+                        $('#ward').append('<option value="' + key + '">' + value.name + '</option>');
+                    });
+                }
+            });
+        } else {
+            $('#ward').empty().prop('disabled', true);
+        }
+    });
+
+    // Suggest sản phẩm
+    $('#product_search').on('input', function () {
+        var query = $(this).val();
+        if (query.length > 2) {
+            $.ajax({
+                url: '/search/suggestions',
+                type: 'GET',
+                data: {query: query},
+                dataType: 'json',
+                success: function (data) {
+                    $('#product_suggestions').empty();
+                    $.each(data, function (index, product) {
+                        $('#product_suggestions').append('<a href="#" class="list-group-item list-group-item-action" data-id="' + product.id + '" data-name="' + product.name + '" data-code="' + product.code + '" data-price="' + product.price + '">' + product.name + ' - ' + product.code + '</a>');
+                    });
+                }
+            });
+        } else {
+            $('#product_suggestions').empty();
+        }
+    });
+
+    // Thêm sản phẩm vào bảng
+    $('#product_suggestions').on('click', 'a', function (e) {
+        e.preventDefault();
+        var productId = $(this).data('id');
+        var productName = $(this).data('name');
+        var productCode = $(this).data('code');
+        var productPrice = $(this).data('price');
+
+        var rowCount = $('#selected_products tbody tr').length;
+        var rowNumber = rowCount + 1;
+
+        var row = '<tr>' +
+            '<td>' + rowNumber + '</td>' +
+            '<td>' + productName + '<input type="hidden" name="products[' + rowCount + '][id]" value="' + productId + '"></td>' +
+            '<td>' + productCode + '</td>' +
+            '<td><input type="number" name="products[' + rowCount + '][quantity]" class="form-control product_quantity text-end" value="1" min="1"></td>' +
+            '<td><input type="number" name="products[' + rowCount + '][price]" class="form-control product_price text-end" value="' + productPrice + '" readonly></td>' +
+            '<td class="text-center"><button type="button" class="btn btn-danger btn-sm remove_product">Xóa</button></td>' +
+            '</tr>';
+        $('#selected_products tbody').append(row);
+        $('#product_suggestions').empty();
+        $('#product_search').val('');
+
+        updateTotals(); // Cập nhật tổng sau khi thêm sản phẩm
+    });
+
+    // Cập nhật tổng số lượng và giá
+    function updateTotals() {
+        var rowCount = $('#selected_products tbody tr').length;
+
+        if (rowCount > 0) {
+            $('#shipping_row').show();
+            $('#total_row').show();
+            $('#total').show();
+        }
+        var totalQuantity = 0;
+        var totalPrice = 0;
+
+        $('#selected_products tbody tr').each(function () {
+            var quantity = parseInt($(this).find('.product_quantity').val()) || 0;
+            var price = parseFloat($(this).find('.product_price').val()) || 0;
+
+            totalQuantity += quantity;
+            totalPrice += quantity * price;
+
+        });
+        var totalWithShipping = totalPrice + 35000;
+
+        $('#total_quantity').text(totalQuantity);
+        $('#total_price').text(toNumber(totalPrice));
+        $('#total_with_shipping').text(toNumber(totalWithShipping) + ' đ');
+    }
+
+    // Cập nhật tổng khi thay đổi số lượng sản phẩm
+    $('#selected_products').on('input', '.product_quantity', function () {
+        updateTotals();
+    });
+
+    // Xóa sản phẩm khỏi bảng
+    $('#selected_products').on('click', '.remove_product', function () {
+        $(this).closest('tr').remove();
+        updateRowNumbers(); // Cập nhật số thứ tự sau khi xóa
+        updateTotals(); // Cập nhật tổng sau khi xóa
+    });
+
+    // Cập nhật số thứ tự các hàng sau khi xóa
+    function updateRowNumbers() {
+        $('#selected_products tbody tr').each(function (index) {
+            $(this).find('td').eq(0).text(index + 1);
+        });
+    }
+
+    function toNumber(number) {
+        if (!number || isNaN(number)) {
+            return '';
+        }
+
+        // Chuyển số thành chuỗi và loại bỏ dấu phân cách thập phân
+        const parts = Number(number).toString().split('.');
+        let integerPart = parts[0];
+
+        // Thêm dấu phân cách hàng nghìn
+        return integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    }
+
 });

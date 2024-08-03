@@ -14,7 +14,6 @@
 
     <div class="card">
         <div class="card-header">
-            <div class="card-title">{{ $title }}</div>
         </div>
     </div>
 @endsection

@@ -17,8 +17,8 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('code')->unique();
-            $table->decimal('price', 10, 2);
-            $table->decimal('oldPrice', 10, 2)->nullable();
+            $table->decimal('price', 10);
+            $table->decimal('oldPrice', 10)->nullable();
             $table->integer('quantity')->unsigned();
             $table->boolean('status');
             $table->unsignedBigInteger('categoryId');

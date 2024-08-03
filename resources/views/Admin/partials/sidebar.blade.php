@@ -2,7 +2,7 @@
     <div class="sidebar-logo">
         <!-- Logo Header -->
         <div class="logo-header" data-background-color="dark">
-            <a href="../index.html" class="logo">
+            <a href="/admin" class="logo">
                 <img
                     src="{{ asset('assets/images/admin/logo_light.svg') }}"
                     alt="navbar brand"
@@ -27,37 +27,29 @@
     <div class="sidebar-wrapper scrollbar scrollbar-inner">
         <div class="sidebar-content">
             <ul class="nav nav-secondary">
-                <li class="nav-item">
-                    <a
-                        data-bs-toggle="collapse"
-                        href="/admin/dashboard"
-                        class="collapsed"
-                        aria-expanded="false"
-                    >
+                <!-- Dashboard -->
+                <li class="nav-item {{ $currentUrl == url('/admin') ? 'active' : '' }}">
+                    <a href="/admin">
                         <i class="fas fa-home"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="nav-section">
-                <span class="sidebar-mini-icon">
-                  <i class="fa fa-ellipsis-h"></i>
-                </span>
-                    <h4 class="text-section"></h4>
-                </li>
-                <li class="nav-item">
+
+                <!-- Category -->
+                <li class="nav-item {{ str_starts_with($currentUrl, url('/admin/category')) ? 'active' : '' }}">
                     <a data-bs-toggle="collapse" href="#categoryProduct">
                         <i class="fas fa-layer-group"></i>
                         <p>Danh mục sản phẩm</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="ms-4 collapse" id="categoryProduct">
+                    <div class="ms-4 collapse {{ str_starts_with($currentUrl, url('/admin/category')) ? 'show' : '' }}" id="categoryProduct">
                         <ul class="nav nav-collapse">
-                            <li>
+                            <li class="{{ $currentUrl == url('/admin/category/index') ? 'active' : '' }}">
                                 <a href="/admin/category/index">
                                     <span>Danh sách danh mục</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="{{ $currentUrl == url('/admin/category/add') ? 'active' : '' }}">
                                 <a href="/admin/category/add">
                                     <span>Thêm danh mục</span>
                                 </a>
@@ -66,20 +58,21 @@
                     </div>
                 </li>
 
-                <li class="nav-item">
+                <!-- Product -->
+                <li class="nav-item {{ str_starts_with($currentUrl, url('/admin/product')) ? 'active' : '' }}">
                     <a data-bs-toggle="collapse" href="#product">
                         <i class="fas fa-layer-group"></i>
                         <p>Sản phẩm</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="ms-4 collapse" id="product">
+                    <div class="ms-4 collapse {{ str_starts_with($currentUrl, url('/admin/product')) ? 'show' : '' }}" id="product">
                         <ul class="nav nav-collapse">
-                            <li>
+                            <li class="{{ $currentUrl == url('/admin/product/index') ? 'active' : '' }}">
                                 <a href="/admin/product/index">
                                     <span>Danh sách sản phẩm</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="{{ $currentUrl == url('/admin/product/add') ? 'active' : '' }}">
                                 <a href="/admin/product/add">
                                     <span>Thêm sản phẩm</span>
                                 </a>
@@ -88,21 +81,22 @@
                     </div>
                 </li>
 
-                <li class="nav-item">
+                <!-- Order -->
+                <li class="nav-item {{ str_starts_with($currentUrl, url('/admin/order')) ? 'active' : '' }}">
                     <a data-bs-toggle="collapse" href="#order">
                         <i class="fas fa-layer-group"></i>
                         <p>Đơn hàng</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="ms-4 collapse" id="order">
+                    <div class="ms-4 collapse {{ str_starts_with($currentUrl, url('/admin/order')) ? 'show' : '' }}" id="order">
                         <ul class="nav nav-collapse">
-                            <li>
-                                <a href="/admin/product/index">
+                            <li class="{{ $currentUrl == url('/admin/order/index') ? 'active' : '' }}">
+                                <a href="/admin/order/index">
                                     <span>Danh sách đơn hàng</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="/admin/product/add">
+                            <li class="{{ $currentUrl == url('/admin/order/add') ? 'active' : '' }}">
+                                <a href="/admin/order/add">
                                     <span>Thêm đơn hàng</span>
                                 </a>
                             </li>
@@ -110,31 +104,32 @@
                     </div>
                 </li>
 
-                <li class="nav-item">
+                <!-- Website -->
+                <li class="nav-item {{ str_starts_with($currentUrl, url('/admin/website')) ? 'active' : '' }}">
                     <a data-bs-toggle="collapse" href="#website">
                         <i class="fas fa-layer-group"></i>
                         <p>Website</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="ms-4 collapse" id="website">
+                    <div class="ms-4 collapse {{ str_starts_with($currentUrl, url('/admin/website')) ? 'show' : '' }}" id="website">
                         <ul class="nav nav-collapse">
-                            <li>
+                            <li class="{{ $currentUrl == url('/admin/website/banners/index') ? 'active' : '' }}">
                                 <a href="/admin/website/banners/index">
                                     <span>Banner</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="/admin/product/add">
+                            <li class="{{ $currentUrl == url('/admin/website/menu') ? 'active' : '' }}">
+                                <a href="/admin/website/menu">
                                     <span>Menu</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="/admin/product/add">
+                            <li class="{{ $currentUrl == url('/admin/website/promotion') ? 'active' : '' }}">
+                                <a href="/admin/website/promotion">
                                     <span>Promotion</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="/admin/product/add">
+                            <li class="{{ $currentUrl == url('/admin/website/setting') ? 'active' : '' }}">
+                                <a href="/admin/website/setting">
                                     <span>Cài đặt</span>
                                 </a>
                             </li>
@@ -142,22 +137,22 @@
                     </div>
                 </li>
 
-                <li class="nav-item">
+                <!-- Setting -->
+                <li class="nav-item {{ str_starts_with($currentUrl, url('/admin/setting')) ? 'active' : '' }}">
                     <a data-bs-toggle="collapse" href="#setting">
                         <i class="fas fa-layer-group"></i>
                         <p>Cài đặt</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="ms-4 collapse" id="setting">
+                    <div class="ms-4 collapse {{ str_starts_with($currentUrl, url('/admin/setting')) ? 'show' : '' }}" id="setting">
                         <ul class="nav nav-collapse">
-                            <li>
+                            <li class="{{ $currentUrl == url('/admin/user/index') ? 'active' : '' }}">
                                 <a href="/admin/user/index">
                                     <span>Quản lý người dùng</span>
                                 </a>
                             </li>
-
-                            <li>
-                                <a href="/admin/product/index">
+                            <li class="{{ $currentUrl == url('/admin/setting/general') ? 'active' : '' }}">
+                                <a href="/admin/setting/general">
                                     <span>Cài đặt chung</span>
                                 </a>
                             </li>

@@ -13,7 +13,7 @@ class SearchController extends Controller
 
         $suggestions = ProductModel::where('name', 'LIKE', "%{$query}%")
             ->take(10)
-            ->get(['id', 'name', 'slug']);
+            ->get();
 
         return response()->json($suggestions);
     }

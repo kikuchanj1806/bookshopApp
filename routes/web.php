@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductCategoryController;
 use App\Http\Controllers\Admin\WebsiteController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -62,16 +63,6 @@ Route::prefix('admin')->group(function () {
                 Route::get('/{product}/thumbnails', [ProductController::class, 'getProductThumbnails'])->name('admin.product.thumb');
             });
 
-            // Orders
-            Route::prefix('order')->group(function () {
-                Route::get('/index', [OrderController::class, 'index'])->name('admin.order.index');
-                Route::get('/add', [OrderController::class, 'create'])->name('admin.order.add');
-                Route::post('/store', [OrderController::class, 'store'])->name('admin.order.store');
-                Route::get('/edit/{order}', [OrderController::class, 'edit'])->name('admin.order.edit');
-                Route::post('/edit/{order}', [OrderController::class, 'update'])->name('admin.order.update');
-                Route::delete('/destroy', [OrderController::class, 'destroy'])->name('admin.order.destroy');
-            });
-
             // User
             Route::prefix('user')->group(function () {
                 Route::get('/index', [UserController::class, 'index'])->name('admin.user.index');
@@ -94,15 +85,16 @@ Route::prefix('admin')->group(function () {
                 });
             });
         });
-
         // Routes dành cho cả admin và cộng tác viên
         Route::middleware(['role:admin,ctv'])->group(function () {
-            Route::get('/order/index', [OrderController::class, 'orderindex'])->name('admin.order.index');
-            Route::get('/order/add', [OrderController::class, 'create'])->name('admin.order.add');
-            Route::post('/order/store', [OrderController::class, 'store'])->name('admin.order.store');
-            Route::get('/order/edit/{order}', [OrderController::class, 'edit'])->name('admin.order.edit');
-            Route::post('/order/edit/{order}', [OrderController::class, 'update'])->name('admin.order.update');
-            Route::delete('/order/destroy', [OrderController::class, 'destroy'])->name('admin.order.destroy');
+            Route::prefix('order')->group(function () {
+                Route::get('/index', [OrderController::class, 'orderindex'])->name('admin.order.index');
+                Route::get('/add', [OrderController::class, 'create'])->name('admin.order.add');
+                Route::post('/store', [OrderController::class, 'store'])->name('admin.order.store');
+                Route::get('/edit/{order}', [OrderController::class, 'edit'])->name('admin.order.edit');
+                Route::post('/edit/{order}', [OrderController::class, 'update'])->name('admin.order.update');
+                Route::delete('/destroy', [OrderController::class, 'destroy'])->name('admin.order.destroy');
+            });
         });
     });
 });
@@ -120,3 +112,7 @@ Route::get('/carddone', [CardController::class, "carddoneAction"])->name('carddo
 Route::get('/{slug}', [CategoryController::class, 'showByCategory'])->name('category.products');
 
 Route::get('/search/suggestions', [SearchController::class, 'suggestions'])->name('search.suggestions');
+
+Route::get('/cities', [LocationController::class, 'getCities'])->name('locations.cities');
+Route::get('/districts/{city_id}', [LocationController::class, 'getDistricts'])->name('locations.districts');
+Route::get('/wards/{district_id}', [LocationController::class, 'getWards'])->name('locations.wards');

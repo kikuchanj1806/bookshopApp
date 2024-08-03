@@ -47,7 +47,7 @@
                     </div>
                     <div class="header-right-item cart-item">
                         <a href="#">
-        <span class="hri-icon">
+                            <span class="hri-icon">
             <i class="fa-light fa-cart-shopping"></i>
             <span class="cart-qty">0</span>
         </span>
