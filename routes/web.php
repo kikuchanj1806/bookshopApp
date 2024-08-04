@@ -13,7 +13,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\InterfaceController;
 use App\Http\Controllers\LocationController;
-use database\SearchController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -120,7 +120,7 @@ Route::get('/carddone', [CardController::class, "carddoneAction"])->name('carddo
 
 Route::get('/{slug}', [CategoryController::class, 'showByCategory'])->name('category.products');
 
-Route::get('/search/suggestions', [SearchController::class, 'suggestions'])->name('search.suggestions');
+Route::get('/search/suggestions', [SearchController::class, 'suggestions']);
 
 Route::get('/cities', [LocationController::class, 'getCities'])->name('locations.cities');
 Route::get('/districts/{city_id}', [LocationController::class, 'getDistricts'])->name('locations.districts');

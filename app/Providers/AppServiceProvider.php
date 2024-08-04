@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         // Register view composers
-//        $this->composeUnauthorizedSession();
+        $this->composeUnauthorizedSession();
         $this->composeMenuCategories();
         $this->composeHeaderAdmin();
         $this->composeCheckNavAdmin();

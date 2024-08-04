@@ -261,7 +261,6 @@ $(document).ready(function () {
 
     $('#district').change(function () {
         var districtId = $(this).val();
-        console.log('districtId', districtId)
         if (districtId) {
             $.ajax({
                 url: '/wards/' + districtId,

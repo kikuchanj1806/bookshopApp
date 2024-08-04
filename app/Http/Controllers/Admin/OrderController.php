@@ -71,10 +71,12 @@ class OrderController extends Controller
     public function edit($id)
     {
         $order = $this->orderService->find($id);
+        $cities = City::all();
+        $orderList = $this->orderService->getOrderProducts($order);
         if($order->is_locked) {
             return redirect()->route('admin.order.index')->with('error', 'Order is locked.');
         }
-        return view('admin.order.edit', compact('order'));
+        return view('admin.order.edit', compact('order', 'cities', 'orderList'));
     }
 
     public function update(Request $request, OrderModel $order)
@@ -101,7 +103,6 @@ class OrderController extends Controller
     public function destroy(Request $request): JsonResponse
     {
         $result = $this->orderService->deleteOrderById($request);
-//        dd($result);
         return response()->json($result);
     }
 
