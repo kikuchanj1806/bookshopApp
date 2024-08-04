@@ -1,21 +1,20 @@
 <?php
 
 use App\Http\Controllers\Admin\Auth\LoginController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductCategoryController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\UploadController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\WebsiteController;
-use App\Http\Controllers\LocationController;
-use App\Http\Controllers\SearchController;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\InterfaceController;
+use App\Http\Controllers\CardController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DetailController;
-use App\Http\Controllers\CardController;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\UploadController;
-use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\InterfaceController;
+use App\Http\Controllers\LocationController;
+use database\SearchController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +62,15 @@ Route::prefix('admin')->group(function () {
                 Route::get('/{product}/thumbnails', [ProductController::class, 'getProductThumbnails'])->name('admin.product.thumb');
             });
 
+            // Order
+
+            Route::prefix('order')->group(function () {
+                Route::post('/addBillOfLading', [OrderController::class, 'addBillOfLading'])->name('admin.order.addBillOfLading');
+
+                Route::get('/lock/{id}', [OrderController::class, 'lockOrder']);
+                Route::get('/unlock/{id}', [OrderController::class, 'unlockOrder']);
+            });
+
             // User
             Route::prefix('user')->group(function () {
                 Route::get('/index', [UserController::class, 'index'])->name('admin.user.index');
@@ -94,6 +102,7 @@ Route::prefix('admin')->group(function () {
                 Route::get('/edit/{order}', [OrderController::class, 'edit'])->name('admin.order.edit');
                 Route::post('/edit/{order}', [OrderController::class, 'update'])->name('admin.order.update');
                 Route::delete('/destroy', [OrderController::class, 'destroy'])->name('admin.order.destroy');
+
             });
         });
     });

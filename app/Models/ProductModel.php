@@ -26,6 +26,10 @@ class ProductModel extends Model
     {
         return $this->hasMany(self::class, 'categoryId', 'categoryId')->where('id', '!=', $this->id);
     }
+    public function order()
+    {
+        return $this->belongsTo(OrderModel::class);
+    }
 
     public function tags()
     {

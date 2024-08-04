@@ -254,6 +254,12 @@
     font-size: 14px;
     color: white;
 }
+
+.text-muted {
+    color: #6c757d; /* Màu sắc cho văn bản bị vô hiệu hóa */
+    pointer-events: none; /* Ngăn chặn tương tác */
+    cursor: not-allowed; /* Con trỏ chuột để thể hiện không thể nhấp */
+}
 /*end style custom*/
 
 /*customer style product*/

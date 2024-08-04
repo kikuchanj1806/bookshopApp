@@ -20,6 +20,7 @@ class OrderModel extends Model
         'products',
         'is_locked',
         'created_by',
+        'billOfLading'
     ];
 
     protected $casts = [
@@ -28,6 +29,16 @@ class OrderModel extends Model
     ];
 
     public function creator()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function products()
+    {
+        return $this->hasMany(ProductModel::class);
+    }
+
+    public function user()
     {
         return $this->belongsTo(User::class, 'created_by');
     }

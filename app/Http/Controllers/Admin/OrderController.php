@@ -6,8 +6,11 @@ use App\Http\Services\OrderService;
 use App\Models\City;
 use App\Models\OrderModel;
 use App\Models\ProductModel;
+use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
@@ -19,10 +22,27 @@ class OrderController extends Controller
     {
         $this->orderService = $orderService;
     }
-    public function orderindex()
+    public function orderindex(Request $request)
     {
-        $orders = $this->orderService->getOrderIndex();
-        return view('admin.order.orderindex', compact('orders'));
+        $user = Auth::user();
+        $isAdmin = $user->role == 'admin';
+        // Lấy các bộ lọc từ request
+        $filters = [
+            'fromDate' => $request->input('fromDate'),
+            'toDate' => $request->input('toDate'),
+            'createdBy' => $request->input('createdBy'),
+            'customerPhone' => $request->input('customerPhone'),
+        ];
+
+        $orders = $this->orderService->getOrdersByUser($user, $filters);
+
+        foreach ($orders as $order) {
+            $order->productDetails = $this->orderService->getOrderProducts($order);
+        }
+
+        $users = User::all(); // Lấy danh sách tất cả người dùng để hiển thị trong dropdown bộ lọc
+
+        return view('admin.order.orderindex', compact('orders', 'users', 'filters', 'isAdmin'));
     }
 
     public function create()
@@ -48,9 +68,13 @@ class OrderController extends Controller
         return redirect()->route('admin.order.index')->with('success', 'Order created successfully.');
     }
 
-    public function edit(OrderModel $order)
+    public function edit($id)
     {
-        return view('orders.edit', compact('order'));
+        $order = $this->orderService->find($id);
+        if($order->is_locked) {
+            return redirect()->route('admin.order.index')->with('error', 'Order is locked.');
+        }
+        return view('admin.order.edit', compact('order'));
     }
 
     public function update(Request $request, OrderModel $order)
@@ -74,21 +98,51 @@ class OrderController extends Controller
         return redirect()->route('orders.index')->with('success', 'Order updated successfully.');
     }
 
-    public function destroy(OrderModel $order)
+    public function destroy(Request $request): JsonResponse
     {
-        try {
-            $this->orderService->deleteOrder($order);
-        } catch (\Exception $e) {
-            return redirect()->route('orders.index')->with('error', $e->getMessage());
-        }
-
-        return redirect()->route('orders.index')->with('success', 'Order deleted successfully.');
+        $result = $this->orderService->deleteOrderById($request);
+//        dd($result);
+        return response()->json($result);
     }
 
-    public function lock(OrderModel $order)
+    public function lockOrder($id)
     {
-        $this->orderService->lockOrder($order);
+        $order = OrderModel::find($id);
+        if (!$order) {
+            return response()->json(['message' => 'Đơn hàng không tồn tại.'], 404);
+        }
 
-        return redirect()->route('orders.index')->with('success', 'Order locked successfully.');
+        $order->is_locked = true;
+        $order->save();
+
+        return response()->json(['message' => 'Đơn hàng đã được khóa.']);
+    }
+
+    public function unlockOrder($id)
+    {
+        $order = OrderModel::find($id);
+        if (!$order) {
+            return response()->json(['message' => 'Đơn hàng không tồn tại.'], 404);
+        }
+
+        $order->is_locked = false;
+        $order->save();
+
+        return response()->json(['message' => 'Đơn hàng đã được mở khóa.']);
+    }
+
+    public function addBillOfLading(Request $request)
+    {
+        $request->validate([
+            'order_id' => 'required|integer|exists:order_models,id',
+            'billOfLading' => 'required|string|max:255',
+        ]);
+
+        try {
+            $this->orderService->addBillOfLading($request->order_id, $request->billOfLading);
+            return response()->json(['success' => true]);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'error' => $e->getMessage()]);
+        }
     }
 }

@@ -16,13 +16,18 @@ $(document).ready(function () {
                 url: url,
                 success: function (result) {
                     $('#confirmDeleteModal').modal('hide');
-                    if (result.error === false) {
+                    if (result.error === true) {
                         toastr.success(successMessage, 'Thành công');
                         setTimeout(function () {
                             location.reload();
                         }, 2000);
                     } else {
-                        toastr.error(errorMessage || 'Xóa lỗi, vui lòng thử lại', 'Lỗi');
+                        const err = result.message;
+                        if(err) {
+                            toastr.error(err);
+                        } else {
+                            toastr.error(errorMessage || 'Xóa lỗi, vui lòng thử lại', 'Lỗi');
+                        }
                     }
                 },
                 error: function () {
@@ -101,6 +106,11 @@ $(document).ready(function () {
     $('.removeUser').on('click', function () {
         var id = $(this).data('id');
         deleteItem('/admin/user/destroy', id, 'Xóa sản người dùng thành công', 'Xóa người dùng lỗi, vui lòng thử lại');
+    });
+
+    $('.removeOrder').on('click', function () {
+        var id = $(this).data('id');
+        deleteItem('/admin/order/destroy', id, 'Xóa sản đơn hàng thành công', 'Xóa đơn hàng lỗi, vui lòng thử lại');
     });
 });
 
@@ -376,4 +386,65 @@ $(document).ready(function () {
         return integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
     }
 
+});
+
+$(document).ready(function () {
+    // Khi click vào mục "Thêm mã vận đơn"
+    $('a[data-bs-target="#addBillOfLadingModal"]').on('click', function () {
+        var orderId = $(this).data('order-id');
+        $('#saveBillOfLadingBtn').data('order-id', orderId);
+    });
+
+    // Khi click vào nút "Lưu"
+    $('#saveBillOfLadingBtn').on('click', function () {
+        var orderId = $(this).data('order-id');
+        var billOfLading = $('#billOfLading').val();
+
+        $.ajax({
+            url: 'addBillOfLading',
+            method: 'POST',
+            data: {
+                order_id: orderId,
+                billOfLading: billOfLading
+            },
+            success: function (response) {
+                if (response.success) {
+                    // Đóng modal và thông báo thành công
+                    $('#addBillOfLadingModal').modal('hide');
+                    alert('Mã vận đơn đã được thêm thành công.');
+                    location.reload(); // Tải lại trang để cập nhật dữ liệu
+                } else {
+                    // Xử lý lỗi
+                    alert('Có lỗi xảy ra: ' + response.error);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('Lỗi:', error);
+                alert('Có lỗi xảy ra.');
+            }
+        });
+    });
+
+    $('.toggle-lock').click(function(e) {
+        e.preventDefault(); // Ngăn chặn hành động mặc định của liên kết
+
+        var orderId = $(this).data('order-id');
+        var action = $(this).data('action'); // 'lock' hoặc 'unlock'
+
+        var url = action === 'lock' ? 'lock/' + orderId : 'unlock/' + orderId;
+
+        $.ajax({
+            url: url,
+            type: 'GET', // Sử dụng phương thức GET hoặc POST tùy thuộc vào cách xử lý route
+            success: function(response) {
+                // Xử lý thành công
+                alert('Đã ' + (action === 'lock' ? 'khóa' : 'mở khóa') + ' đơn hàng thành công.');
+                location.reload(); // Tải lại trang để cập nhật giao diện
+            },
+            error: function(xhr) {
+                // Xử lý lỗi
+                alert('Có lỗi xảy ra: ' + xhr.responseText);
+            }
+        });
+    });
 });

@@ -12,12 +12,17 @@
     <link href="{{ asset('assets/css/styleAdmin/theme/plugins.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/styleAdmin/fancybox/fancybox.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/styleAdmin/toast/toastr.min.css') }}" rel="stylesheet">
+    <!-- Thêm Bootstrap DatePicker CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet">
     <link href="{{ asset('assets/css/styleAdmin/style.css') }}" rel="stylesheet">
 
     <script src="{{ asset('assets/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/ckeditor/ckeditor.js') }}"></script>
     <script src="{{ asset('assets/js/toast/toastr.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <!-- Thêm Bootstrap DatePicker JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 
 </head>
 <body>
