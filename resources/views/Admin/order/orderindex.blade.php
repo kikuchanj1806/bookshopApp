@@ -57,10 +57,14 @@
         </div>
     </form>
     <div class="card">
-        <div class="card-header">
+        <div class="card-header d-flex justify-content-between">
             <div class="card-title">Danh sách đơn hàng</div>
+            <form id="export_form" action="{{ route('admin.order.export') }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-primary">Xuất Excel</button>
+            </form>
         </div>
-        <div class="card-body">
+        <div class="card-body p-0">
             <table class="table table-hover table-bordered">
                 <thead>
                 <tr>
@@ -89,9 +93,13 @@
                     @foreach($products as $index => $product)
                         <tr>
                             @if($index == 0)
-                                <td rowspan="{{ count($products) }}" class="text-center"><input type="checkbox"></td>
+                                <td rowspan="{{ count($products) }}" class="text-center">
+                                    <input type="checkbox" class="order-checkbox" value="{{ $order->id }}">
+                                </td>
                                 <td rowspan="{{ count($products) }}">
-                                    {{ $order->id }} <br>
+                                    <a href="{{ route('admin.order.detail', $order->id) }}"
+                                       alt="Chi tiết đơn hàng">{{ $order->id }}</a>
+                                    <br>
                                     {{ \Carbon\Carbon::parse($order->created_at)->format('H:i d/m') }} <br>
                                     <span data-toggle="tooltip"
                                           title="Nguời tạo đơn">
@@ -148,11 +156,13 @@
                                             @if($isAdmin)
                                                 <li>
                                                     @if($order->is_locked)
-                                                        <a href="#" class="dropdown-item btn toggle-lock" data-order-id="{{ $order->id }}" data-action="unlock">
+                                                        <a href="#" class="dropdown-item btn toggle-lock"
+                                                           data-order-id="{{ $order->id }}" data-action="unlock">
                                                             <i class="fas fa-lock me-2"></i> Mở khóa
                                                         </a>
                                                     @else
-                                                        <a href="#" class="dropdown-item btn toggle-lock" data-order-id="{{ $order->id }}" data-action="lock">
+                                                        <a href="#" class="dropdown-item btn toggle-lock"
+                                                           data-order-id="{{ $order->id }}" data-action="lock">
                                                             <i class="fas fa-lock me-2"></i> Khóa
                                                         </a>
                                                     @endif
@@ -241,5 +251,16 @@
                 todayHighlight: true
             });
         });
+
+        toastr.options = {
+            'progressBar': true,
+            'closeButton': true
+        }
+
+        @if (Session::has('error'))
+        toastr.error('{{ Session::get('error') }}');
+        @elseif (Session::has('success'))
+        toastr.success('{{ Session::get('success') }}');
+        @endif
     </script>
 @endsection

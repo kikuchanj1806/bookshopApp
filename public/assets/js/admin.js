@@ -236,7 +236,6 @@ $(document).ready(function () {
     }
 });
 
-
 $(document).ready(function () {
     $('#city').change(function () {
         var cityId = $(this).val();
@@ -312,9 +311,9 @@ $(document).ready(function () {
         var rowNumber = rowCount + 1;
 
         var row = '<tr>' +
-            '<td>' + rowNumber + '</td>' +
-            '<td>' + productName + '<input type="hidden" name="products[' + rowCount + '][id]" value="' + productId + '"></td>' +
-            '<td>' + productCode + '</td>' +
+            '<td class="text-center">' + rowNumber + '</td>' +
+            '<td class="text-center">' + productName + '<input type="hidden" name="products[' + rowCount + '][id]" value="' + productId + '"></td>' +
+            '<td class="text-center">' + productCode + '</td>' +
             '<td><input type="number" name="products[' + rowCount + '][quantity]" class="form-control product_quantity text-end" value="1" min="1"></td>' +
             '<td><input type="number" name="products[' + rowCount + '][price]" class="form-control product_price text-end" value="' + productPrice + '" readonly></td>' +
             '<td class="text-center"><button type="button" class="btn btn-danger btn-sm remove_product">Xóa</button></td>' +
@@ -445,5 +444,35 @@ $(document).ready(function () {
                 alert('Có lỗi xảy ra: ' + xhr.responseText);
             }
         });
+    });
+});
+
+$(document).ready(function() {
+    // Chọn tất cả checkbox
+    $('#check_all').on('click', function() {
+        $('.order-checkbox').prop('checked', this.checked);
+    });
+
+    // Xử lý submit form
+    $('#export_form').on('submit', function(e) {
+        // Xóa các input ẩn cũ
+        $('#export_form').find('input[name="orders[]"]').remove();
+
+        // Lấy các checkbox được chọn
+        var selectedCheckboxes = $('.order-checkbox:checked');
+        if (selectedCheckboxes.length === 0) {
+            alert('Vui lòng chọn ít nhất một đơn hàng để xuất.');
+            e.preventDefault(); // Ngăn chặn gửi form nếu không có checkbox nào được chọn
+        } else {
+            // Thêm các ID đơn hàng vào form
+            selectedCheckboxes.each(function() {
+                var hiddenInput = $('<input>', {
+                    type: 'hidden',
+                    name: 'orders[]',
+                    value: $(this).val()
+                });
+                $('#export_form').append(hiddenInput);
+            });
+        }
     });
 });

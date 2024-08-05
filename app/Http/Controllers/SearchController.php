@@ -12,6 +12,7 @@ class SearchController extends Controller
         $query = $request->input('query');
 
         $suggestions = ProductModel::where('name', 'LIKE', "%{$query}%")
+            ->orWhere('code', 'LIKE', "%{$query}%")
             ->take(10)
             ->get();
 

@@ -1,19 +1,5 @@
 $(document).ready(function () {
-    // Search
-    // $('#inputSearch').click(function () {
-    //     $('.search-btn').addClass('active')
-    //     // $('.search-autocomplete').addClass('active')
-    // })
-    //
-    // $(document).on("click", function (event) {
-    //     if ($(event.target).closest("#inputSearch").length === 0) {
-    //         $('.search-btn').removeClass('active')
-    //         $('.search-autocomplete').removeClass('active')
-    //     }
-    // });
-
     // Search mobile
-
     $('.search-item').click(function () {
         $('.header-search-desktop').addClass('active')
     })
@@ -116,37 +102,47 @@ $(document).ready(function () {
 });
 
 $(document).ready(function() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     // Function to add product to cart
     function addToCart(product) {
-        // Get current cart from localStorage
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-        // Check if product already exists in cart
-        let existingProduct = cart.find(item => item.id === product.id);
-
-        if (existingProduct) {
-            // Increase quantity if product already exists
-            existingProduct.quantity += 1;
-        } else {
-            // Add new product to cart
-            product.quantity = 1;
-            cart.push(product);
-        }
-
-        // Save updated cart to localStorage
-        localStorage.setItem('cart', JSON.stringify(cart));
-
-        // Update cart UI
-        updateCartUI();
+        console.log(product);
+        // Send the cart data to the server
+        $.ajax({
+            url: '/add-to-cart',
+            method: 'POST',
+            data: {
+                product: product
+            },
+            success: function(response) {
+                // Handle success if needed
+                console.log(response.message);
+                alert('Sản phẩm đã được thêm vào giỏ hàng!');
+                updateCartUI();
+            },
+            error: function(xhr, status, error) {
+                // Handle error if needed
+                console.error(error);
+            }
+        });
     }
 
     // Function to update cart UI
     function updateCartUI() {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        let cartCount = cart.reduce((count, product) => count + product.quantity, 0);
-
-        // Update both cart quantity spans
-        $('.cart-qty').text(cartCount);
+        $.ajax({
+            url: '/cartcount',
+            method: 'GET',
+            success: function(response) {
+                // Update both cart quantity spans
+                $('.cart-qty').text(response.count);
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
+        });
     }
 
     // Event listener for "Add to Cart" button
@@ -155,11 +151,25 @@ $(document).ready(function() {
         let product = {
             id: detailBox.data('product-id'),
             name: detailBox.data('product-name'),
-            price: detailBox.data('product-price')
+            price: detailBox.data('product-price'),
+            quantity: 1
         };
 
         addToCart(product);
-        alert('Sản phẩm đã được thêm vào giỏ hàng!');
+    });
+
+    // Event listener for "Buy Now" button
+    $('.buynow').click(function() {
+        let detailBox = $(this).closest('.detail-box');
+        let product = {
+            id: detailBox.data('product-id'),
+            name: detailBox.data('product-name'),
+            price: detailBox.data('product-price'),
+            quantity: 1
+        };
+
+        addToCart(product);
+        window.location.href = '/card'; // Redirect to cart page
     });
 
     // Initialize cart UI

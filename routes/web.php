@@ -102,7 +102,9 @@ Route::prefix('admin')->group(function () {
                 Route::get('/edit/{order}', [OrderController::class, 'edit'])->name('admin.order.edit');
                 Route::post('/edit/{order}', [OrderController::class, 'update'])->name('admin.order.update');
                 Route::delete('/destroy', [OrderController::class, 'destroy'])->name('admin.order.destroy');
-
+                Route::get('/detail/{id}', [OrderController::class, 'detail'])->name('admin.order.detail');
+                // routes/web.php
+                Route::post('/export', [OrderController::class, 'exportSelected'])->name('admin.order.export');
             });
         });
     });
@@ -115,8 +117,10 @@ Route::get('/unauthorized', function () {
 Route::get('/', [InterfaceController::class, "index"])->name('interface.index');
 Route::get('/category', [CategoryController::class, "categoryIndex"])->name('category.index');
 Route::get('/prd/{slug}', [DetailController::class, "show"])->name('detail.index');
-Route::get('/card', [CardController::class, "cardAction"])->name('card.index');
-Route::get('/carddone', [CardController::class, "carddoneAction"])->name('carddone.index');
+Route::get('/card', [CardController::class, "cardAction"])->name('card');
+Route::get('/carddone', [CardController::class, "carddoneAction"])->name('carddone');
+Route::post('/add-to-cart', [CardController::class, 'addToCart'])->name('add.to.cart');
+Route::get('/cartcount', [CardController::class, 'cartCount'])->name('cart.count');
 
 Route::get('/{slug}', [CategoryController::class, 'showByCategory'])->name('category.products');
 
@@ -125,3 +129,4 @@ Route::get('/search/suggestions', [SearchController::class, 'suggestions']);
 Route::get('/cities', [LocationController::class, 'getCities'])->name('locations.cities');
 Route::get('/districts/{city_id}', [LocationController::class, 'getDistricts'])->name('locations.districts');
 Route::get('/wards/{district_id}', [LocationController::class, 'getWards'])->name('locations.wards');
+

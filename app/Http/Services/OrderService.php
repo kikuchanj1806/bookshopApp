@@ -2,6 +2,7 @@
 
 namespace App\Http\Services;
 
+use App\Http\FormFilter\Order\OrderRequestFilter;
 use App\Models\OrderModel;
 use App\Models\ProductModel;
 use Illuminate\Validation\ValidationException;
@@ -88,8 +89,12 @@ class OrderService extends AppService
             throw new \Exception('Order is locked and cannot be edited.');
         }
 
-        $order->update($data);
-        return $order;
+        try {
+            $order->update($data);
+            return true;
+        } catch (\Exception $exception) {
+            throw new \Exception('Failed to update order: ' . $exception->getMessage());
+        }
     }
 
     public function deleteOrderById(Request $request)

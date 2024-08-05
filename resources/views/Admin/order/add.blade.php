@@ -85,6 +85,16 @@
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
+
+                                <div class="form-group">
+                                    <label class="fw-bold" for="gift_code">Mã sách tặng <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="gift_code"
+                                           placeholder="Mã sách tặng">
+                                    @error('gift_code')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
 
@@ -95,10 +105,13 @@
                             <input type="text" id="product_search" class="form-control"
                                    placeholder="Nhập tên hoặc mã sản phẩm">
                             <div id="product_suggestions" class="list-group"></div>
+                            @error('products')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <!-- Bảng sản phẩm đã chọn -->
-                        <table class="table table-head-bg-primary mt-4" id="selected_products">
+                        <table class="table table-head-bg-primary table-bordered mt-4" id="selected_products">
                             <thead>
                             <tr>
                                 <th class="text-center">STT</th>
@@ -135,6 +148,35 @@
                             </tr>
                             </tfoot>
                         </table>
+
+                        <div class="form-group">
+                            <div class="col-lg-8">
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label">
+                    <span class="uniform-choice">
+                        <span class="checked">
+                            <input value="continue" type="radio" class="form-check-input-styled" name="afterSubmit"
+                                   checked="checked" data-fouc="">
+                        </span>
+                    </span>
+                                        Tiếp tục thêm
+                                    </label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label">
+                    <span class="uniform-choice">
+                        <span class="">
+                            <input value="showList" type="radio" class="form-check-input-styled" name="afterSubmit"
+                                   data-fouc="">
+                        </span>
+                    </span>
+                                        Hiện danh sách sản phẩm
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="card-action">
                         <button type="submit" class="btn btn-success">Lưu</button>

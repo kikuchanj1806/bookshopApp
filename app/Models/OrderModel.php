@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class OrderModel extends Model
 {
     use HasFactory;
+    protected $table = 'order_models';
 
     protected $fillable = [
         'customer_name',
@@ -20,7 +21,8 @@ class OrderModel extends Model
         'products',
         'is_locked',
         'created_by',
-        'billOfLading'
+        'billOfLading',
+        'gift_code'
     ];
 
     protected $casts = [

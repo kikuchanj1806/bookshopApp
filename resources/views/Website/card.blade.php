@@ -17,48 +17,51 @@
                                 <input type="hidden" name="_token" value="tZ7p2QqwPzX97l00wLjWGBTS6MWrmUO7gTFBpl9C"
                                        autocomplete="off">
                                 <div class="product-cart-list">
-                                    <div class="cart-product" data-id="32">
-                                        <div class="cp-left">
-                                            <div class="cp-img">
-                                                <img loading="lazy"
-                                                     src="https://toshiko.vn/storage/files/%E1%BA%A2nh%20s%E1%BA%A3n%20ph%E1%BA%A9m/may-chay-bo-mc-55-pro-15.jpg"
-                                                     alt="cart product image">
+                                    @forelse($cart as $product)
+                                        <div class="cart-product" data-id="{{ $product['id'] }}">
+                                            <div class="cp-left">
+                                                <div class="cp-img">
+                                                    <img loading="lazy"
+                                                         src="{{ $product['image'] ?? 'default-image.jpg' }}"
+                                                         alt="cart product image">
+                                                </div>
+                                                <p class="cp-delete" data-value="{{ $product['id'] }}"><i
+                                                        class="fa-regular fa-circle-xmark"></i> Xóa</p>
                                             </div>
-                                            <p class="cp-delete" data-value="32"><i
-                                                    class="fa-regular fa-circle-xmark"></i> Xóa</p>
-                                        </div>
-                                        <input type="hidden" id="option" name="option" value="[]">
-                                        <div class="cp-right">
-                                            <div class="cp-right-top">
-                                                <a href="#" class="cp-name">Máy chạy bộ Toshiko MC55 Pro</a>
-                                                <div class="cp-price">
-                                                    <span class="cp-present-price">12,999,000đ</span>
-                                                    <del class="cp-old-price">22,000,000đ</del>
+                                            <input type="hidden" name="option" value="[]">
+                                            <div class="cp-right">
+                                                <div class="cp-right-top">
+                                                    <a href="#" class="cp-name">{{ $product['name'] }}</a>
+                                                    <div class="cp-price">
+                                                        <span class="cp-present-price">{{ number_format($product['price'], 0, ',', '.') }}đ</span>
+                                                    </div>
+                                                </div>
+                                                <div class="cp-right-bottom">
+                                                    <div class="qty-input">
+                                                        <button data-value="{{ $product['id'] }}"
+                                                                class="qty-count qty-count--minus" data-action="minus"
+                                                                type="button">-
+                                                        </button>
+                                                        <input data-value="{{ $product['id'] }}" class="product-qty"
+                                                               type="number" name="product-qty" min="0" max="100"
+                                                               value="{{ $product['quantity'] }}">
+                                                        <button data-value="{{ $product['id'] }}"
+                                                                class="qty-count qty-count--add" data-action="add"
+                                                                type="button">+
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="cp-right-bottom">
-
-
-                                                <div class="qty-input">
-                                                    <button data-value="32" class="qty-count qty-count--minus"
-                                                            data-action="minus" type="button" data-flashsale="">-
-                                                    </button>
-                                                    <input data-value="32" class="product-qty" type="number"
-                                                           name="product-qty" min="0" max="100" data-qty="100 "
-                                                           value="1">
-                                                    <button data-value="32" class="qty-count qty-count--add"
-                                                            data-action="add" type="button" data-flashsale="">+
-                                                    </button>
-                                                </div>
-                                            </div>
                                         </div>
-                                    </div>
-                                    <input id="product-data" name="product" type="hidden"
-                                           value="[{&quot;id&quot;:32,&quot;quantity&quot;:&quot;1&quot;,&quot;flashsale&quot;:null,&quot;opts&quot;:&quot;[]&quot;}]">
+                                    @empty
+                                        <p>Giỏ hàng của bạn đang trống.</p>
+                                    @endforelse
 
                                     <div class="provisional-cart">
-                                        <span>Tạm tính (1 sản phẩm):</span>
-                                        <span class="provisional-price">12,999,000đ</span>
+                                        <span>Tạm tính ({{ count($cart) }} sản phẩm):</span>
+                                        <span class="provisional-price">{{ number_format(array_sum(array_map(function($product) {
+                return $product['price'] * $product['quantity'];
+            }, $cart)), 0, ',', '.') }}đ</span>
                                     </div>
                                 </div>
                                 <div class="customer-info">
@@ -249,7 +252,6 @@
                                                        placeholder="Số nhà, tên đường">
                                                 <input id="address" type="hidden" name="address" value="">
                                             </div>
-x`
 
                                             <input id="shippingId" type="hidden" name="shipping">
                                             <div class="payment checkout-option">
@@ -613,5 +615,6 @@ x`
             </div>
         </div>
     </section>
-
+    <script>
+    </script>
 @endsection
