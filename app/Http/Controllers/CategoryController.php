@@ -14,7 +14,7 @@ class CategoryController extends Controller
         $page = $request->input('page', 1); // Lấy số trang từ yêu cầu hoặc mặc định là trang 1
         $products = ProductCategoryHelper::getPaginatedProducts($page, 20); // 20 sản phẩm mỗi trang
 
-        return view('Website.category', compact('products'));
+        return view('website.category', compact('products'));
     }
 
     /**
@@ -38,7 +38,7 @@ class CategoryController extends Controller
 
         $tags = Tag::all();
 
-        return view('Website.category', compact('products', 'category', 'tags', 'tagIds'));
+        return view('website.category', compact('products', 'category', 'tags', 'tagIds'));
     }
 
 }

@@ -107,10 +107,9 @@ $(document).ready(function() {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+
     // Function to add product to cart
     function addToCart(product) {
-        console.log(product);
-        // Send the cart data to the server
         $.ajax({
             url: '/add-to-cart',
             method: 'POST',
@@ -118,13 +117,11 @@ $(document).ready(function() {
                 product: product
             },
             success: function(response) {
-                // Handle success if needed
                 console.log(response.message);
                 alert('Sản phẩm đã được thêm vào giỏ hàng!');
                 updateCartUI();
             },
             error: function(xhr, status, error) {
-                // Handle error if needed
                 console.error(error);
             }
         });
@@ -133,16 +130,30 @@ $(document).ready(function() {
     // Function to update cart UI
     function updateCartUI() {
         $.ajax({
-            url: '/cartcount',
+            url: '/cart/count',
             method: 'GET',
             success: function(response) {
-                // Update both cart quantity spans
                 $('.cart-qty').text(response.count);
             },
             error: function(xhr, status, error) {
                 console.error(error);
             }
         });
+    }
+
+    // Function to update cart with new data
+    function updateCart(cart) {
+        // Assuming you want to update cart UI or some specific elements with new cart data
+        // This could be an implementation to update cart items on the page
+        console.log('Cart updated:', cart);
+        // Implement UI update logic here
+    }
+
+    // Function to update cart header with new summary
+    function updateCartHeader(cartSummary) {
+        // Update the header with the cart summary information
+        $('.cart-total .finalPrice').text(cartSummary.totalPrice);
+        $('.cart-qty').text(cartSummary.totalItems);
     }
 
     // Event listener for "Add to Cart" button
@@ -170,6 +181,54 @@ $(document).ready(function() {
 
         addToCart(product);
         window.location.href = '/card'; // Redirect to cart page
+    });
+
+    // Event listener for removing product from cart
+    $('.cp-delete').on('click', function() {
+        var productId = $(this).data('id');
+        $.ajax({
+            url: '/cart/remove',
+            type: 'POST',
+            data: {
+                _token: $('meta[name="csrf-token"]').attr('content'),
+                productId: productId
+            },
+            success: function(response) {
+                updateCart(response.cart);
+                updateCartHeader(response.cartSummary);
+            },
+            error: function(xhr) {
+                console.log('Lỗi:', xhr.responseText);
+            }
+        });
+    });
+
+    // Event listener for updating product quantity
+    $('.qty-count').on('click', function() {
+        var productId = $(this).data('value');
+        var action = $(this).data('action');
+        var quantityInput = $('input[data-value="' + productId + '"]');
+        var currentQuantity = parseInt(quantityInput.val());
+        var newQuantity = action === 'add' ? currentQuantity + 1 : currentQuantity - 1;
+
+        if (newQuantity >= 0) {
+            $.ajax({
+                url: '/cart/update',
+                type: 'POST',
+                data: {
+                    _token: $('meta[name="csrf-token"]').attr('content'),
+                    productId: productId,
+                    quantity: newQuantity
+                },
+                success: function(response) {
+                    updateCart(response.cart);
+                    updateCartHeader(response.cartSummary);
+                },
+                error: function(xhr) {
+                    console.log('Lỗi:', xhr.responseText);
+                }
+            });
+        }
     });
 
     // Initialize cart UI

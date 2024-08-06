@@ -21,9 +21,9 @@ class DetailController extends Controller
             $relatedProducts = DetailHelper::getRelatedProducts($product);
 
             $category = $product->category;
-            return view('Website.detail', compact('product', 'relatedProducts', 'category'));
+            return view('website.detail', compact('product', 'relatedProducts', 'category'));
         } catch (\Exception $e) {
-            return redirect()->route('Website.index')->with('error', $e->getMessage());
+            return redirect()->route('website.index')->with('error', $e->getMessage());
         }
     }
 }

@@ -23,7 +23,7 @@ class InterfaceController extends Controller
 
         $bannerHomePage = IndexHelper::getBannersByPosition(1);
 
-        return view('Website.index',
+        return view('website.index',
             compact(
                 'menuCategories',
                 'hotProducts',

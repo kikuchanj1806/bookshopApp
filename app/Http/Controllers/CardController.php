@@ -10,12 +10,12 @@ class CardController extends Controller
     public function cardAction()
     {
         $cart = Session::get('cart', []);
-        return view('Website.card', compact('cart'));
+        return view('website.card', compact('cart'));
     }
 
     public function carddoneAction()
     {
-        return view('Website.carddone');
+        return view('website.carddone');
     }
 
     public function addToCart(Request $request)
@@ -42,5 +42,56 @@ class CardController extends Controller
         $count = array_sum(array_column($cart, 'quantity'));
 
         return response()->json(['count' => $count]);
+    }
+
+    public function removeFromCart(Request $request)
+    {
+        $productId = $request->input('productId');
+        $cart = Session::get('cart', []);
+        $cart = array_filter($cart, function ($item) use ($productId) {
+            return $item['id'] != $productId;
+        });
+
+        Session::put('cart', $cart);
+
+        $cartSummary = $this->getCartSummary($cart);
+        return response()->json([
+            'cart' => $cart,
+            'cartSummary' => $cartSummary
+        ]);
+    }
+
+    public function updateCart(Request $request)
+    {
+        $productId = $request->input('productId');
+        $quantity = $request->input('quantity');
+        $cart = Session::get('cart', []);
+        foreach ($cart as &$item) {
+            if ($item['id'] == $productId) {
+                $item['quantity'] = $quantity;
+                break;
+            }
+        }
+
+        Session::put('cart', $cart);
+
+        $cartSummary = $this->getCartSummary($cart);
+        return response()->json([
+            'cart' => $cart,
+            'cartSummary' => $cartSummary
+        ]);
+    }
+
+    private function getCartSummary($cart)
+    {
+        $totalItems = count($cart);
+        $totalPrice = array_sum(array_map(function ($product) {
+            return $product['price'] * $product['quantity'];
+        }, $cart));
+
+        return [
+            'totalItems' => $totalItems,
+            'totalPrice' => number_format($totalPrice, 0, ',', '.') . 'đ'
+        ];
     }
 }

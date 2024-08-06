@@ -1,13 +1,13 @@
 <?php
 
-use App\Http\Controllers\Admin\Auth\LoginController;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\OrderController;
-use App\Http\Controllers\Admin\ProductCategoryController;
-use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\UploadController;
-use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\WebsiteController;
+use App\Http\Controllers\admin\Auth\LoginController;
+use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\OrderController;
+use App\Http\Controllers\admin\ProductCategoryController;
+use App\Http\Controllers\admin\ProductController;
+use App\Http\Controllers\admin\UploadController;
+use App\Http\Controllers\admin\UserController;
+use App\Http\Controllers\admin\WebsiteController;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DetailController;
@@ -28,7 +28,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-// Admin
+// admin
 Route::prefix('admin')->group(function () {
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [LoginController::class, 'login'])->name('admin.login.post');
@@ -81,7 +81,7 @@ Route::prefix('admin')->group(function () {
                 Route::delete('/destroy', [UserController::class, 'destroyUser']);
             });
 
-            // Website
+            // website
             Route::prefix('website')->group(function () {
                 Route::prefix('banners')->group(function () {
                     Route::get('/index', [WebsiteController::class, 'bannerIndex'])->name('admin.banners.index');
@@ -113,14 +113,15 @@ Route::get('/unauthorized', function () {
     return view('admin.errors.unauthorized');
 })->name('unauthorized');
 
-// Website
+// website
 Route::get('/', [InterfaceController::class, "index"])->name('interface.index');
 Route::get('/category', [CategoryController::class, "categoryIndex"])->name('category.index');
 Route::get('/prd/{slug}', [DetailController::class, "show"])->name('detail.index');
 Route::get('/card', [CardController::class, "cardAction"])->name('card');
-Route::get('/carddone', [CardController::class, "carddoneAction"])->name('carddone');
-Route::post('/add-to-cart', [CardController::class, 'addToCart'])->name('add.to.cart');
-Route::get('/cartcount', [CardController::class, 'cartCount'])->name('cart.count');
+Route::post('/add-to-cart', [CardController::class, 'addToCart']);
+Route::get('/cart/count', [CardController::class, 'cartCount']);
+Route::post('/cart/remove', [CardController::class, 'removeFromCart']);
+Route::post('/cart/update', [CardController::class, 'updateCart']);
 
 Route::get('/{slug}', [CategoryController::class, 'showByCategory'])->name('category.products');
 
