@@ -15,7 +15,7 @@
     <link href="{{ asset('assets/css/Awesome_Pro_6.0.0.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/slick/slick.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/slick/slick-theme.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/index.css') }}" rel="stylesheet">
+    <link href="/public/assets/css/index.css" rel="stylesheet">
     <link href="{{ asset('assets/css/category.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/footer.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/detail.css') }}" rel="stylesheet">
