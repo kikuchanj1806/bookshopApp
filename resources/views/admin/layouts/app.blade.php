@@ -311,9 +311,12 @@
                                             <a class="dropdown-item" href="#">My Balance</a>
                                             <a class="dropdown-item" href="#">Inbox</a>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Account Setting</a>
+                                            <a class="dropdown-item" href="/admin/user/index">Cài đặt tài khoản</a>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Logout</a>
+                                            <a class="dropdown-item" href="#" id="logout-button">Đăng xuất</a>
+                                            <form id="logout-form" action="{{ route('admin.logout') }}" method="POST">
+                                                @csrf
+                                            </form>
                                         </li>
                                     </div>
                                 </ul>

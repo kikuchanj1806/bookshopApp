@@ -475,4 +475,9 @@ $(document).ready(function() {
             });
         }
     });
+
+    $('#logout-button').click(function(event) {
+        event.preventDefault();
+        $('#logout-form').submit();
+    });
 });
