@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\ProductCategoryController;
 use App\Http\Controllers\admin\ProductController;
+use App\Http\Controllers\admin\TagController;
 use App\Http\Controllers\admin\UploadController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\WebsiteController;
@@ -66,9 +67,18 @@ Route::prefix('admin')->group(function () {
 
             Route::prefix('order')->group(function () {
                 Route::post('/addBillOfLading', [OrderController::class, 'addBillOfLading'])->name('admin.order.addBillOfLading');
-
                 Route::get('/lock/{id}', [OrderController::class, 'lockOrder']);
                 Route::get('/unlock/{id}', [OrderController::class, 'unlockOrder']);
+            });
+
+            // Tags
+            Route::prefix('tags')->group(function () {
+                Route::get('/index', [TagController::class, 'index'])->name('admin.tags.index');
+                Route::get('/create', [TagController::class, 'create'])->name('admin.tags.create');
+                Route::post('/store', [TagController::class, 'store'])->name('admin.tags.store');
+                Route::get('/edit/{id}', [TagController::class, 'edit'])->name('admin.tags.edit');
+                Route::put('/update/{id}', [TagController::class, 'update'])->name('admin.tags.update');
+                Route::delete('/destroy/{id}', [TagController::class, 'destroy'])->name('admin.tags.destroy');
             });
 
             // User

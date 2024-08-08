@@ -18,7 +18,7 @@
                 @csrf
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">Thêm sản phẩm</div>
+                        <div class="card-title">Sửa sản phẩm</div>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -102,10 +102,12 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="tags">Tags</label>
+                                    <label class="fw-bold" for="tags">Tags</label>
                                     <select name="tags[]" id="tags" class="form-select form-control-lg" multiple>
                                         @foreach($tags as $tag)
-                                            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                            <option value="{{ $tag->id }}" {{ in_array($tag->id, $productTags) ? 'selected' : '' }}>
+                                                {{ $tag->name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>

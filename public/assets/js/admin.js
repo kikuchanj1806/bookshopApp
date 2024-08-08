@@ -445,6 +445,15 @@ $(document).ready(function () {
             }
         });
     });
+
+    $('.edit-tag-btn').on('click', function() {
+        var id = $(this).data('id');
+        var name = $(this).data('name');
+
+        $('#editTagId').val(id);
+        $('#editTagName').val(name);
+        $('#editTagForm').attr('action', '{{ route("admin.tags.update", ":id") }}'.replace(':id', id));
+    });
 });
 
 $(document).ready(function() {

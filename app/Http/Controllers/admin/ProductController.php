@@ -56,10 +56,12 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = $this->productService->find($id);
+        $productTags = $product->tags->pluck('id')->toArray();
         return view('admin.product.editproduct', [
             'product' => $product,
             'categories' => $this->categoryService->getParent(),
-            'tags' => $this->productService->getAllTags()
+            'tags' => $this->productService->getAllTags(),
+            'productTags' => $productTags
         ]);
     }
 

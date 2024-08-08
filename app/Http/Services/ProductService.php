@@ -31,7 +31,8 @@ class ProductService extends AppService
         $data['slug'] = AppFormat::slugifyText($data['name']);
 
         try {
-            ProductModel::create($data);
+            $product = ProductModel::create($data);
+            $product->tags()->sync($request->input('tags', []));
             Session::flash('success', 'Tạo sản phẩm thành công');
             return true;
         } catch (\Exception $err) {
@@ -61,6 +62,7 @@ class ProductService extends AppService
         try {
             $product = ProductModel::findOrFail($id);
             $product->update($data);
+            $product->tags()->sync($request->input('tags', []));
             Session::flash('success', 'Cập nhật sản phẩm thành công');
             return true;
         } catch (\Exception $err) {

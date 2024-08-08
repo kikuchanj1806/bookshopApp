@@ -151,6 +151,11 @@
                                     <span>Quản lý người dùng</span>
                                 </a>
                             </li>
+                            <li class="{{ $currentUrl == url('/admin/tags/index') ? 'active' : '' }}">
+                                <a href="/admin/tags/index">
+                                    <span>Danh sách Tags</span>
+                                </a>
+                            </li>
                             <li class="{{ $currentUrl == url('/admin/setting/general') ? 'active' : '' }}">
                                 <a href="/admin/setting/general">
                                     <span>Cài đặt chung</span>

@@ -1,6 +1,6 @@
 <header id="header">
     <div class="header-top">
-        <div class="header-top-inner">
+        <div class="header-top-inner" style="display: none">
             <img src="https://hoang-phuc.com/media/wysiwyg/240319_Voucher-Extra_Homepage_Top-Banner_Desktop.gif"
                  alt="headerTop image">
         </div>

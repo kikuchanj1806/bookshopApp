@@ -383,7 +383,7 @@
 
     <section id="hp-partner">
         <div class="container">
-            <h1 class="hp-heading">Đối tác của Toshiko</h1>
+            <h1 class="hp-heading">Đối tác của DDA Book</h1>
             <div class="hp-partner-inner">
                 <div class="hp-partner-list">
                     <div class="hp-item">
