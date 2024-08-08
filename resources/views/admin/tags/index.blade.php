@@ -34,7 +34,7 @@
                         <td class="text-center">{{ $loop->iteration + ($tags->currentPage() - 1) * $tags->perPage() }}</td>
                         <td class="text-center">{{ $t->id }}</td>
                         <td>{{ $t->name }}</td>
-                        <td class="text-center">{{ $t->created_at->format('H:i d/m/Y') }}</td>
+                        <td class="text-center">{{ $t->created_at ? $t->created_at->format('d/m/Y H:i:s') : '' }}</td>
                         <td class="text-center">
                             <div class="btn-group dropdown">
                                 <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
