@@ -24,6 +24,11 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <!-- Thêm Bootstrap DatePicker JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <!-- Include CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <!-- Include JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 </head>
 <body>
@@ -287,7 +292,7 @@
                                 <ul class="dropdown-menu dropdown-user animated fadeIn">
                                     <div class="dropdown-user-scroll scrollbar-outer">
                                         <li>
-                                            <div class="user-box">
+                                            <div class="user-box align-items-center">
                                                 <div class="avatar-lg">
                                                     <img
 
@@ -296,23 +301,14 @@
                                                             class="avatar-img rounded-circle"
                                                     />
                                                 </div>
-                                                <div class="u-text">
-                                                    <h4>{{ $user->name }}</h4>
-                                                    <p class="text-muted">hello@example.com</p>
-                                                    <a
-                                                            href="javascript:void(0)"
-                                                            class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+                                                <div class="u-text fw-bold">
+                                                    <h3>{{ $user->name }}</h3>
                                                 </div>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">My Profile</a>
-                                            <a class="dropdown-item" href="#">My Balance</a>
-                                            <a class="dropdown-item" href="#">Inbox</a>
-                                            <div class="dropdown-divider"></div>
                                             <a class="dropdown-item" href="/admin/user/index">Cài đặt tài khoản</a>
-                                            <div class="dropdown-divider"></div>
                                             <a class="dropdown-item" href="#" id="logout-button">Đăng xuất</a>
                                             <form id="logout-form" action="{{ route('admin.logout') }}" method="POST">
                                                 @csrf
@@ -345,5 +341,14 @@
 <script src="{{ asset('assets/js/theme.min.js') }}"></script>
 <script src="{{ asset('assets/js/fancybox/fancybox.umd.js') }}"></script>
 <script src="{{ asset('assets/js/admin.js') }}"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#tags').select2({
+            placeholder: "Select tags", // Placeholder text
+            allowClear: true // Allow the user to clear the selection
+        });
+    });
+</script>
 </body>
 </html>

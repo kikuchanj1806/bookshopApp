@@ -75,28 +75,61 @@
         <div class="container">
             <div class="header-nav">
                 <ul class="megamenu">
-                    @foreach ($menuCategories as $category)
-                        <li class="has-dropdown">
-                            <a href="{{ route('category.products', $category->slug) }}">
-                                @if($category->icon)
-                                    <img src="{{ asset($category->icon) }}" alt="{{ $category->name }}"
-                                         style="width: 20px"/>
-                                @endif
-                                <span>{{ $category->name }}</span>
-                            </a>
-                            @if ($category->children->isNotEmpty())
-                                <div class="submenu">
-                                    <ul>
-                                        @foreach ($category->children as $child)
-                                            <li>
-                                                <a href="{{ route('category.products', $child->slug) }}">{{ $child->name }}</a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
-                        </li>
-                    @endforeach
+                    <li class="has-dropdown">
+                        <a href="#">
+                            <span>Danh mục</span>
+                        </a>
+                        <div class="submenu">
+                            <ul>
+                                <li class="has-dropdown">
+                                    <a href="javascript:void(0)">
+                                        <span>Sách bán chạy</span>
+                                    </a>
+                                </li>
+                                @foreach ($menuCategories as $category)
+                                    <li class="has-dropdown">
+                                        <a href="{{ route('category.products', $category->slug) }}">
+                                            @if($category->icon)
+                                                <img src="{{ asset($category->icon) }}" alt="{{ $category->name }}" style="width: 20px"/>
+                                            @endif
+                                            <span>{{ $category->name }}</span>
+                                        </a>
+                                        @if ($category->children->isNotEmpty())
+                                            <div class="submenu-child">
+                                                <ul>
+                                                    @foreach ($category->children as $child)
+                                                        <li class="has-dropdown">
+                                                            <a href="{{ route('category.products', $child->slug) }}">{{ $child->name }}</a>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="/">
+                            <span>Trang chủ</span>
+                        </a>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="javascript:void(0)">
+                            <span>Giới thiệu</span>
+                        </a>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="javascript:void(0)">
+                            <span>Chính sách</span>
+                        </a>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="javascript:void(0)">
+                            <span>Tuyển dụng CTV</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

@@ -58,7 +58,8 @@ class ProductController extends Controller
         $product = $this->productService->find($id);
         return view('admin.product.editproduct', [
             'product' => $product,
-            'categories' => $this->categoryService->getParent()
+            'categories' => $this->categoryService->getParent(),
+            'tags' => $this->productService->getAllTags()
         ]);
     }
 
