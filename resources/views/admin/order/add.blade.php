@@ -54,7 +54,7 @@
                             <div class="col-6">
                                 <!-- order_form.blade.php -->
                                 <div class="form-group">
-                                    <label for="city">Thành phố</label>
+                                    <label class="fw-bold" for="city">Thành phố</label>
                                     <select name="cityId" id="city" class="form-control">
                                         <option value="">Chọn thành phố</option>
                                         @foreach($cities as $city)
@@ -67,7 +67,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="district">Quận/Huyện</label>
+                                    <label class="fw-bold" for="district">Quận/Huyện</label>
                                     <select name="districtId" id="district"
                                             class="form-control" {{ old('city_id') ? '' : 'disabled' }}>
                                         <option value="">Chọn quận/huyện</option>
@@ -78,7 +78,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="ward">Xã/Phường</label>
+                                    <label class="fw-bold" for="ward">Xã/Phường</label>
                                     <select name="wardId" id="ward"
                                             class="form-control" {{ old('district_id') ? '' : 'disabled' }}>
                                         <option value="">Chọn xã/phường</option>
@@ -89,8 +89,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="fw-bold" for="gift_code">Mã sách tặng <span
-                                                class="text-danger">*</span></label>
+                                    <label class="fw-bold" for="gift_code">Mã sách tặng</label>
                                     <input type="text" class="form-control" name="gift_code"
                                            placeholder="Mã sách tặng">
                                     @error('gift_code')

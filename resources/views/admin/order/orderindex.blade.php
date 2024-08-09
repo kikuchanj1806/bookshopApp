@@ -98,7 +98,12 @@
                                 </td>
                                 <td rowspan="{{ count($products) }}">
                                     <a href="{{ route('admin.order.detail', $order->id) }}"
-                                       alt="Chi tiết đơn hàng">{{ $order->id }}</a>
+                                       alt="Chi tiết đơn hàng">
+                                             <span data-toggle="tooltip"
+                                                   title="Chi tiết đơn hàng">
+                                        {{ $order->id }}
+                                             </span>
+                                    </a>
                                     <br>
                                     {{ \Carbon\Carbon::parse($order->created_at)->format('H:i d/m') }} <br>
                                     <span data-toggle="tooltip"
