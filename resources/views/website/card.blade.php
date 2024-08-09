@@ -20,7 +20,7 @@
                                             <div class="cp-left">
                                                 <div class="cp-img">
                                                     <img loading="lazy"
-                                                         src="{{ $product['image'] ?? 'default-image.jpg' }}"
+                                                         src="{{ asset($product['image'] ?? 'default-image.jpg') }}"
                                                          alt="cart product image">
                                                 </div>
                                                 <p class="cp-delete" data-value="{{ $product['id'] }}">
@@ -32,16 +32,22 @@
                                                 <div class="cp-right-top">
                                                     <a href="#" class="cp-name">{{ $product['name'] }}</a>
                                                     <div class="cp-price">
-                                                    <span class="cp-present-price">
-                                                        {{ number_format($product['price'], 0, ',', '.') }}đ
-                                                    </span>
+                                                        <span class="cp-present-price">
+                            {{ number_format($product['price'], 0, ',', '.') }}đ
+                        </span>
                                                     </div>
                                                 </div>
                                                 <div class="cp-right-bottom">
                                                     <div class="qty-input">
-                                                        <button class="qty-count qty-count--minus" type="button" data-value="{{ $product['id'] }}" data-action="minus">-</button>
-                                                        <input class="product-qty" type="number" name="product-qty" min="0" max="100" value="{{ $product['quantity'] }}" data-value="{{ $product['id'] }}">
-                                                        <button class="qty-count qty-count--add" type="button" data-value="{{ $product['id'] }}" data-action="add">+</button>
+                                                        <button class="qty-count qty-count--minus" type="button"
+                                                                data-value="{{ $product['id'] }}" data-action="minus">-
+                                                        </button>
+                                                        <input class="product-qty" type="number" name="product-qty"
+                                                               min="0" max="100" value="{{ $product['quantity'] }}"
+                                                               data-value="{{ $product['id'] }}">
+                                                        <button class="qty-count qty-count--add" type="button"
+                                                                data-value="{{ $product['id'] }}" data-action="add">+
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -53,25 +59,28 @@
                                     <div class="provisional-cart">
                                         <span>Tạm tính ({{ count($cart) }} sản phẩm):</span>
                                         <span class="provisional-price">
-                                        {{ number_format(array_sum(array_map(function($product) {
+                                            {{ number_format(array_sum(array_map(function($product) {
                                             return $product['price'] * $product['quantity'];
-                                        }, $cart)), 0, ',', '.') }}đ
-                                    </span>
+                                                }, $cart)), 0, ',', '.') }}đ
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="customer-info">
                                     <h3 class="customer-info-title">Thông tin khách hàng</h3>
                                     <div class="customer-contact">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="floatingName" placeholder="Họ và tên" name="name">
+                                            <input type="text" class="form-control" id="floatingName"
+                                                   placeholder="Họ và tên" name="name">
                                             <label for="floatingName">Họ và tên</label>
                                         </div>
                                         <div class="form-floating">
-                                            <input type="number" class="form-control" id="floatingNumber" placeholder="Số điện thoại" name="phone">
+                                            <input type="number" class="form-control" id="floatingNumber"
+                                                   placeholder="Số điện thoại" name="phone">
                                             <label for="floatingNumber">Số điện thoại</label>
                                         </div>
                                         <div class="form-floating">
-                                            <input type="email" class="form-control" id="floatingEmail" placeholder="Email" name="email">
+                                            <input type="email" class="form-control" id="floatingEmail"
+                                                   placeholder="Email" name="email">
                                             <label for="floatingEmail">Email</label>
                                         </div>
                                     </div>
@@ -80,25 +89,31 @@
                                     <h3 class="choose-receiving-title">Chọn cách thức nhận hàng</h3>
                                     <ul class="nav nav-tabs" id="receivingTab" role="tablist">
                                         <li class="nav-item" role="presentation">
-                                            <button class="nav-link active" id="shipping-tab" data-bs-toggle="tab" data-bs-target="#shipping-tab-pane" type="button" role="tab" aria-controls="shipping-tab-pane" aria-selected="true">
+                                            <button class="nav-link active" id="shipping-tab" data-bs-toggle="tab"
+                                                    data-bs-target="#shipping-tab-pane" type="button" role="tab"
+                                                    aria-controls="shipping-tab-pane" aria-selected="true">
                                                 Giao tận nơi
                                             </button>
                                         </li>
                                     </ul>
                                     <div class="tab-content" id="myTabContent">
-                                        <div class="tab-pane fade show active" id="shipping-tab-pane" role="tabpanel" aria-labelledby="shipping-tab" tabindex="0">
+                                        <div class="tab-pane fade show active" id="shipping-tab-pane" role="tabpanel"
+                                             aria-labelledby="shipping-tab" tabindex="0">
                                             <p>Chọn địa chỉ để biết thời gian nhận hàng và phí vận chuyển (nếu có)</p>
                                             <div class="address-box">
-                                                <select class="form-select js-location" id="city" data-type="1" data-value="">
+                                                <select class="form-select js-location" id="city" data-type="1"
+                                                        data-value="">
                                                     <option value="" disabled selected>Chọn Thành phố</option>
                                                 </select>
-                                                <select class="form-select js-location" id="district" data-type="2" data-value="">
+                                                <select class="form-select js-location" id="district" data-type="2"
+                                                        data-value="">
                                                     <option value="" disabled selected>Chọn Quận / Huyện</option>
                                                 </select>
                                                 <select class="form-select" id="ward" data-value="">
                                                     <option value="" disabled selected>Chọn Phường / Xã</option>
                                                 </select>
-                                                <input id="addressDetail" type="text" class="form-control" placeholder="Số nhà, tên đường">
+                                                <input id="addressDetail" type="text" class="form-control"
+                                                       placeholder="Số nhà, tên đường">
                                                 <input id="address" type="hidden" name="address" value="">
                                             </div>
                                             <input id="shippingId" type="hidden" name="shipping">
@@ -114,11 +129,13 @@
                                         </div>
                                     </div>
                                     <div class="mb-3 other-requirements">
-                                        <input type="text" class="form-control" name="note" placeholder="Yêu cầu khác (không bắt buộc)">
+                                        <input type="text" class="form-control" name="note"
+                                               placeholder="Yêu cầu khác (không bắt buộc)">
                                     </div>
                                     <div class="promotionCode">
                                         <div class="promotionCode-inner">
-                                            <input name="promotion" placeholder="Mã giảm giá" class="form-control" data-type="" data-value="" type="text" id="promotionCode">
+                                            <input name="promotion" placeholder="Mã giảm giá" class="form-control"
+                                                   data-type="" data-value="" type="text" id="promotionCode">
                                             <a href="javascript:void(0)" class="checkCode">Nhập</a>
                                         </div>
                                     </div>
@@ -131,8 +148,10 @@
                                     }, $cart)), 0, ',', '.') }}đ</span>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="cartcheck" required>
-                                        <label class="form-check-label" for="cartcheck">Tôi đồng ý với Chính sách xử lý dữ liệu cá nhân của Toshiko</label>
+                                        <input class="form-check-input" type="checkbox" value="" id="cartcheck"
+                                               required>
+                                        <label class="form-check-label" for="cartcheck">Tôi đồng ý với Chính sách xử lý
+                                            dữ liệu cá nhân của Toshiko</label>
                                     </div>
                                     <button class="submitOrder" type="submit">Đặt hàng</button>
                                 </div>

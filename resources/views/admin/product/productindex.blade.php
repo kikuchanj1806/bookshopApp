@@ -11,6 +11,23 @@
         'level1' => 'Danh sách sản phẩm',
         'route1' => '/admin/category/index',
         ])
+    <form method="GET" action="{{ route('admin.product.index') }}" class="mb-2">
+        <div class="row justify-content-end align-items-end">
+            <div class="col-2">
+                <div class="form-group">
+                    <label for="customerPhone">Mã sản phẩm</label>
+                    <input type="text" name="code" class="form-control form-control-sm"
+                           placeholder="Mã sản phẩm" value="{{ $filters['code'] ?? '' }}">
+                </div>
+            </div>
+            <div class="col-1">
+                <div class="form-group">
+                    <label>&nbsp;</label>
+                    <button type="submit" class="btn btn-primary btn-sm btn-block">Lọc</button>
+                </div>
+            </div>
+        </div>
+    </form>
     <div class="card">
         <div class="card-header">
             <div class="card-title">{{ $title }}</div>

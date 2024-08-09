@@ -12,7 +12,6 @@ class CardController extends Controller
         $cart = Session::get('cart', []);
         return view('website.card', compact('cart'));
     }
-
     public function carddoneAction()
     {
         return view('website.carddone');
@@ -23,14 +22,24 @@ class CardController extends Controller
         $product = $request->input('product', []);
         $cart = Session::get('cart', []);
 
+        // Kiểm tra sản phẩm đã tồn tại trong giỏ hàng chưa
         $existingProductKey = array_search($product['id'], array_column($cart, 'id'));
 
         if ($existingProductKey !== false) {
+            // Nếu tồn tại, tăng số lượng sản phẩm
             $cart[$existingProductKey]['quantity'] += $product['quantity'];
         } else {
-            $cart[] = $product;
+            // Nếu không tồn tại, thêm sản phẩm mới vào giỏ hàng
+            $cart[] = [
+                'id' => $product['id'],
+                'name' => $product['name'],
+                'price' => $product['price'],
+                'quantity' => $product['quantity'],
+                'image' => $product['image'], // Đảm bảo sản phẩm bao gồm ảnh
+            ];
         }
 
+        // Cập nhật giỏ hàng trong session
         Session::put('cart', $cart);
 
         return response()->json(['message' => 'Sản phẩm đã được thêm vào giỏ hàng!']);

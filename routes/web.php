@@ -127,6 +127,7 @@ Route::get('/unauthorized', function () {
 Route::get('/', [InterfaceController::class, "index"])->name('interface.index');
 Route::get('/category', [CategoryController::class, "categoryIndex"])->name('category.index');
 Route::get('/prd/{slug}', [DetailController::class, "show"])->name('detail.index');
+
 Route::get('/card', [CardController::class, "cardAction"])->name('card');
 Route::post('/add-to-cart', [CardController::class, 'addToCart']);
 Route::get('/cart/count', [CardController::class, 'cartCount']);

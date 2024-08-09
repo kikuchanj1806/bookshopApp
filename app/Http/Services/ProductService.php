@@ -12,10 +12,19 @@ use App\Http\FormFilter\Product\ProductRequestFilter;
 
 class ProductService extends AppService
 {
-    public function getAll()
+    public function getAll($filters = [])
     {
-        $products = ProductModel::paginate(10);
-        return $products;
+        $query = ProductModel::query();
+
+        // Áp dụng bộ lọc theo tên hoặc mã sản phẩm
+        if (isset($filters['code']) && $filters['code']) {
+            $query->where(function($q) use ($filters) {
+                $q->where('name', 'LIKE', "%{$filters['code']}%")
+                    ->orWhere('code', 'LIKE', "%{$filters['code']}%");
+            });
+        }
+
+        return $query->paginate(10);
     }
 
     public function store(ProductRequestFilter $request)

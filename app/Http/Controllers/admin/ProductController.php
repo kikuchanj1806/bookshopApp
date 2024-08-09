@@ -21,14 +21,19 @@ class ProductController extends Controller
         $this->categoryService = $categoryService;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $products = $this->productService->getAll();
+        $filters = [
+            'code' => $request->input('code'),
+        ];
+
+        $products = $this->productService->getAll($filters);
         return view('admin.product.productindex', [
             'title' => 'Danh sách sản phẩm',
             'products' => $products
         ]);
     }
+
     public function create()
     {
         return view('admin.product.addproduct', [

@@ -266,7 +266,7 @@
 .product-item-image {
     position: relative;
     width: 100%;
-    padding-bottom: 150%; /* Adjust this to maintain aspect ratio */
+    padding-bottom: 110%; /* Adjust this to maintain aspect ratio */
     overflow: hidden;
 }
 

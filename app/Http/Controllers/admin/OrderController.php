@@ -18,6 +18,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Exports\OrdersExport;
 use Maatwebsite\Excel\Facades\Excel;
+
 class OrderController extends Controller
 {
     protected $orderService;
@@ -26,6 +27,7 @@ class OrderController extends Controller
     {
         $this->orderService = $orderService;
     }
+
     public function orderindex(Request $request)
     {
         $user = Auth::user();
@@ -75,7 +77,7 @@ class OrderController extends Controller
         $order = $this->orderService->find($id);
         $cities = City::all();
         $orderList = $this->orderService->getOrderProducts($order);
-        if($order->is_locked) {
+        if ($order->is_locked) {
             return redirect()->route('admin.order.index')->with('error', 'Order is locked.');
         }
         return view('admin.order.edit', compact('order', 'cities', 'orderList'));
@@ -146,11 +148,6 @@ class OrderController extends Controller
         return view('admin.order.detail', compact('order'));
     }
 
-//    public function export()
-//    {
-//        return Excel::download(new OrdersExport, 'orders.xlsx');
-//    }
-
     public function exportSelected(Request $request)
     {
         $request->validate([
@@ -165,7 +162,7 @@ class OrderController extends Controller
         $orders = OrderModel::whereIn('id', $orderIds)->get();
 
         // Tạo dữ liệu cho từng đơn hàng
-        $exportData = $orders->map(function($order) {
+        $exportData = $orders->map(function ($order) {
             // Lấy danh sách ID sản phẩm từ đơn hàng
             $productIds = collect($order->products)->pluck('id');
 
@@ -173,7 +170,7 @@ class OrderController extends Controller
             $products = ProductModel::whereIn('id', $productIds)->get();
 
             // Tạo chuỗi mã sách với số lượng
-            $productCodes = $products->map(function($product) use ($order) {
+            $productCodes = $products->map(function ($product) use ($order) {
                 $productOrder = collect($order->products)->where('id', $product->id)->first();
                 $quantity = $productOrder['quantity'];
 
@@ -183,7 +180,7 @@ class OrderController extends Controller
 
             $shippingFee = 35000;
             $productsOrder = collect($order->products);
-            $totalPrice = $productsOrder->sum(function($product) {
+            $totalPrice = $productsOrder->sum(function ($product) {
                 // Lấy giá và số lượng của sản phẩm từ $product
                 return $product['price'] * $product['quantity'];
             });
