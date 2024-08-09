@@ -24,6 +24,7 @@ class TagController extends Controller
     {
         $request->validate([
             'name' => 'required|unique:tags|max:255',
+            'type' => 'required|integer|in:1,2',
         ]);
 
         try {

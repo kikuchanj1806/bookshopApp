@@ -8,8 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Tag extends Model
 {
     use HasFactory;
+    const TYPE_CLASS = 1;
+    const TYPE_SUBJECT = 2;
 
-    protected $fillable = ['name'];
+    protected $fillable = [
+        'name',
+        'type',
+    ];
 
     public function products()
     {

@@ -24,6 +24,7 @@
                     <th class="text-center low">#</th>
                     <th class="text-center">ID</th>
                     <th class="text-center">Tên</th>
+                    <th class="text-start">Loại</th>
                     <th class="text-center">Thời gian tạo</th>
                     <th class="text-center">Thao tác</th>
                 </tr>
@@ -34,6 +35,9 @@
                         <td class="text-center">{{ $loop->iteration + ($tags->currentPage() - 1) * $tags->perPage() }}</td>
                         <td class="text-center">{{ $t->id }}</td>
                         <td>{{ $t->name }}</td>
+                        <td>
+                            {{ $t->type == \App\Models\Tag::TYPE_CLASS ? 'Lớp học' : 'Môn học' }}
+                        </td>
                         <td class="text-center">{{ $t->created_at ? $t->created_at->format('d/m/Y H:i:s') : '' }}</td>
                         <td class="text-center">
                             <div class="btn-group dropdown">
@@ -43,7 +47,7 @@
                                 </button>
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="javascript:void(0);" class="dropdown-item btn" onclick="openEditModal('{{ $t->id }}', '{{ $t->name }}')"><i class="fal fa-edit me-2"></i> Sửa</a>
+                                        <a href="javascript:void(0);" class="dropdown-item btn" onclick="openEditModal('{{ $t->id }}', '{{ $t->name }}', '{{ $t->type }}')"><i class="fal fa-edit me-2"></i> Sửa</a>
                                     </li>
                                     <li>
                                         <a href="#" class="dropdown-item btn">
@@ -81,6 +85,13 @@
                             <label for="tagName">Tên Tag</label>
                             <input type="text" name="name" id="tagName" class="form-control" required>
                         </div>
+                        <div class="form-group">
+                            <label for="type">Loại Tag</label>
+                            <select class="form-control" id="type" name="type">
+                                <option value="{{ \App\Models\Tag::TYPE_CLASS }}">Lớp học</option>
+                                <option value="{{ \App\Models\Tag::TYPE_SUBJECT }}">Môn học</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
@@ -105,6 +116,13 @@
                             <label for="editTagName">Tên tag</label>
                             <input type="text" class="form-control" id="editTagName" name="name" required>
                         </div>
+                        <div class="form-group">
+                            <label for="type">Loại Tag</label>
+                            <select class="form-control" id="editTagType" name="type">
+                                <option value="{{ \App\Models\Tag::TYPE_CLASS }}">Lớp học</option>
+                                <option value="{{ \App\Models\Tag::TYPE_SUBJECT }}">Môn học</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
@@ -116,9 +134,10 @@
     </div>
 
     <script>
-        function openEditModal(id, name) {
+        function openEditModal(id, name, type) {
             $('#editTagId').val(id);
             $('#editTagName').val(name);
+            $('#editTagType').val(type); // Set giá trị type trong select box
             $('#editTagForm').attr('action', '{{ route("admin.tags.update", ":id") }}'.replace(':id', id));
             $('#editTagModal').modal('show');
         }

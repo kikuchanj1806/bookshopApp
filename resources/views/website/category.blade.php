@@ -37,11 +37,11 @@
                             <div class="list-filter-child">
                                 <ul>
                                     @foreach($tags as $tag)
-                                        @if(Str::startsWith($tag->name, 'Lớp'))
+                                        @if($tag->type == \App\Models\Tag::TYPE_CLASS)
                                             <li>
                                                 <label>
                                                     <input type="checkbox" name="tag[]" value="{{ $tag->id }}"
-                                                            {{ in_array($tag->id, $tagIds) ? 'checked' : '' }}>
+                                                        {{ in_array($tag->id, $tagIds) ? 'checked' : '' }}>
                                                     {{ $tag->name }}
                                                 </label>
                                             </li>
@@ -62,11 +62,11 @@
                             <div class="list-filter-child">
                                 <ul>
                                     @foreach($tags as $tag)
-                                        @if(!Str::startsWith($tag->name, 'Lớp'))
+                                        @if($tag->type == \App\Models\Tag::TYPE_SUBJECT)
                                             <li>
                                                 <label>
                                                     <input type="checkbox" name="tag[]" value="{{ $tag->id }}"
-                                                            {{ in_array($tag->id, $tagIds) ? 'checked' : '' }}>
+                                                        {{ in_array($tag->id, $tagIds) ? 'checked' : '' }}>
                                                     {{ $tag->name }}
                                                 </label>
                                             </li>
